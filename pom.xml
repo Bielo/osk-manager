@@ -19,6 +19,7 @@
 
     <modules>
         <module>osk-manager-web</module>
+        <module>osk-manager-domain</module>
     </modules>
 
     <build>
