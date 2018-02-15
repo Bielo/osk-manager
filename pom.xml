@@ -8,6 +8,9 @@
         <project-version>1.0</project-version>
         <project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
         <project-build-java-target>1.8</project-build-java-target>
+        <spring-version>4.3.8.RELEASE</spring-version>
+        <spring-security-version>4.2.2.RELEASE</spring-security-version>
+        <spring-data-jpa-version>1.11.3.RELEASE</spring-data-jpa-version>
 
         <junit-version>3.8.1</junit-version>
     </properties>
@@ -51,6 +54,55 @@
                 <artifactId>junit</artifactId>
                 <version>${junit-version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring-security-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring-security-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${spring-security-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring-data-jpa-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
