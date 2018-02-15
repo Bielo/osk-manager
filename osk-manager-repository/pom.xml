@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>pl.sdacademy</groupId>
+    <artifactId>osk-manager-repository</artifactId>
+    <name>osk-manager-repository</name>
+
+    <parent>
+        <relativePath>../pom.xml</relativePath>
+        <artifactId>osk-manager</artifactId>
+        <groupId>pl.sdacademy</groupId>
+        <version>${project-version}</version>
+    </parent>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+
+        </dependency>
+    </dependencies>
+</project>
