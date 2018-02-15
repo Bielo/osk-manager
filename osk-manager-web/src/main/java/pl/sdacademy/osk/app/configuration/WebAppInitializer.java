@@ -13,7 +13,6 @@ import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
-
     @Override
     public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext applicationContext = getApplicationContext();
