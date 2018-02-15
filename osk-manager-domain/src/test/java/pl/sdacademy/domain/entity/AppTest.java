@@ -1,4 +1,4 @@
-package pl.sdacademy;
+package pl.sdacademy.domain.entity;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
