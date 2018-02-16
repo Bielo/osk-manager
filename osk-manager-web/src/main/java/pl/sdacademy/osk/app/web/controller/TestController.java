@@ -1,5 +1,6 @@
 package pl.sdacademy.osk.app.web.controller;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ public class TestController {
 
     @RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
     public String test() {
-        LOGGER.debug("is executed");
+        LOGGER.debug("trying to redirect to test.jsp");
         return "test";
     }
 }
