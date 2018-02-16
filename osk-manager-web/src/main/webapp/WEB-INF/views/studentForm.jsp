@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formularz dodawania kursanta</title>
-    <link rel="stylesheet" href="../../resources/theme1/css/style.css" type="text/css">
+    <link rel="stylesheet" href="resources/theme1/css/style.css" type="text/css">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
             <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
         </fieldset>
         <fieldset>
-           <form:input type="date" path="birthdate" required="true"/>
+           <form:input path="birthdate" placeholder="Data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>
         </fieldset>
         <fieldset>
             <input value="Dodaj" type="submit" name="submit">
