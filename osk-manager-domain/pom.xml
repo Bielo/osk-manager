@@ -4,7 +4,6 @@
 
 
     <artifactId>osk-manager-domain</artifactId>
-    <name>osk-manager-domain</name>
 
     <parent>
         <relativePath>../pom.xml</relativePath>
@@ -12,8 +11,6 @@
         <groupId>pl.sdacademy</groupId>
         <version>${project-version}</version>
     </parent>
-
-
 
     <dependencies>
         <dependency>

@@ -1,5 +1,5 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -11,34 +11,34 @@
     <link rel="stylesheet" href="../../resources/theme1/css/style.css" type="text/css">
 </head>
 
-
+<body>
 <c:url var="saveStudent" value="/addStudent"/>
 <div class="container">
-    <form:form id="contact" method="post" action="${saveStudent}">
+    <form:form id="contact" method="get" modelAttribute="student" action="${saveStudent}">
 
         <h3>Formularz Kursanta</h3>
         <form:hidden path="id"/>
         <fieldset>
-            <form:input placeholder="imię" path="firstName" required />
+            <form:input placeholder="imię" path="firstName" required="true"/>
         </fieldset>
         <fieldset>
-            <form:input placeholder="nazwisko" path="lastName" required/>
+            <form:input placeholder="nazwisko" path="lastName" required="true"/>
         </fieldset>
         <fieldset>
-            <form:input placeholder="e-mail" path="email" type="email" required  />
+            <form:input placeholder="e-mail" path="email" type="email" required="true"/>
         </fieldset>
         <fieldset>
-            <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required />
+            <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
         </fieldset>
         <fieldset>
-           <form:input type="date" path="studentBirthdate" required />
+           <form:input type="date" path="birthdate" required="true"/>
         </fieldset>
         <fieldset>
             <input value="Dodaj" type="submit" name="submit">
         </fieldset>
     </form:form>
 </div>
-<body>
+
 
 </body>
 </html>
