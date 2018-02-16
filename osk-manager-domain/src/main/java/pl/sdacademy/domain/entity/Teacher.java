@@ -3,21 +3,28 @@ package pl.sdacademy.domain.entity;
 public class Teacher {
 
     private long id;
+    private long version;
     private String firstName;
     private String lastName;
-    private String mobileNumber;
+    private String phoneNumber;
     private String email;
 
     public Teacher(){
-        super();
     }
 
-    public Teacher(long id, String firstName, String lastName, String mobileNumber, String email) {
-        this.id = id;
+    public Teacher(String firstName, String lastName, String mobileNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mobileNumber = mobileNumber;
+        this.phoneNumber = mobileNumber;
         this.email = email;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
     }
 
     public long getId() {
@@ -44,12 +51,12 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    public String getMobileNumber() {
-        return mobileNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {

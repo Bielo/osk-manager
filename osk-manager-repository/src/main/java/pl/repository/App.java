@@ -1,4 +1,4 @@
-package pl.sdacademy;
+package pl.repository;
 
 /**
  * Hello world!

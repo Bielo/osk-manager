@@ -14,7 +14,7 @@
 <body>
 <c:url var="saveStudent" value="/addStudent"/>
 <div class="container">
-    <form:form id="contact" method="get" modelAttribute="student" action="${saveStudent}">
+    <form:form id="contact" method="post" modelAttribute="student" action="${saveStudent}">
 
         <h3>Formularz Kursanta</h3>
         <form:hidden path="id"/>

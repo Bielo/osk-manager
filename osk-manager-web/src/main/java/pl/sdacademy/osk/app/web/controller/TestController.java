@@ -3,6 +3,7 @@ package pl.sdacademy.osk.app.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,14 +29,14 @@ public class TestController {
         LOGGER.debug("is executed");
         model.addAttribute("student", student);
 
-        return "StudentForm";
+        return "studentForm";
     }
 
     @RequestMapping(value = "/teacher", method = RequestMethod.GET)
-    public String teacherTest(@ModelAttribute("newTeacher") Teacher teacher, Model model) {
+    public String teacherTest(@ModelAttribute("teacher") Teacher teacher, Model model) {
         LOGGER.debug("is executed");
-        model.addAttribute("newTeacher", teacher);
+        model.addAttribute("teacher", teacher);
 
-        return "TeacherForm";
+        return "teacherForm";
     }
 }

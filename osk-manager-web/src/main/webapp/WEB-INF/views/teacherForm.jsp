@@ -1,82 +1,41 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<html>
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Formularz dodawania instruktora</title>
+    <link rel="stylesheet" href="../../resources/theme1/css/style.css" type="text/css">
 </head>
+
 <body>
-<section>
-    <div class="jumbotron">
-        <div class="container">
-            <p>Dodaj instruktora</p>
-        </div>
-    </div>
-</section>
-<section class="container">
-    <form:form modelAttribute="newTeacher" class="form-horizontal">
-    <fieldset>
-        <legend>Dodaj nowego instruktora</legend>
-        <table>
-            <tr>
-                <td colspan="2">
-                    <form:hidden path="id"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label class="control-label col-lg-2" for="firstName">Imie</label>
-                        <div class="col-lg-10">
-                            <form:input path="firstName" type="text" class="form:input-large"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label class="control-label col-lg-2" for="lastName">Nazwisko</label>
-                        <div class="col-lg-10">
-                            <form:input path="lastName" type="text" class="form:input-large"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label class="control-label col-lg-2" for="mobileNumber">Numer Telefonu</label>
-                        <div class="col-lg-10">
-                            <form:input path="mobileNumber" type="tel" class="form:input-large"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <label class="control-label col-lg-2" for="email">Adres e-mail</label>
-                        <div class="col-lg-10">
-                            <form:input path="email" type="text" class="form:input-large"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
-                            <input type="submit" id="btnAdd" class="btn btn-primary" value="Dodaj"/>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        </form:form>
-</section>
+<c:url var="saveTeacher" value="/addTeacher"/>
+<div class="container">
+    <form:form id="contact" method="post" modelAttribute="teacher" action="${saveTeacher}">
+
+        <h3>Formularz Instruktora</h3>
+        <form:hidden path="id"/>
+        <fieldset>
+            <form:input placeholder="imię" path="firstName" required="true"/>
+        </fieldset>
+        <fieldset>
+            <form:input placeholder="nazwisko" path="lastName" required="true"/>
+        </fieldset>
+        <fieldset>
+            <form:input placeholder="e-mail" path="email" type="email" required="true"/>
+        </fieldset>
+        <fieldset>
+            <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
+        </fieldset>
+        <fieldset>
+            <input value="Dodaj" type="submit" name="submit">
+        </fieldset>
+    </form:form>
+</div>
+
+
 </body>
 </html>
