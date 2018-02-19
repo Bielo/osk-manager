@@ -8,37 +8,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Formularz dodawania kursanta</title>
+    <spring:url var="bootstrapCss" value="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="${bootstrapCss}">
     <link rel="stylesheet" href="resources/theme1/css/style.css" type="text/css">
 </head>
 
 <body>
 <c:url var="saveStudent" value="/addStudent"/>
-<div class="container">
+    <div class="containter">
+        <div class ="title">
+            <div class="logo-left">
+                <p>Tu będzie logo</p>
+            </div>
+            <div class="logo-right">
+                <p>Tutaj cos bedzie</p>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <p>lewa czesc strony</p>
+            </div>
+            <div class="center">
     <form:form id="contact" method="post" modelAttribute="student" action="${saveStudent}">
 
         <h3>Formularz Kursanta</h3>
         <form:hidden path="id"/>
-        <fieldset>
             <form:input placeholder="imię" path="firstName" required="true"/>
-        </fieldset>
-        <fieldset>
             <form:input placeholder="nazwisko" path="lastName" required="true"/>
-        </fieldset>
-        <fieldset>
             <form:input placeholder="e-mail" path="email" type="email" required="true"/>
-        </fieldset>
-        <fieldset>
             <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
-        </fieldset>
-        <fieldset>
-           <form:input path="birthdate" placeholder="Data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>
-        </fieldset>
-        <fieldset>
+           <form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>
             <input value="Dodaj" type="submit" name="submit">
-        </fieldset>
     </form:form>
-</div>
-
-
+            </div>
+            <div class="right">
+                <p> To jest prawa strona </p>
+            </div>
+        </div>
+        <div class="footer">
+            <p> To jest stopka strony</p>
+        </div>
+    </div>
 </body>
 </html>
