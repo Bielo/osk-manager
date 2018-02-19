@@ -5,14 +5,11 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Formularz dodawania instruktora</title>
-    <link rel="stylesheet" href="../../resources/theme1/css/style.css" type="text/css">
-</head>
+
+<jsp:include page="commons/header.jsp"/>
 
 <body>
-<c:url var="saveTeacher" value="/addTeacher"/>
+<c:url var="saveTeacher" value="/saveTeacher"/>
 <div class="container">
     <form:form id="contact" method="post" modelAttribute="teacher" action="${saveTeacher}">
 

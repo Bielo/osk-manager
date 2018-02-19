@@ -10,10 +10,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <meta charset="UTF-8"/>
-    <title>osk-manager</title>
-</head>
+
+<jsp:include page="commons/header.jsp"/>
+
 <body>
 <h1>Witamy w OSK-MANAGER!</h1>
 

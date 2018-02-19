@@ -5,13 +5,8 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Formularz dodawania kursanta</title>
-    <spring:url var="bootstrapCss" value="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${bootstrapCss}">
-    <link rel="stylesheet" href="resources/theme1/css/style.css" type="text/css">
-</head>
+
+<jsp:include page="commons/header.jsp"/>
 
 <body>
 <c:url var="saveStudent" value="/addStudent"/>
@@ -28,6 +23,7 @@
             <div class="left">
                 <p>lewa czesc strony</p>
             </div>
+            <jsp:include page="commons/header.jsp"/>
             <div class="center">
     <form:form id="contact" method="post" modelAttribute="student" action="${saveStudent}">
 
@@ -42,6 +38,7 @@
         <%--<input value="Dodaj" type="submit" name="submit">--%>
     </form:form>
             </div>
+            <jsp:include page="commons/header.jsp"/>
             <div class="right">
                 <p> To jest prawa strona </p>
             </div>
@@ -50,5 +47,6 @@
             <p> To jest stopka strony</p>
         </div>
     </div>
+<jsp:include page="commons/header.jsp"/>
 </body>
 </html>
