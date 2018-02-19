@@ -20,36 +20,4 @@ public class TestController {
         LOGGER.debug("is executed");
         return "test";
     }
-
-    @RequestMapping(value = {"/addStudent"}, method = RequestMethod.GET)
-    public String studentTest(Model model) {
-        LOGGER.debug("is executed");
-        Student student = new Student();
-        model.addAttribute("student", student);
-
-        return "studentForm";
-    }
-
-    @RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
-    public String teacherTest(Model model) {
-        LOGGER.debug("is executed");
-        Teacher teacher = new Teacher();
-        model.addAttribute("teacher", teacher);
-
-        return "teacherForm";
-    }
-
-    @RequestMapping(value = {"/saveStudent"}, method = RequestMethod.POST)
-    public String saveStudentTest(@ModelAttribute("student") Student student){
-        LOGGER.debug("is executed");
-
-        return "redirect:/test";
-    }
-
-    @RequestMapping(value = {"/saveTeacher"}, method = RequestMethod.POST)
-    public String saveTeacherTest(@ModelAttribute("teacher") Teacher teacher){
-        LOGGER.debug("is executed");
-
-        return "redirect:/test";
-    }
 }

@@ -43,10 +43,9 @@
                 <p> To jest prawa strona </p>
             </div>
         </div>
-        <div class="footer">
-            <p> To jest stopka strony</p>
-        </div>
+        <jsp:include page="commons/logo-right.jsp"/>
     </div>
-<jsp:include page="commons/header.jsp"/>
+</div>
+<jsp:include page="commons/footer.jsp"/>
 </body>
 </html>

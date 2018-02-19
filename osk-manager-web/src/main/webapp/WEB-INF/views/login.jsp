@@ -5,28 +5,16 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Osk Manager</title>
-    <spring:url var="bootstrapCss" value="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${bootstrapCss}">
-    <link rel="stylesheet" href="resources/theme1/css/style.css" type="text/css">
-</head>
+<jsp:include page="commons/header.jsp"/>
 
 <body>
 <div class="containter">
     <div class ="title">
-        <div class="logo-left">
-            <p>Tu będzie logo</p>
-        </div>
-        <div class="logo-right">
-            <p>Tutaj cos bedzie</p>
-        </div>
+        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/logo-right.jsp"/>
     </div>
     <div class="middle">
-        <div class="left">
-            <p>lewa czesc strony</p>
-        </div>
+        <jsp:include page="commons/logo-left.jsp"/>
         <div class="center">
             <spring:url var="login" value="perform_login"/>
             <form:form id="contact" method="post" modelAttribute="login" action="${login}">
@@ -38,13 +26,9 @@
             </form:form>
             <p>Nie pamiętasz hasła?</p>
         </div>
-        <div class="right">
-            <p> To jest prawa strona </p>
-        </div>
-    </div>
-    <div class="footer">
-        <p> To jest stopka strony</p>
+        <jsp:include page="commons/logo-right.jsp"/>
     </div>
 </div>
+<jsp:include page="commons/footer.jsp"/>
 </body>
 </html>
