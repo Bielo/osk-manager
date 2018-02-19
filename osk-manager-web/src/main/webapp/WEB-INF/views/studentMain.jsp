@@ -12,7 +12,7 @@
     <div class ="title">
         <jsp:include page="commons/logo-left.jsp"/>
         <div class="logo-right">
-            <p>Tutaj cos bedzie</p>
+            <jsp:include page="commons/logout.jsp"/>
         </div>
     </div>
     <div class="middle">

@@ -8,12 +8,16 @@
 <jsp:include page="commons/header.jsp"/>
 
 <body>
+<%--
+dodaj kursanta,
+dodaj instruktora, t
+abelka ze wszystkimi jazdami z wybranego dnia,
+zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security)
+--%>
 <div class="container">
     <div class ="title">
         <jsp:include page="commons/logo-left.jsp"/>
-        <div class="logo-right">
-            <p>Tutaj cos bedzie</p>
-        </div>
+        <jsp:include page="commons/logout.jsp"/>
     </div>
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
@@ -21,7 +25,7 @@
             <form:form id="contact">
                 <h3>Panel Administratora</h3>
                 <button class="btn btn-primary" onclick="location.href='/student'">
-                   Dodaj kursanta
+                    Dodaj kursanta
                 </button>
                 <button class="btn btn-primary" onclick="location.href='/teacher'">
                     Dodaj instruktora
