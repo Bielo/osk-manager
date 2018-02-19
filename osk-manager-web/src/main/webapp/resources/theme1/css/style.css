@@ -23,6 +23,7 @@ body {
 .container {
     width: 100%;
     margin: 0 auto;
+    padding: 0;
     position: relative;
 }
 
@@ -64,7 +65,10 @@ body {
 #contact input[type="email"],
 #contact input[type="tel"],
 #contact input[type="submit"],
-#contact input[type="date"] {
+#contact input[type="date"],
+#contact input[type="password"],
+.submitButton
+{
     font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
 }
 
@@ -77,9 +81,10 @@ body {
 
 #contact h3 {
     display: block;
+    margin-bottom: 20px;
+    text-align: center;
     font-size: 30px;
     font-weight: 300;
-    margin-bottom: 10px;
 }
 
 #contact h4 {
@@ -92,7 +97,8 @@ body {
 #contact input[type="text"],
 #contact input[type="email"],
 #contact input[type="tel"],
-#contact input[type="date"]
+#contact input[type="date"],
+#contact input[type="password"]
 {
     width: 100%;
     border: 1px solid #ccc;
@@ -110,7 +116,7 @@ body {
     border: 1px solid #1852a0;
 }
 
-#contact input[type="submit"] {
+.submitButton {
     cursor: pointer;
     width: 100%;
     border: none;

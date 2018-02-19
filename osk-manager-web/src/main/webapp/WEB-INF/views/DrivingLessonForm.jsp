@@ -29,13 +29,7 @@
         </div>
         <div class="center">
             <form:form id="contact">
-                <h3>Panel Kursanta</h3>
-                <button class="btn btn-primary" onclick="location.href='/#'">
-                    Zaplanuj jazdy
-                </button>
-                <button class="btn btn-primary" onclick="location.href='/#'">
-                    Wyświetl terminarz jazd
-                </button>
+               Tutaj powstanie formularz planowania jazd :)
             </form:form>
         </div>
         <div class="right">

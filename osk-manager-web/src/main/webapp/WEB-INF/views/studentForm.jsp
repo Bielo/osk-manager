@@ -15,7 +15,7 @@
 
 <body>
 <c:url var="saveStudent" value="/addStudent"/>
-    <div class="containter">
+    <div class="container">
         <div class ="title">
             <div class="logo-left">
                 <p>Tu będzie logo</p>
@@ -38,7 +38,8 @@
             <form:input placeholder="e-mail" path="email" type="email" required="true"/>
             <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
            <form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>
-            <input value="Dodaj" type="submit" name="submit">
+            <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
+        <%--<input value="Dodaj" type="submit" name="submit">--%>
     </form:form>
             </div>
             <div class="right">

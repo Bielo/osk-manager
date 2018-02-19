@@ -32,9 +32,9 @@
             <form:form id="contact" method="post" modelAttribute="login" action="${login}">
 
                 <h3>Logowanie do Panelu OSK Manager</h3>
-                <form:input placeholder="username" path="username"/>
+                <form:input placeholder="login" path="username"/>
                 <form:input placeholder="hasło" path="password" type="password"/>
-                <input value="Zaloguj" type="submit" name="submit">
+                <form:button type="submit" name="submit" class="btn btn-primary submitButton">Zaloguj</form:button>
             </form:form>
             <p>Nie pamiętasz hasła?</p>
         </div>
