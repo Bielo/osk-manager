@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DummyAuthenticationProvider implements AuthenticationProvider {
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         List<GrantedAuthority> authorities = new ArrayList<>();
