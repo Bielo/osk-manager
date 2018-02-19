@@ -14,10 +14,12 @@
 <div class="containter">
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logo-right.jsp"/>
+        <div class="logo-right">
+            <p>Tutaj cos bedzie</p>
+        </div>
     </div>
     <div class="middle">
-        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <form:form id="contact" method="post" modelAttribute="teacher" action="${saveTeacher}">
 
@@ -30,7 +32,7 @@
                 <input value="Dodaj" type="submit" name="submit">
             </form:form>
         </div>
-        <jsp:include page="commons/logo-right.jsp"/>
+        <jsp:include page="commons/bottom-right.jsp"/>
     </div>
 </div>
 <jsp:include page="commons/footer.jsp"/>

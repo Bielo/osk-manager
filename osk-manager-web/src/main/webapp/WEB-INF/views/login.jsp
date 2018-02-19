@@ -11,10 +11,12 @@
 <div class="containter">
     <div class ="title">
         <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logo-right.jsp"/>
+        <div class="logo-right">
+            <p>Tutaj cos bedzie</p>
+        </div>
     </div>
     <div class="middle">
-        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <spring:url var="login" value="perform_login"/>
             <form:form id="contact" method="post" modelAttribute="login" action="${login}">
@@ -26,7 +28,7 @@
             </form:form>
             <p>Nie pamiętasz hasła?</p>
         </div>
-        <jsp:include page="commons/logo-right.jsp"/>
+        <jsp:include page="commons/bottom-right.jsp"/>
     </div>
 </div>
 <jsp:include page="commons/footer.jsp"/>

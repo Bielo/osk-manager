@@ -5,28 +5,18 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>Osk Manager</title>
-    <spring:url var="bootstrapCss" value="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${bootstrapCss}">
-    <link rel="stylesheet" href="resources/theme1/css/style.css" type="text/css">
-</head>
+<jsp:include page="commons/header.jsp"/>
 
 <body>
 <div class="container">
     <div class ="title">
-        <div class="logo-left">
-            <p>Tu będzie logo</p>
-        </div>
+        <jsp:include page="commons/logo-left.jsp"/>
         <div class="logo-right">
             <p>Tutaj cos bedzie</p>
         </div>
     </div>
     <div class="middle">
-        <div class="left">
-            <p>lewa czesc strony</p>
-        </div>
+        <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <form:form id="contact">
                 <h3>Panel Administratora</h3>
@@ -41,13 +31,9 @@
                 </button>
             </form:form>
         </div>
-        <div class="right">
-            <p> To jest prawa strona </p>
-        </div>
+        <jsp:include page="commons/bottom-right.jsp"/>
     </div>
-    <div class="footer">
-        <p> To jest stopka strony</p>
-    </div>
+    <jsp:include page="commons/footer.jsp"/>
 </div>
 </body>
 

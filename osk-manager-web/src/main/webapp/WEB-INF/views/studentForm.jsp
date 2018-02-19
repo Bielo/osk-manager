@@ -12,18 +12,13 @@
 <c:url var="saveStudent" value="/addStudent"/>
     <div class="container">
         <div class ="title">
-            <div class="logo-left">
-                <p>Tu będzie logo</p>
-            </div>
+            <jsp:include page="commons/logo-left.jsp"/>
             <div class="logo-right">
                 <p>Tutaj cos bedzie</p>
             </div>
         </div>
         <div class="middle">
-            <div class="left">
-                <p>lewa czesc strony</p>
-            </div>
-            <jsp:include page="commons/header.jsp"/>
+            <jsp:include page="commons/bottom-left.jsp"/>
             <div class="center">
     <form:form id="contact" method="post" modelAttribute="student" action="${saveStudent}">
 
@@ -38,12 +33,11 @@
         <%--<input value="Dodaj" type="submit" name="submit">--%>
     </form:form>
             </div>
-            <jsp:include page="commons/header.jsp"/>
             <div class="right">
                 <p> To jest prawa strona </p>
             </div>
         </div>
-        <jsp:include page="commons/logo-right.jsp"/>
+        <jsp:include page="commons/bottom-right.jsp"/>
     </div>
 </div>
 <jsp:include page="commons/footer.jsp"/>
