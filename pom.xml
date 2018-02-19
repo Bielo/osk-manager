@@ -20,6 +20,8 @@
         <commons-dbcp-version>2.1.1</commons-dbcp-version>
         <mysql-connector-java-version>5.1.41</mysql-connector-java-version>
         <hibernate-version>5.2.9.Final</hibernate-version>
+        <webjars-jquery-version>3.2.1</webjars-jquery-version>
+        <webjars-bootstrap-version>3.3.7</webjars-bootstrap-version>
     </properties>
 
     <groupId>pl.sdacademy</groupId>
@@ -185,6 +187,16 @@
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>5.4.2.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>${webjars-jquery-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${webjars-bootstrap-version}</version>
             </dependency>
         </dependencies>
 
