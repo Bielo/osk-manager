@@ -14,7 +14,6 @@
 </head>
 
 <body>
-<c:url var="login" value="/main"/>
 <div class="containter">
     <div class ="title">
         <div class="logo-left">
@@ -29,10 +28,11 @@
             <p>lewa czesc strony</p>
         </div>
         <div class="center">
-            <form:form id="contact" method="post" action="${login}">
+            <spring:url var="login" value="perform_login"/>
+            <form:form id="contact" method="post" modelAttribute="login" action="${login}">
 
                 <h3>Logowanie do Panelu OSK Manager</h3>
-                <form:input placeholder="login" path="login"/>
+                <form:input placeholder="username" path="username"/>
                 <form:input placeholder="hasło" path="password" type="password"/>
                 <input value="Zaloguj" type="submit" name="submit">
             </form:form>

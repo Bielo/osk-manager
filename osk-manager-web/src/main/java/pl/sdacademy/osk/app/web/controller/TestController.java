@@ -2,8 +2,6 @@ package pl.sdacademy.osk.app.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,7 +15,7 @@ public class TestController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value = {"/", "/test"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
         LOGGER.debug("is executed");
         return "test";
