@@ -20,7 +20,6 @@ public class TestController {
     @RequestMapping(value = {"/", "/test"}, method = RequestMethod.GET)
     public String test() {
         LOGGER.debug("is executed");
-
         return "test";
     }
 
