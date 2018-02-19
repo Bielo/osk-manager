@@ -18,15 +18,6 @@ public class StudentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     private List<Student> studentList = new ArrayList<>();
 
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String index(Model model) {
-        LOGGER.debug("is executed!");
-        model.addAttribute("studentList", studentList);
-        model.addAttribute("student", new Student());
-
-        return "test";
-    }
-
     @RequestMapping(value = {"/addStudent"}, method = RequestMethod.GET)
     public String addStudent(Model model) {
         LOGGER.debug("is executed");
@@ -34,12 +25,5 @@ public class StudentController {
         model.addAttribute("student", student);
 
         return "studentForm";
-    }
-
-    @RequestMapping(value = {"/saveStudent"}, method = RequestMethod.POST)
-    public String saveStudent(@ModelAttribute("student") Student student){
-        LOGGER.debug("is executed");
-        studentList.add(student);
-        return "redirect:/main";
     }
 }

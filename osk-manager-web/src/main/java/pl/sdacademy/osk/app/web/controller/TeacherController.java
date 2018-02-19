@@ -19,15 +19,6 @@ public class TeacherController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
     private List<Teacher> teacherList = new ArrayList<>();
 
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String index(Model model) {
-        LOGGER.debug("is executed!");
-        model.addAttribute("teacherList", teacherList);
-        model.addAttribute("teacher", new Teacher());
-
-        return "test";
-    }
-
     @RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
     public String addTeacher(Model model) {
         LOGGER.debug("is executed");
@@ -35,12 +26,5 @@ public class TeacherController {
         model.addAttribute("teacher", teacher);
 
         return "teacherForm";
-    }
-
-    @RequestMapping(value = {"/saveTeacher"}, method = RequestMethod.POST)
-    public String saveTeacher(@ModelAttribute("teacher") Teacher teacher){
-        LOGGER.debug("is executed");
-        teacherList.add(teacher);
-        return "redirect:/test";
     }
 }
