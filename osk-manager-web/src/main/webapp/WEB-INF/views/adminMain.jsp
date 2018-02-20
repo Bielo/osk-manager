@@ -58,7 +58,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                     <div class="link1">
                         <a class="tilelink" href="<c:url value='/showStudents'/>">
                             <i class="icon-users"></i></br>
-                            Pokaż kursantów
+                            Kursanci
                         </a>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                     <div class="link1">
                         <a class="tilelink" href="<c:url value='/showTeachers'/>">
                             <i class="icon-users-outline"></i></br>
-                            Pokaż instruktorów
+                            Instruktorzy
                         </a>
                     </div>
                 </div>

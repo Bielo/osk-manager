@@ -16,8 +16,8 @@ body {
     font-weight: 100;
     font-size: 12px;
     line-height: 30px;
-    color: #777;
-    background: #092eaf;
+    color: #efefef;
+    background: #3095d3;
     height:100%;
     width: 100%;
 }
@@ -50,6 +50,7 @@ body {
 .middle{
     display:flex;
     min-height: 500px;
+    background: #3095d3;
 }
 
 .left{
@@ -58,7 +59,7 @@ body {
 .center{
     width:60%;
     padding: 0 10%;
-    background-color:grey;
+    background-color:#1c74b2;
     box-sizing:border-box;
     display: flex;
     flex-direction: row;
@@ -70,8 +71,8 @@ body {
     width:20%;
 }
 .footer{
-    background-color: green;
-    margin-top:24px;
+    background-color:#1c74b2;
+    height:54px;
 }
 
 .footer p{
@@ -96,7 +97,7 @@ body {
 }
 
 #contact {
-    background: #F9F9F9;
+    background-color: #1f2f47;
     padding: 25px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -107,6 +108,7 @@ body {
     text-align: center;
     font-size: 30px;
     font-weight: 300;
+    color:#39a5f1;
 }
 
 #contact h4 {
@@ -114,6 +116,7 @@ body {
     display: block;
     font-size: 13px;
     font-weight: 400;
+    color: #39a5f1;
 }
 
 #contact input[type="text"],
@@ -124,14 +127,15 @@ body {
 {
     width: 100%;
     border: 1px solid #ccc;
-    background: #FFF;
+    background: #222930;
     margin: 0 0 5px;
     padding: 10px;
 }
 
 #contact input[type="text"]:hover,
 #contact input[type="email"]:hover,
-#contact input[type="tel"]:hover{
+#contact input[type="tel"]:hover,
+#contact input[type="password"]:hover{
     -webkit-transition: border-color 0.3s ease-in-out;
     -moz-transition: border-color 0.3s ease-in-out;
     transition: border-color 0.3s ease-in-out;
@@ -146,7 +150,7 @@ body {
 .link1
 {
     margin: 3px;
-    width: 100px;
+    width: 105px;
     height: 70px;
     background-color: #3095d3;
     text-align: center;
