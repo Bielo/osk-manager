@@ -5,6 +5,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
+import pl.sdacademy.service.configuration.AppConfig;
 
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
@@ -42,7 +43,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
     private AnnotationConfigWebApplicationContext getApplicationContext() {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.register(SecurityConfig.class);
-        context.register(WebConfig.class);
+        context.register(AppConfig.class);
 
         return context;
     }
