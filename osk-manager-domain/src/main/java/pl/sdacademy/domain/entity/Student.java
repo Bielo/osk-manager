@@ -2,11 +2,13 @@ package pl.sdacademy.domain.entity;
 
 import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "STUDENT")
@@ -41,14 +43,14 @@ public class Student {
     @NotNull
     @Past
     @Column(name = "BIRTHDATE")
-    private LocalDate birthdate;
+    private Date birthdate;
 
 
     public Student() {
 
     }
 
-    public Student(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate) {
+    public Student(String firstName, String lastName, String email, String phoneNumber, Date birthdate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -104,11 +106,11 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getBirthdate() {
+    public Date getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(Date birthdate) {
         this.birthdate = birthdate;
     }
 

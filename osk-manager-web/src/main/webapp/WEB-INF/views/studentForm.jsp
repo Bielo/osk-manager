@@ -28,7 +28,7 @@
                     <form:input placeholder="e-mail" path="email" type="email" required="true"/>
                     <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
                     <%-- fix init binder (dates) --%>
-                    <%--<form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>--%>
+                    <form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>
             </div>
