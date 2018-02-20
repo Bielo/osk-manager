@@ -2,8 +2,8 @@ package pl.sdacademy.domain.entity;
 
 public class Teacher {
 
-    private long id;
-    private long version;
+    private Long id;
+    private Long version;
     private String firstName;
     private String lastName;
     private String phoneNumber;

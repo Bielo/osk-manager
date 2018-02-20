@@ -24,15 +24,15 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
         <div class="center">
             <form:form id="contact">
                 <h3>Panel Administratora</h3>
-                <button class="btn btn-primary" onclick="location.href='/student'">
+                <a href="<c:url value='/addStudent'/>">
                     Dodaj kursanta
-                </button>
-                <button class="btn btn-primary" onclick="location.href='/teacher'">
+                </a>
+                <a href="<c:url value='/addTeacher'/>">
                     Dodaj instruktora
-                </button>
-                <button class="btn btn-primary" onclick="location.href='/#'">
-                    Pokaż statystyki
-                </button>
+                </a>
+                <a href="<c:url value='/#'/>">
+                    Pokaż statystki
+                </a>
             </form:form>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>

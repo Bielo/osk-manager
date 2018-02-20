@@ -15,7 +15,7 @@ public class TestController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
-    @RequestMapping(value = "test", method = RequestMethod.GET)
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {
         LOGGER.debug("is executed");
         return "test";

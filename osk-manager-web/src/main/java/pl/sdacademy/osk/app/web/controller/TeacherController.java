@@ -27,4 +27,11 @@ public class TeacherController {
 
         return "teacherForm";
     }
+
+    @RequestMapping(value = {"/saveTeacher"}, method = RequestMethod.POST)
+    public String saveStudent(@ModelAttribute("teacher") Teacher teacher){
+        LOGGER.debug("is executed");
+        teacherList.add(teacher);
+        return "redirect:/test";
+    }
 }
