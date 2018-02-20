@@ -1,4 +1,4 @@
-package pl.sdacademy.osk.service.configuration;
+package pl.sdacademy.service.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 
 @Configuration
 @Import(PersistenceConfig.class)
-@ComponentScan(basePackages = {"pl.sdacademy.osk.service.configuration"})
+@ComponentScan(basePackages = {"pl.sdacademy.service"})
 public class AppConfig {
 
     @Bean

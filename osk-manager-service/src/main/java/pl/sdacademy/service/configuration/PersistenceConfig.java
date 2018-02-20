@@ -1,4 +1,4 @@
-package pl.sdacademy.osk.service.configuration;
+package pl.sdacademy.service.configuration;
 
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
@@ -16,7 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "pl.sdacademy.osk.repository")
+@EnableJpaRepositories(basePackages = "pl.sdacademy.repository")
 public class PersistenceConfig {
 
     @Value("${jdbc.driverClassName}")
