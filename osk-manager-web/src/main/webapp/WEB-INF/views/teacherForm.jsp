@@ -14,9 +14,7 @@
 <div class="containter">
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
-        <div class="logo-right">
-            <p>Tutaj cos bedzie</p>
-        </div>
+        <jsp:include page="commons/logout.jsp"/>
     </div>
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>

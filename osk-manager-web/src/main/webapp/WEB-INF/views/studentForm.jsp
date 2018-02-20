@@ -10,33 +10,31 @@
 
 <body>
 <c:url var="saveStudent" value="/saveStudent"/>
-    <div class="container">
-        <div class ="title">
-            <jsp:include page="commons/logo-left.jsp"/>
-                <jsp:include page="commons/logout.jsp"/>
-        </div>
-        <div class="middle">
-            <jsp:include page="commons/bottom-left.jsp"/>
-            <div class="center">
-    <form:form id="contact" method="post" modelAttribute="student" action="${saveStudent}">
-
-        <h3>Formularz Kursanta</h3>
-        <form:hidden path="id"/>
-            <form:input placeholder="imię" path="firstName" required="true"/>
-            <form:input placeholder="nazwisko" path="lastName" required="true"/>
-            <form:input placeholder="e-mail" path="email" type="email" required="true"/>
-            <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
-        <%-- fix init binder (dates) --%>
-           <%--<form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>--%>
-            <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
-    </form:form>
-            </div>
-            <div class="right">
-                <p> To jest prawa strona </p>
-            </div>
-        </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+<div class="container">
+    <div class="title">
+        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/logout.jsp"/>
     </div>
+    <div class="middle">
+        <jsp:include page="commons/bottom-left.jsp"/>
+        <div class="center">
+            <div class="form">
+                <form:form id="contact" method="post" modelAttribute="student" action="${saveStudent}">
+
+                    <h3>Formularz Kursanta</h3>
+                    <form:hidden path="id"/>
+                    <form:input placeholder="imię" path="firstName" required="true"/>
+                    <form:input placeholder="nazwisko" path="lastName" required="true"/>
+                    <form:input placeholder="e-mail" path="email" type="email" required="true"/>
+                    <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
+                    <%-- fix init binder (dates) --%>
+                    <%--<form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" required="true"/>--%>
+                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
+                </form:form>
+            </div>
+        </div>
+    <jsp:include page="commons/bottom-right.jsp"/>
+</div>
 </div>
 <jsp:include page="commons/footer.jsp"/>
 </body>

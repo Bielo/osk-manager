@@ -18,23 +18,28 @@ body {
     line-height: 30px;
     color: #777;
     background: #092eaf;
+    height:100%;
+    width: 100%;
 }
 
 .container {
     width: 100%;
-    margin: 0 auto;
-    padding: 0;
+    height:100%;
+    margin: 0;
+    padding:0;
     position: relative;
 }
 
 .title{
     display:flex;
+    height:20%;
 }
 
 .logo-left{
     width:50%;
     height:100px;
     background-color:yellow;
+    text-align: right;
 }
 
 .logo-right{
@@ -44,8 +49,7 @@ body {
 
 .middle{
     display:flex;
-    padding-top:2%;
-    padding-bottom:3%
+    min-height: 500px;
 }
 
 .left{
@@ -53,14 +57,32 @@ body {
 }
 .center{
     width:60%;
-    padding: 0 15%;
+    padding: 0 10%;
+    background-color:grey;
+    box-sizing:border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 .right{
     width:20%;
 }
 .footer{
     background-color: green;
+    margin-top:24px;
 }
+
+.footer p{
+   margin-bottom: 0px;
+}
+
+.form{
+    maring-left:auto;
+    margin-right:auto;
+}
+
 
 #contact input[type="text"],
 #contact input[type="email"],
@@ -76,13 +98,12 @@ body {
 #contact {
     background: #F9F9F9;
     padding: 25px;
-    margin: 0;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 #contact h3 {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-align: center;
     font-size: 30px;
     font-weight: 300;
@@ -117,6 +138,36 @@ body {
     border: 1px solid #1852a0;
 }
 
+.square
+{
+    display:flex;
+}
+
+.link1
+{
+    margin: 3px;
+    width: 100px;
+    height: 70px;
+    background-color: #3095d3;
+    text-align: center;
+}
+
+.link1:hover
+{
+    background-color: #2084c2;
+}
+
+a.tilelink
+{
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    height: 70px;
+
+}
+
+
 .submitButton {
     cursor: pointer;
     width: 100%;
@@ -149,7 +200,7 @@ body {
     font-size:13px;
     padding:6px 12px;
     text-decoration:none;
-    margin-left: 90%;
+    margin-left: 80%;
 }
 .buttonLogout:hover {
     background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));

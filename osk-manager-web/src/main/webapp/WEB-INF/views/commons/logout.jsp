@@ -8,7 +8,7 @@
 
     <form:form method="post" action="${logoutUrl}" class="form-horizontal">
         <button class="buttonLogout" type="submit">
-            Wyloguj
+            <i class="icon-power"></i> Wyloguj
         </button>
     </form:form>
 </div>
