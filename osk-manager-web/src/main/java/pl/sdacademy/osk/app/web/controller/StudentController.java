@@ -24,7 +24,6 @@ import java.util.List;
 public class StudentController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
-    private List<Student> studentList = new ArrayList<>();
 
     private final StudentCommandService studentCommandService;
 

@@ -34,4 +34,7 @@ public class TeacherController {
         teacherList.add(teacher);
         return "redirect:/test";
     }
+
+
+
 }

@@ -36,7 +36,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/#'/>">
+                        <a class="tilelink" href="<c:url value='/schedule'/>">
                             <i class="icon-calendar"></i></br>
                             Harmonogram
                         </a>
@@ -44,19 +44,19 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                 </div>
                 <div class="square">
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/#'/>">
+                        <a class="tilelink" href="<c:url value='/findStudent'/>">
                             <i class="icon-search"></i></br>
                             Znajdź kursanta
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/#'/>">
+                        <a class="tilelink" href="<c:url value='/findTeacher'/>">
                             <i class="icon-search"></i></br>
                             Znajdź instruktora
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/#'/>">
+                        <a class="tilelink" href="<c:url value='/showStudents'/>">
                             <i class="icon-users"></i></br>
                             Pokaż kursantów
                         </a>
@@ -64,7 +64,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                 </div>
                 <div class="square">
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/#'/>">
+                        <a class="tilelink" href="<c:url value='/showTeachers'/>">
                             <i class="icon-users-outline"></i></br>
                             Pokaż instruktorów
                         </a>
