@@ -1,12 +1,40 @@
 package pl.sdacademy.domain.entity;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "TEACHER")
+@Audited
 public class Teacher {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "TEACHER_ID")
     private Long id;
+
+    @Version
+    @Column(name = "LATEST_VERSION")
     private Long version;
+
+    @NotEmpty
+    @Column(name = "FIRST_NAME")
     private String firstName;
+
+    @NotEmpty
+    @Column(name = "LAST_NAME")
     private String lastName;
+
+    @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
+
+    @NotNull
+    @Email
+    @Column(name = "EMAIL")
     private String email;
 
     public Teacher(){
