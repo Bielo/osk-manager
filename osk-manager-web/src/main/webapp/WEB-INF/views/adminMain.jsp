@@ -24,6 +24,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
         <div class="center">
             <form:form id="contact">
                 <h3>Panel Administratora</h3>
+
                 <div class="square">
                     <div class="link1"><a class="tilelink" href="<c:url value='/addStudent'/>">
                         <i class="icon-user-plus"></i></br>
@@ -56,7 +57,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/showStudents'/>">
+                        <a class="tilelink" href="<c:url value='/showStudentss'/>">
                             <i class="icon-users"></i></br>
                             Kursanci
                         </a>
@@ -70,6 +71,9 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                         </a>
                     </div>
                 </div>
+                <c:if test="${not empty info}">
+                <p class="info">${info}</p>
+                </c:if>
             </form:form>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>

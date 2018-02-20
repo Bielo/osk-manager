@@ -49,9 +49,26 @@ public class StudentController {
     }
 
     @RequestMapping(value = {"/saveStudent"})
-    public String saveStudent(@ModelAttribute("student") Student student){
+    public String saveStudent(@ModelAttribute("student") Student student, Model model) {
         LOGGER.debug("save student is executed");
+        int sizeBefore = studentCommandService.studentCount();
         studentCommandService.create(student);
+        int afterSize = studentCommandService.studentCount();
+        if (sizeBefore == afterSize) {
+            model.addAttribute("info", "Nie udało się dodać użytkownika");
+        } else {
+            model.addAttribute("info", "Udało się dodać użytkownika!");
+        }
         return "adminMain";
+    }
+
+    @RequestMapping(value = {"/showStudentss"})
+    public String showAllStudents(Model model) {
+        LOGGER.debug("show all students is executerd");
+        List<Student> allStudents = studentCommandService.findAllStudents();
+
+        model.addAttribute("students", allStudents);
+
+        return "showStudents";
     }
 }

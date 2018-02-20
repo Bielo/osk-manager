@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.repository.StudentRepository;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class StudentCommandService {
@@ -27,5 +29,13 @@ public class StudentCommandService {
         studentRepository.save(student);
 
         return student.getId();
+    }
+
+    public int studentCount() {
+        return studentRepository.findAll().size();
+    }
+
+    public List<Student> findAllStudents() {
+        return studentRepository.findAll();
     }
 }
