@@ -7,10 +7,8 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.service.student.StudentCommandService;
 
@@ -70,5 +68,16 @@ public class StudentController {
         model.addAttribute("students", allStudents);
 
         return "showStudents";
+    }
+
+    @RequestMapping("/student/delete/{id}")
+    public String deleteAccount(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+        LOGGER.debug("is executed!");
+        Student student = studentCommandService.findStudentByID(id);
+        String message = String.format("Udało się usunąć studenta %s %s", student.getFirstName(), student.getLastName());
+        studentCommandService.deleteStudent(id);
+        redirectAttributes.addFlashAttribute("info", message);
+
+        return "redirect:/";
     }
 }

@@ -74,7 +74,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                 <c:if test="${not empty info}">
                 <p class="info">${info}</p>
                 </c:if>
-            </form:form>
+            </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
     </div>

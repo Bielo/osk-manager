@@ -38,4 +38,14 @@ public class StudentCommandService {
     public List<Student> findAllStudents() {
         return studentRepository.findAll();
     }
+
+    public void deleteStudent(Long id) {
+        studentRepository.delete(id);
+    }
+
+    public Student findStudentByID(Long id) {
+
+        return studentRepository.findOne(id);
+
+    }
 }
