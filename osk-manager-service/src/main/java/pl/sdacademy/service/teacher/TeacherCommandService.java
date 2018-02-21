@@ -9,6 +9,7 @@ import pl.sdacademy.repository.TeacherRepository;
 import pl.sdacademy.service.student.StudentCommandService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -29,23 +30,31 @@ public class TeacherCommandService {
         return teacher.getId();
     }
 
-    public void update(Teacher teacher) {
-        Teacher dbTeacher = teacherRepository.findOne(teacher.getId());
-        if (dbTeacher == null) {
-            LOGGER.debug("Teacher with id " + teacher.getId() + " not found.");
-        }
-        dbTeacher.setFirstName(teacher.getFirstName());
-        dbTeacher.setLastName(teacher.getLastName());
-        dbTeacher.setPhoneNumber(teacher.getPhoneNumber());
-        dbTeacher.setEmail(teacher.getEmail());
+    public int teacherCount(){
+        return teacherRepository.findAll().size();
     }
 
-    public void delete(Long id) {
-        Teacher teacher = teacherRepository.findOne(id);
-        if (teacher == null) {
-            LOGGER.debug("Teacher with id " + id + " not found.");
-        }
-
-        teacherRepository.delete(teacher);
+    public List<Teacher> findAllTeachers() {
+        return teacherRepository.findAll();
     }
+
+//    public void update(Teacher teacher) {
+//        Teacher dbTeacher = teacherRepository.findOne(teacher.getId());
+//        if (dbTeacher == null) {
+//            LOGGER.debug("Teacher with id " + teacher.getId() + " not found.");
+//        }
+//        dbTeacher.setFirstName(teacher.getFirstName());
+//        dbTeacher.setLastName(teacher.getLastName());
+//        dbTeacher.setPhoneNumber(teacher.getPhoneNumber());
+//        dbTeacher.setEmail(teacher.getEmail());
+//    }
+//
+//    public void delete(Long id) {
+//        Teacher teacher = teacherRepository.findOne(id);
+//        if (teacher == null) {
+//            LOGGER.debug("Teacher with id " + id + " not found.");
+//        }
+//
+//        teacherRepository.delete(teacher);
+//    }
 }
