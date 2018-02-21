@@ -22,8 +22,7 @@
             <form:form class="content" method="post" modelAttribute="teacher" action="${saveTeacher}">
 
                 <h3>Formularz Instruktora</h3>
-                <%--< ID POWODUJE ERROR >--%>
-                <%--<form:hidden path="id"/>--%>
+                <form:hidden path="id"/>
                 <form:input placeholder="imię" path="firstName" required="true"/>
                 <form:input placeholder="nazwisko" path="lastName" required="true"/>
                 <form:input placeholder="e-mail" path="email" type="email" required="true"/>
