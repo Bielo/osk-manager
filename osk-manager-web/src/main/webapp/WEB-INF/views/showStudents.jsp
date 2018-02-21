@@ -56,7 +56,7 @@
                                         <spring:url value="/student/edit/${student.id}" var="studentEditUrl"/>
                                         <spring:url value="/student/delete/${student.id}" var="studentDeleteUrl"/>
 
-                                        <button class="btn btn-info" onclick="location.href='${accountEditUrl}'">
+                                        <button class="btn btn-info" onclick="location.href='${studentEditUrl}'">
                                         Edytuj
                                         </button>
                                         <button class="btn btn-info" onclick="location.href='${studentDeleteUrl}'">

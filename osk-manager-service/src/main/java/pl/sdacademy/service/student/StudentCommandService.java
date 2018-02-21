@@ -48,4 +48,14 @@ public class StudentCommandService {
         return studentRepository.findOne(id);
 
     }
+
+    public void update(Student student) {
+        Student dbAccount = studentRepository.findOne(student.getId());
+
+        dbAccount.setFirstName(student.getFirstName());
+        dbAccount.setLastName(student.getLastName());
+        dbAccount.setBirthdate(student.getBirthdate());
+        dbAccount.setEmail(student.getEmail());
+        dbAccount.setPhoneNumber(student.getPhoneNumber());
+    }
 }

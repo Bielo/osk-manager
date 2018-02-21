@@ -49,15 +49,26 @@ public class StudentController {
     @RequestMapping(value = {"/saveStudent"})
     public String saveStudent(@ModelAttribute("student") Student student, Model model) {
         LOGGER.debug("save student is executed");
-        int sizeBefore = studentCommandService.studentCount();
-        studentCommandService.create(student);
-        int afterSize = studentCommandService.studentCount();
-        if (sizeBefore == afterSize) {
-            model.addAttribute("info", "Nie udało się dodać użytkownika");
+
+        if (student.getId() == null) {
+            int sizeBefore = studentCommandService.studentCount();
+            studentCommandService.create(student);
+            int afterSize = studentCommandService.studentCount();
+            if (sizeBefore == afterSize) {
+                model.addAttribute("info", "Nie udało się dodać użytkownika");
+            } else {
+                model.addAttribute("info", "Udało się dodać użytkownika!");
+            }
+            return "adminMain";
         } else {
-            model.addAttribute("info", "Udało się dodać użytkownika!");
+            studentCommandService.update(student);
+
+
+            model.addAttribute("info", "Udało się edytować kursanta");
+
+            return "adminMain";
         }
-        return "adminMain";
+
     }
 
     @RequestMapping(value = {"/showStudentss"})
@@ -74,10 +85,20 @@ public class StudentController {
     public String deleteAccount(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         LOGGER.debug("is executed!");
         Student student = studentCommandService.findStudentByID(id);
-        String message = String.format("Udało się usunąć studenta %s %s", student.getFirstName(), student.getLastName());
+        String message = String.format("Udało się usunąć kursanta %s %s", student.getFirstName(), student.getLastName());
         studentCommandService.deleteStudent(id);
         redirectAttributes.addFlashAttribute("info", message);
 
         return "redirect:/";
+    }
+
+    @RequestMapping("/student/edit/{id}")
+    public String editAccount(@PathVariable("id") Long id, Model model) {
+        LOGGER.debug("Edit Account");
+
+        Student student = studentCommandService.findStudentByID(id);
+        model.addAttribute("student", student);
+
+        return "studentForm";
     }
 }

@@ -31,6 +31,10 @@
                                 onfocus="(this.type='date')" id="date" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>
+
+
+
+
                 <div class="back">
                     <a href="<c:url value='/'/>">
                         <i class="icon-left-big"></i>Wróć na poprzednia stronę
