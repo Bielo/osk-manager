@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.repository.StudentRepository;
-import java.util.List;
 
 @Service
 @Transactional
@@ -30,22 +29,8 @@ public class StudentCommandService {
         return student.getId();
     }
 
-    public int studentCount() {
-        return studentRepository.findAll().size();
-    }
-
-    public List<Student> findAllStudents() {
-        return studentRepository.findAll();
-    }
-
     public void deleteStudent(Long id) {
         studentRepository.delete(id);
-    }
-
-    public Student findStudentByID(Long id) {
-
-        return studentRepository.findOne(id);
-
     }
 
     public void update(Student student) {

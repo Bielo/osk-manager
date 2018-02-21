@@ -53,9 +53,9 @@ public class StudentController {
         LOGGER.debug("save student is executed");
 
         if (student.getId() == null) {
-            int sizeBefore = studentCommandService.studentCount();
+            int sizeBefore = studentQueryService.studentCount();
             studentCommandService.create(student);
-            int afterSize = studentCommandService.studentCount();
+            int afterSize = studentQueryService.studentCount();
             if (sizeBefore == afterSize) {
                 model.addAttribute("info", "Nie udało się dodać użytkownika");
             } else {
@@ -74,7 +74,8 @@ public class StudentController {
     @RequestMapping(value = {"/showStudentss"})
     public String showAllStudents(Model model) {
         LOGGER.debug("show all students is executerd");
-        List<Student> allStudents = studentCommandService.findAllStudents();
+        List<Student> allStudents = studentQueryService.findAllStudents();
+
         model.addAttribute("students", allStudents);
 
         return "showStudents";
@@ -98,12 +99,10 @@ public class StudentController {
         return "findStudent";
     }
 
-
-
     @RequestMapping("/student/delete/{id}")
     public String deleteStudent(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         LOGGER.debug("is executed!");
-        Student student = studentCommandService.findStudentByID(id);
+        Student student = studentQueryService.findStudentByID(id);
         String message = String.format("Udało się usunąć kursanta %s %s", student.getFirstName(), student.getLastName());
         studentCommandService.deleteStudent(id);
         redirectAttributes.addFlashAttribute("info", message);
@@ -113,8 +112,9 @@ public class StudentController {
 
     @RequestMapping("/student/edit/{id}")
     public String editAccount(@PathVariable("id") Long id, Model model) {
-        LOGGER.debug("Edit Account");
-        Student student = studentCommandService.findStudentByID(id);
+        LOGGER.debug("Edit Student");
+
+        Student student = studentQueryService.findStudentByID(id);
         model.addAttribute("student", student);
 
         return "studentForm";

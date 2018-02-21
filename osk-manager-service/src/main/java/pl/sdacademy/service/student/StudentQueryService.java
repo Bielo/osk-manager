@@ -7,9 +7,7 @@ import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.repository.StudentRepository;
 import pl.sdacademy.service.student.dto.SearchStudentDTO;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -22,21 +20,27 @@ public class StudentQueryService {
         this.studentRepository = studentRepository;
     }
 
+    public int studentCount() {
+        return studentRepository.findAll().size();
+    }
+
+    public List<Student> findAllStudents() {
+        return studentRepository.findAll();
+    }
+
+    public Student findStudentByID(Long id) {
+        return studentRepository.findOne(id);
+    }
+
     public List<Student> search(SearchStudentDTO searchStudentDTO) {
+        List<Student> result;
+        if (searchStudentDTO.getFirstName().isEmpty() || searchStudentDTO.getLastName().isEmpty()) {
+            result = studentRepository.findStudentByName(searchStudentDTO.getFirstName(), searchStudentDTO.getLastName());
 
-        List<Student> foundStudent = new ArrayList<>();
-
-        if (!searchStudentDTO.getLastName().isEmpty()) {
-            foundStudent = studentRepository.findAll().stream()
-                    .filter(student -> student.getLastName().equals(searchStudentDTO.getLastName()))
-                    .collect(Collectors.toList());
-
+        } else {
+            result = studentRepository.findStudentByFirstNameAndLastName(searchStudentDTO.getFirstName(), searchStudentDTO.getLastName());
         }
-        if (!searchStudentDTO.getFirstName().isEmpty()) {
-            foundStudent = studentRepository.findAll().stream()
-                    .filter(student -> student.getFirstName().equals(searchStudentDTO.getFirstName()))
-                    .collect(Collectors.toList());
-        }
-        return foundStudent;
+
+        return result;
     }
 }

@@ -3,6 +3,7 @@ package pl.sdacademy.service.student.dto;
 public class SearchStudentDTO {
 
     private String firstName;
+    private String lastName;
 
     public String getFirstName() {
         return firstName;
@@ -11,8 +12,6 @@ public class SearchStudentDTO {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    private String lastName;
 
     public String getLastName() {
         return lastName;
