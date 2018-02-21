@@ -18,7 +18,7 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <form:form id="contact">
+            <form:form class="content">
                Tutaj powstanie formularz planowania jazd :)
             </form:form>
         </div>

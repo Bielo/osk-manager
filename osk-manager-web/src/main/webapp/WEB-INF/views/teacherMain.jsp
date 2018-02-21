@@ -9,7 +9,7 @@
 
 <body>
 <div class="container">
-    <div class ="title">
+    <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
         <div class="logo-right">
             <p>Tutaj cos bedzie</p>
@@ -18,7 +18,7 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <form:form id="contact">
+            <div class="content">
                 <h3>Panel Administratora</h3>
                 <button class="btn btn-primary" onclick="location.href='/#'">
                     Wyświetl terminy jazd
@@ -26,7 +26,7 @@
                 <button class="btn btn-primary" onclick="location.href='/#'">
                     Do zaplanowania
                 </button>
-            </form:form>
+            </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
     </div>

@@ -20,7 +20,7 @@
         <div class="center">
             <div class="form">
                 <spring:url var="login" value="perform_login"/>
-                <form:form id="contact" method="post" modelAttribute="login" action="${login}">
+                <form:form class="content" method="post" modelAttribute="login" action="${login}">
 
                     <h3>Logowanie do Panelu OSK Manager</h3>
                     <form:input placeholder="login" path="username"/>

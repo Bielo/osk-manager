@@ -19,7 +19,7 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <form:form id="contact" method="post" modelAttribute="teacher" action="${saveTeacher}">
+            <form:form class="content" method="post" modelAttribute="teacher" action="${saveTeacher}">
 
                 <h3>Formularz Instruktora</h3>
                 <%--< ID POWODUJE ERROR >--%>

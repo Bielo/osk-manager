@@ -22,12 +22,12 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <form:form id="contact">
+            <div class="content">
                 <h3>Panel Administratora</h3>
 
                 <div class="square">
                     <div class="link1"><a class="tilelink" href="<c:url value='/addStudent'/>">
-                        <i class="icon-user-plus"></i></br>
+                        <i class="icon-user-add"></i></br>
                         Dodaj kursanta
                     </a></div>
                     <div class="link1">
@@ -66,7 +66,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                 <div class="square">
                     <div class="link1">
                         <a class="tilelink" href="<c:url value='/showTeachers'/>">
-                            <i class="icon-users-outline"></i></br>
+                            <i class="icon-users"></i></br>
                             Instruktorzy
                         </a>
                     </div>

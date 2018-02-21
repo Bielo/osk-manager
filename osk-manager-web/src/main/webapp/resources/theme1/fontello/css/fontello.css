@@ -57,7 +57,7 @@
  
 .icon-pencil:before { content: '\e800';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-calendar:before { content: '\e801';font-size: 30px; margin-top: 8px; } /* '' */
-.icon-left-big:before { content: '\e802';font-size: 30px; margin-top: 8px; } /* '' */
+.icon-left-big:before { content: '\e802';font-size: 15px; margin-top: 8px; } /* '' */
 .icon-user:before { content: '\e803';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-mail:before { content: '\e804';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-search:before { content: '\e805';font-size: 30px; margin-top: 8px; } /* '' */
