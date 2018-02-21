@@ -49,12 +49,14 @@ public class StudentCommandService {
     }
 
     public void update(Student student) {
-        Student dbAccount = studentRepository.findOne(student.getId());
-
-        dbAccount.setFirstName(student.getFirstName());
-        dbAccount.setLastName(student.getLastName());
-        dbAccount.setBirthdate(student.getBirthdate());
-        dbAccount.setEmail(student.getEmail());
-        dbAccount.setPhoneNumber(student.getPhoneNumber());
+        Student dbStudent = studentRepository.findOne(student.getId());
+        if (dbStudent == null) {
+            LOGGER.debug("Student with id " + student.getId() + " not found.");
+        }
+        dbStudent.setFirstName(student.getFirstName());
+        dbStudent.setLastName(student.getLastName());
+        dbStudent.setBirthdate(student.getBirthdate());
+        dbStudent.setEmail(student.getEmail());
+        dbStudent.setPhoneNumber(student.getPhoneNumber());
     }
 }

@@ -62,7 +62,6 @@ public class TeacherController {
     public String showAllTeachers(Model model) {
         LOGGER.debug("show all teachers is executed");
         List<Teacher> allTeachers = teacherCommandService.findAllTeachers();
-
         model.addAttribute("teachers", allTeachers);
 
         return "showTeachers";
@@ -75,13 +74,13 @@ public class TeacherController {
         String message = String.format("Udało się usunąć instruktora %s %s", teacher.getFirstName(), teacher.getLastName());
         teacherCommandService.deleteTeacher(id);
         redirectAttributes.addFlashAttribute("info", message);
-        return "adminMain";
+
+        return "redirect:/";
     }
 
     @RequestMapping(value = {"/teacher/edit/{id}"})
     public String editTeacher(@PathVariable("id") Long id, Model model){
         LOGGER.debug("edit teacher is executed!");
-
         Teacher teacher = teacherCommandService.findTeacherByID(id);
         model.addAttribute("teacher", teacher);
 

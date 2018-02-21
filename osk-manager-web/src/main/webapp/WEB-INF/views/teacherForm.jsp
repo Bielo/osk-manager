@@ -30,8 +30,6 @@
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>
 
-
-
                 <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>

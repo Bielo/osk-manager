@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <c:if test="${not empty info}">
-                <p class="info">${info}</p>
+                    <p class="info">${info}</p>
                 </c:if>
             </div>
         </div>

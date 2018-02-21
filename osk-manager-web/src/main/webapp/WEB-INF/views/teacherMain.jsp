@@ -25,5 +25,4 @@
     <jsp:include page="commons/footer.jsp"/>
 </div>
 </body>
-
 </html>

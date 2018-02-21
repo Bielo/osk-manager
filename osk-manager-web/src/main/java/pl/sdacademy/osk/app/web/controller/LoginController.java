@@ -12,7 +12,6 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(@ModelAttribute("login") LoginDTO login) {
-
         ModelAndView model = new ModelAndView();
         model.addObject("login", login);
         model.setViewName("login");

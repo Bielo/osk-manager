@@ -64,9 +64,7 @@ public class StudentController {
             return "adminMain";
         } else {
             studentCommandService.update(student);
-
-
-            model.addAttribute("info", "Udało się edytować kursanta");
+            model.addAttribute("info", "Udało się pomyślnie zaktualizować dane wybranego kursanta.");
 
             return "adminMain";
         }
@@ -77,7 +75,6 @@ public class StudentController {
     public String showAllStudents(Model model) {
         LOGGER.debug("show all students is executerd");
         List<Student> allStudents = studentCommandService.findAllStudents();
-
         model.addAttribute("students", allStudents);
 
         return "showStudents";
@@ -92,10 +89,9 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
-    public String findStudentByLastName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
+    public String findStudentByName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
         LOGGER.debug("show found student");
         List<Student> foundStudent = studentQueryService.search(searchStudent);
-
         model.addAttribute("searchStudent", new SearchStudentDTO());
         model.addAttribute("foundStudent", foundStudent);
 
@@ -105,7 +101,7 @@ public class StudentController {
 
 
     @RequestMapping("/student/delete/{id}")
-    public String deleteAccount(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+    public String deleteStudent(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         LOGGER.debug("is executed!");
         Student student = studentCommandService.findStudentByID(id);
         String message = String.format("Udało się usunąć kursanta %s %s", student.getFirstName(), student.getLastName());
@@ -118,7 +114,6 @@ public class StudentController {
     @RequestMapping("/student/edit/{id}")
     public String editAccount(@PathVariable("id") Long id, Model model) {
         LOGGER.debug("Edit Account");
-
         Student student = studentCommandService.findStudentByID(id);
         model.addAttribute("student", student);
 

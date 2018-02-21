@@ -9,7 +9,7 @@
 
 <body>
 <div class="container">
-    <div class ="title">
+    <div class="title">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="logo-right">
             <jsp:include page="commons/logout.jsp"/>
@@ -19,7 +19,7 @@
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <form:form class="content">
-               Tutaj powstanie formularz planowania jazd :)
+                Tutaj powstanie formularz planowania jazd :)
             </form:form>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>

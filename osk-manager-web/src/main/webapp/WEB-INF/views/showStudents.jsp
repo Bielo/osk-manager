@@ -9,7 +9,6 @@
 <jsp:include page="commons/header.jsp"/>
 
 <body>
-<c:url var="saveStudent" value="/saveStudent"/>
 <div class="container">
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
@@ -33,35 +32,35 @@
                         <th colspan="2">Opcje</th>
                     </tr>
                     </thead>
-                            <c:forEach items="${students}" var="student">
-                                <tr>
-                                    <td>${student.firstName}</td>
-                                    <td>${student.lastName}</td>
-                                    <td>${student.email}</td>
-                                    <td>${student.phoneNumber}</td>
-                                    <td>${student.birthdate}</td>
-                                    <td class="noborder">
-                                        <div class="option-button">
-                                            <spring:url value="/student/edit/${student.id}" var="studentEditUrl"/>
-                                            <a class="option-link" href='${studentEditUrl}'>
-                                                <i class="icon-edit"></i>Edytuj
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="noborder">
-                                        <div class="option-button">
-                                            <spring:url value="/student/delete/${student.id}" var="studentDeleteUrl"/>
-                                            <a class="option-link" href='${studentDeleteUrl}'>
-                                                <i class="icon-user-times"></i>Usuń
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                                <p class="info">Nie ma żadnych kursantów</p>
-                        </c:otherwise>
+                    <c:forEach items="${students}" var="student">
+                        <tr>
+                            <td>${student.firstName}</td>
+                            <td>${student.lastName}</td>
+                            <td>${student.email}</td>
+                            <td>${student.phoneNumber}</td>
+                            <td>${student.birthdate}</td>
+                            <td class="noborder">
+                                <div class="option-button">
+                                    <spring:url value="/student/edit/${student.id}" var="studentEditUrl"/>
+                                    <a class="option-link" href='${studentEditUrl}'>
+                                        <i class="icon-edit"></i>Edytuj
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="noborder">
+                                <div class="option-button">
+                                    <spring:url value="/student/delete/${student.id}" var="studentDeleteUrl"/>
+                                    <a class="option-link" href='${studentDeleteUrl}'>
+                                        <i class="icon-user-times"></i>Usuń
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="info">W szkole nie ma żadnych kursantów</p>
+                    </c:otherwise>
                     </c:choose>
                 </table>
                 <jsp:include page="commons/page-back.jsp"/>
