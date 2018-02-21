@@ -9,8 +9,6 @@
 <jsp:include page="commons/header.jsp"/>
 
 <body>
-
-<c:url var="saveTeacher" value="/saveTeacher"/>
 <div class="container">
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
@@ -19,35 +17,50 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <div class="form">
+            <div class="content">
+                <h4>Instruktorzy</h4>
                 <c:choose>
-                <c:when test="${not empty teachers}">
-                <c:forEach items="${teachers}" var="teacher">
-                <tr>
-                    <td>${teacher.firstName}</td>
-                    <td>${teacher.lastName}</td>
-                    <td>${teacher.email}</td>
-                    <td>${teacher.phoneNumber}</td>
-                    <td>
-                        <spring:url value="/teacher/edit/${teacher.id}" var="teacherEditUrl"/>
-                        <spring:url value="/teacher/delete/${teacher.id}" var="teacherDeleteUrl"/>
-
-                        <button class="btn btn-info" onclick="location.href='${teacherEditUrl}'">
-                            Edytuj
-                        </button>
-                        <button class="btn btn-info" onclick="location.href='${teacherDeleteUrl}'">
-                            Usuń
-                        </button>
-                    </td>
-                </tr>
-                </c:forEach>
-                </c:when>
-                <c:otherwise>
-                <tr>
-                    <td>W szkole nie ma żadnych instruktorów</td>
-                </tr>
-                </c:otherwise>
-                </c:choose>
+                <c:when test="${!empty teachers}">
+                <table class="tab">
+                    <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Telefon</th>
+                        <th colspan="2">Opcje</th>
+                    </tr>
+                    </thead>
+                    <c:forEach items="${teachers}" var="teacher">
+                        <tr>
+                            <td>${teacher.firstName}</td>
+                            <td>${teacher.lastName}</td>
+                            <td>${teacher.email}</td>
+                            <td>${teacher.phoneNumber}</td>
+                            <td class="noborder">
+                                <div class="option-button">
+                                    <spring:url value="/teacher/edit/${teacher.id}" var="studentEditUrl"/>
+                                    <a class="option-link" href='${studentEditUrl}'>
+                                        <i class="icon-edit"></i>Edytuj
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="noborder">
+                                <div class="option-button">
+                                    <spring:url value="/teacher/delete/${teacher.id}" var="studentDeleteUrl"/>
+                                    <a class="option-link" href='${studentDeleteUrl}'>
+                                        <i class="icon-user-times"></i>Usuń
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="info">Nie ma żadnych instruktorów</p>
+                    </c:otherwise>
+                    </c:choose>
+                </table>
                 <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>
