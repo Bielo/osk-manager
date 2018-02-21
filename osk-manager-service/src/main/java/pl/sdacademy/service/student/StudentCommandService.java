@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.repository.StudentRepository;
-
 import java.util.List;
 
 @Service

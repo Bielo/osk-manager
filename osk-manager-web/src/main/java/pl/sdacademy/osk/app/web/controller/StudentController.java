@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.service.student.StudentCommandService;
+import pl.sdacademy.service.student.StudentQueryService;
+import pl.sdacademy.service.student.dto.SearchStudentDTO;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,10 +24,12 @@ public class StudentController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
     private final StudentCommandService studentCommandService;
+    private final StudentQueryService studentQueryService;
 
     @Autowired
-    public StudentController(StudentCommandService studentCommandService) {
+    public StudentController(StudentCommandService studentCommandService, StudentQueryService studentQueryService) {
         this.studentCommandService = studentCommandService;
+        this.studentQueryService = studentQueryService;
     }
 
     @InitBinder
@@ -80,6 +82,27 @@ public class StudentController {
 
         return "showStudents";
     }
+
+    @RequestMapping(value = "/findStudent", method = RequestMethod.GET)
+    public String findStudent(Model model) {
+        LOGGER.debug("is executed");
+        model.addAttribute("searchStudent", new SearchStudentDTO());
+
+        return "findStudent";
+    }
+
+    @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
+    public String findStudentByLastName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
+        LOGGER.debug("show found student");
+        List<Student> foundStudent = studentQueryService.search(searchStudent);
+
+        model.addAttribute("searchStudent", new SearchStudentDTO());
+        model.addAttribute("foundStudent", foundStudent);
+
+        return "findStudent";
+    }
+
+
 
     @RequestMapping("/student/delete/{id}")
     public String deleteAccount(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {

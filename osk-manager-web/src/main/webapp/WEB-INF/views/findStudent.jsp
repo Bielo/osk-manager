@@ -10,23 +10,51 @@
 </head>
 <body>
 <h3>Znajdż kursanta</h3>
-<%--<div class="container">--%>
-    <%--<div class="title">--%>
-        <%--<jsp:include page="commons/logo-left.jsp"/>--%>
-        <%--<jsp:include page="commons/logout.jsp"/>--%>
-    <%--</div>--%>
-    <%--<div class="middle">--%>
-        <%--<jsp:include page="commons/bottom-left.jsp"/>--%>
-        <%--<div class="center">--%>
-            <%--<c:url var="findStudent" value="/findStudentByFirstOrLastName"/>--%>
-            <%--<form:form id="contact" method="post" modelAttribute="student" action="${findStudent}">--%>
-                <%--<h3>Znajdź kursanta</h3>--%>
-                <%--<form:input placeholder="imię" path="firstName"/>--%>
-                <%--<form:input placeholder="nazwisko" path="lastName"/>--%>
-                <%--<form:button type="submit" name="submit" class="btn btn-primary submitButton">Wyszukaj</form:button>--%>
-            <%--</form:form>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+
+<spring:url value="findStudent" var="findStudent"/>
+<form:form method="post" modelAttribute="searchStudent" action='${findStudent}'>
+    <form:label path="firstName">
+        Imię
+    </form:label>
+    <form:input path="firstName"/>
+
+        <form:label path="lastName">
+            Nazwisko
+        </form:label>
+        <form:input path="lastName"/>
+    <button class="btn btn-primary" type="submit">
+        Znajdź
+    </button>
+
+</form:form>
+<c:choose>
+    <c:when test="${!empty foundStudent}">
+    <c:forEach items="${foundStudent}" var="student">
+        <tr>
+            <td>${student.firstName}</td>
+            <td>${student.lastName}</td>
+            <td>${student.email}</td>
+            <td>${student.phoneNumber}</td>
+            <td>${student.birthdate}</td>
+            <td>
+                    <%--<spring:url value="/account/edit/${student.id}" var="studentEditUrl"/>--%>
+                    <%--<spring:url value="/account/delete/${student.id}" var="studentDeleteUrl"/>--%>
+
+                    <%--<button class="btn btn-info" onclick="location.href='${accountEditUrl}'">--%>
+                    <%--<spring:message code="account.list.action.edit"/>--%>
+                    <%--</button>--%>
+                    <%--<button class="btn btn-info" onclick="location.href='${accountDeleteUrl}'">--%>
+                    <%--<spring:message code="account.list.action.delete"/>--%>
+                    <%--</button>--%>
+            </td>
+        </tr>
+    </c:forEach>
+</c:when>
+    <c:otherwise>
+        <tr>
+            <td>Nie znaleziono</td>
+        </tr>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

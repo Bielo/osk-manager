@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.service.student.StudentCommandService;
 
 @Controller
@@ -35,13 +37,6 @@ public class MainController {
         return "schedule";
     }
 
-    @RequestMapping(value = "/findStudent", method = RequestMethod.GET)
-    public String findStudent() {
-        LOGGER.debug("is executed");
-
-        return "findStudent";
-    }
-
     @RequestMapping(value = "/findTeacher", method = RequestMethod.GET)
     public String findTeacher() {
         LOGGER.debug("is executed");
@@ -49,22 +44,6 @@ public class MainController {
         return "findTeacher";
     }
 
-    @RequestMapping(value = "/showStudents", method = RequestMethod.GET)
-    public String showStudents() {
-        LOGGER.debug("is executed");
 
-        return "showStudents";
-    }
 
-    @RequestMapping(value = "/showTeachers", method = RequestMethod.GET)
-    public String showTeachers() {
-        LOGGER.debug("is executed");
-
-        return "showTeachers";
-    }
-
-    @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
-    public String findStudentByFirstOrLastName() {
-        return "";
-    }
 }
