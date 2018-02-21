@@ -73,6 +73,7 @@
                         </tr>
                     </c:otherwise>
                 </c:choose>
+                <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>

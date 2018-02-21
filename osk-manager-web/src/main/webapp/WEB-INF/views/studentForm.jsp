@@ -35,11 +35,7 @@
 
 
 
-                <div class="back">
-                    <a href="<c:url value='/'/>">
-                        <i class="icon-left-big"></i>Wróć na poprzednia stronę
-                    </a>
-                </div>
+                <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>

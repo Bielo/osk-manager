@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -19,16 +18,22 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <form:form class="content" method="post" modelAttribute="teacher" action="${saveTeacher}">
+            <div class="form">
+                <form:form class="content" method="post" modelAttribute="teacher" action="${saveTeacher}">
 
-                <h3>Formularz Instruktora</h3>
-                <form:hidden path="id"/>
-                <form:input placeholder="imię" path="firstName" required="true"/>
-                <form:input placeholder="nazwisko" path="lastName" required="true"/>
-                <form:input placeholder="e-mail" path="email" type="email" required="true"/>
-                <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
-                <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
-            </form:form>
+                    <h3>Formularz Instruktora</h3>
+                    <form:hidden path="id"/>
+                    <form:input placeholder="imię" path="firstName" required="true"/>
+                    <form:input placeholder="nazwisko" path="lastName" required="true"/>
+                    <form:input placeholder="e-mail" path="email" type="email" required="true"/>
+                    <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
+                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
+                </form:form>
+
+
+
+                <jsp:include page="commons/page-back.jsp"/>
+            </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
     </div>

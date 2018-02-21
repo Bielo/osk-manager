@@ -26,6 +26,11 @@
                 <button class="btn btn-primary" onclick="location.href='/#'">
                     Do zaplanowania
                 </button>
+
+
+
+
+                <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
