@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <div class="logo-right">
-    <p>Jesteś zalogowany jako: admin</p>
+    <p>Jesteś zalogowany jako:<i class="icon-user"></i> Admin</p>
 
     <spring:url var="logoutUrl" value="/perform_logout"/>
 

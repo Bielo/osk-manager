@@ -1,27 +1,3 @@
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
-<%--<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>--%>
-<%--&lt;%&ndash;--%>
-  <%--Created by IntelliJ IDEA.--%>
-  <%--User: gryzi--%>
-  <%--Date: 20.02.2018--%>
-  <%--Time: 18:18--%>
-  <%--To change this template use File | Settings | File Templates.--%>
-<%--&ndash;%&gt;--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<title>OSK Manager</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1>Lista kursantów.</h1>--%>
-
-
-<%--</body>--%>
-<%--</html>--%>
-
-
-
-
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -42,37 +18,52 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <div class="form">
+            <div class="content">
+                <h4>Kursanci</h4>
                 <c:choose>
-                    <c:when test="${!empty students}">
-                        <c:forEach items="${students}" var="student">
-                            <tr>
-                                <td>${student.firstName}</td>
-                                <td>${student.lastName}</td>
-                                <td>${student.email}</td>
-                                <td>${student.phoneNumber}</td>
-                                <td>${student.birthdate}</td>
-                                <td>
-                                        <spring:url value="/student/edit/${student.id}" var="studentEditUrl"/>
-                                        <spring:url value="/student/delete/${student.id}" var="studentDeleteUrl"/>
-
-                                        <button class="btn btn-info" onclick="location.href='${studentEditUrl}'">
-                                        Edytuj
-                                        </button>
-                                        <button class="btn btn-info" onclick="location.href='${studentDeleteUrl}'">
-                                        Usuń
-                                        </button>
-                                </td>
-                                <br>
-                            </tr>
-                        </c:forEach>
-                    </c:when>
-                    <c:otherwise>
-                        <tr>
-                            <td>Nie ma żadnych kursantów</td>
-                        </tr>
-                    </c:otherwise>
-                </c:choose>
+                <c:when test="${!empty students}">
+                <table class="tab">
+                    <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Telefon</th>
+                        <th>Data urodzenia</th>
+                        <th colspan="2">Opcje</th>
+                    </tr>
+                    </thead>
+                            <c:forEach items="${students}" var="student">
+                                <tr>
+                                    <td>${student.firstName}</td>
+                                    <td>${student.lastName}</td>
+                                    <td>${student.email}</td>
+                                    <td>${student.phoneNumber}</td>
+                                    <td>${student.birthdate}</td>
+                                    <td class="noborder">
+                                        <div class="option-button">
+                                            <spring:url value="/student/edit/${student.id}" var="studentEditUrl"/>
+                                            <a class="option-link" href='${studentEditUrl}'>
+                                                <i class="icon-edit"></i>Edytuj
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="noborder">
+                                        <div class="option-button">
+                                            <spring:url value="/student/delete/${student.id}" var="studentDeleteUrl"/>
+                                            <a class="option-link" href='${studentDeleteUrl}'>
+                                                <i class="icon-user-times"></i>Usuń
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                                <p class="info">Nie ma żadnych kursantów</p>
+                        </c:otherwise>
+                    </c:choose>
+                </table>
                 <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>

@@ -18,76 +18,79 @@ body {
     line-height: 30px;
     color: #efefef;
     background: #3095d3;
-    height:100%;
+    height: 100%;
     width: 100%;
 }
 
 .container {
     width: 100%;
-    height:100%;
+    height: 100%;
     margin: 0;
-    padding:0;
+    padding: 0;
     position: relative;
 }
 
-.title{
-    display:flex;
-    height:20%;
+.title {
+    display: flex;
+    height: 20%;
 }
 
-.logo-left{
-    width:50%;
-    height:100px;
-    background-color:yellow;
+.logo-left {
+    width: 50%;
+    height: 100px;
+    background-color: yellow;
     text-align: right;
 }
 
-.logo-right{
-    width:50%;
+.logo-right {
+    width: 50%;
     text-align: right;
+    padding-right: 5px;
 }
 
-.middle{
-    display:flex;
+.middle {
+    display: flex;
     min-height: 500px;
     background: #3095d3;
 }
 
-.left{
-    width:20%;
+.left {
+    width: 20%;
 }
-.center{
-    width:60%;
+
+.center {
+    width: 60%;
     padding: 0 10%;
-    background-color:#1c74b2;
-    box-sizing:border-box;
+    background-color: #1c74b2;
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
-.right{
-    width:20%;
-}
-.footer{
-    background-color:#1c74b2;
-    height:54px;
+
+.right {
+    width: 20%;
 }
 
-.footer p{
-   margin-bottom: 0px;
+.footer {
+    background-color: #1c74b2;
+    height: 54px;
 }
 
-.form{
-    maring-left:auto;
-    margin-right:auto;
+.footer p {
+    margin-bottom: 0px;
+}
+
+.form {
+    maring-left: auto;
+    margin-right: auto;
 }
 
 .info {
     text-align: center;
 }
-
 
 .content input[type="text"],
 .content input[type="email"],
@@ -95,8 +98,7 @@ body {
 .content input[type="submit"],
 .content input[type="date"],
 .content input[type="password"],
-.submitButton
-{
+.submitButton {
     font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
 }
 
@@ -112,23 +114,23 @@ body {
     text-align: center;
     font-size: 30px;
     font-weight: 300;
-    color:#39a5f1;
+    color: #39a5f1;
 }
 
 .content h4 {
-    margin: 5px 0 15px;
+    margin-top:5px;
     display: block;
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: bold;
     color: #39a5f1;
+    text-align: center;
 }
 
 .content input[type="text"],
 .content input[type="email"],
 .content input[type="tel"],
 .content input[type="date"],
-.content input[type="password"]
-{
+.content input[type="password"] {
     width: 100%;
     border: 1px solid #ccc;
     background: #222930;
@@ -139,20 +141,18 @@ body {
 .content input[type="text"]:hover,
 .content input[type="email"]:hover,
 .content input[type="tel"]:hover,
-.content input[type="password"]:hover{
+.content input[type="password"]:hover {
     -webkit-transition: border-color 0.3s ease-in-out;
     -moz-transition: border-color 0.3s ease-in-out;
     transition: border-color 0.3s ease-in-out;
     border: 1px solid #1852a0;
 }
 
-.square
-{
-    display:flex;
+.square {
+    display: flex;
 }
 
-.link1
-{
+.link1 {
     margin: 3px;
     width: 105px;
     height: 70px;
@@ -160,13 +160,11 @@ body {
     text-align: center;
 }
 
-.link1:hover
-{
+.link1:hover {
     background-color: #2084c2;
 }
 
-a.tilelink
-{
+a.tilelink {
     color: #ffffff;
     text-decoration: none;
     display: block;
@@ -175,27 +173,40 @@ a.tilelink
 
 }
 
-.back{
+.back {
     text-align: center;
     background-color: #1f2f47;
     padding: 5px;
     box-sizing: border-box;
 }
 
-
-
-.back:hover
-{
+.back:hover {
     background-color: #2f3f58;
 }
 
-.back a
-{
+.back a {
     color: #ffffff;
     text-decoration: none;
     display: block;
 }
 
+.option-button{
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #3095d3;
+    text-align: center;
+}
+
+.option-button:hover {
+    background-color: #2084c2;
+}
+
+a.option-link {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
 
 .submitButton {
     cursor: pointer;
@@ -210,42 +221,77 @@ a.tilelink
 }
 
 .buttonLogout {
-    -moz-box-shadow:inset 0px 1px 50px 0px #23395e;
-    -webkit-box-shadow:inset 0px 1px 50px 0px #23395e;
-    box-shadow:inset 0px 1px 50px 0px #23395e;
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
-    background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
-    background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
-    background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
-    background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
-    background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
-    background-color:#2e466e;
-    border:1px solid #1f2f47;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:13px;
-    padding:6px 12px;
-    text-decoration:none;
+    -moz-box-shadow: inset 0px 1px 50px 0px #23395e;
+    -webkit-box-shadow: inset 0px 1px 50px 0px #23395e;
+    box-shadow: inset 0px 1px 50px 0px #23395e;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
+    background: -moz-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: -webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: -o-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: -ms-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989', GradientType=0);
+    background-color: #2e466e;
+    border: 1px solid #1f2f47;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 12px;
+    text-decoration: none;
     margin-left: 80%;
 }
+
 .buttonLogout:hover {
-    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
-    background:-moz-linear-gradient(top, #415989 5%, #2e466e 100%);
-    background:-webkit-linear-gradient(top, #415989 5%, #2e466e 100%);
-    background:-o-linear-gradient(top, #415989 5%, #2e466e 100%);
-    background:-ms-linear-gradient(top, #415989 5%, #2e466e 100%);
-    background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#415989', endColorstr='#2e466e',GradientType=0);
-    background-color:#415989;
-}
-.buttonLogout:active {
-    position:relative;
-    top:1px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
+    background: -moz-linear-gradient(top, #415989 5%, #2e466e 100%);
+    background: -webkit-linear-gradient(top, #415989 5%, #2e466e 100%);
+    background: -o-linear-gradient(top, #415989 5%, #2e466e 100%);
+    background: -ms-linear-gradient(top, #415989 5%, #2e466e 100%);
+    background: linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#415989', endColorstr='#2e466e', GradientType=0);
+    background-color: #415989;
 }
 
+.buttonLogout:active {
+    position: relative;
+    top: 1px;
+}
+
+.tab {
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 12px;
+}
+
+.tab:first-child{
+    border:none;
+    text-align: center;
+}
+
+
+.tab td {
+    border: 1px solid #ccc;
+    width:70px;
+    height:20px;
+    padding:3px;
+}
+
+.tab th {
+    color: #39a5f1;
+    font-size: 16px;
+    text-align: center;
+
+}
+
+td.noborder{
+    padding:0px;
+}
+
+.tab tr{
+    height:20px;
+}
 
 .content input[type="submit"]:hover {
     background: #1852a0;
@@ -258,16 +304,10 @@ a.tilelink
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.content input:focus
-{
+.content input:focus {
     outline: 0;
     border: 1px solid #aaa;
 }
-
-.logo-left p {
-    text-align: left;
-}
-
 
 ::-webkit-input-placeholder {
     color: #888;

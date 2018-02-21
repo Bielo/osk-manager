@@ -58,7 +58,7 @@
 .icon-pencil:before { content: '\e800';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-calendar:before { content: '\e801';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-left-big:before { content: '\e802';font-size: 15px; margin-top: 8px; } /* '' */
-.icon-user:before { content: '\e803';font-size: 30px; margin-top: 8px; } /* '' */
+.icon-user:before { content: '\e803';font-size: 12px; margin-top: 8px; } /* '' */
 .icon-mail:before { content: '\e804';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-search:before { content: '\e805';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-traffic-cone:before { content: '\e806';font-size: 30px; margin-top: 8px; } /* '' */
@@ -69,10 +69,10 @@
 .icon-user-delete:before { content: '\e80b';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-users-outline:before { content: '\e80c';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-users:before { content: '\e80d';font-size: 30px; margin-top: 8px; } /* '' */
-.icon-edit:before { content: '\e80e';font-size: 30px; margin-top: 8px; } /* '' */
+.icon-edit:before { content: '\e80e';font-size: 14px; margin-top: 4px; } /* '' */
 .icon-pencil-1:before { content: '\e80f';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-pen:before { content: '\e810';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-power:before { content: '\e811';font-size: 15px; margin-top: 8px; } /* '' */
 .icon-cab:before { content: '\f1b9';font-size: 30px; margin-top: 8px; } /* '' */
 .icon-user-plus:before { content: '\f234';font-size: 30px; margin-top: 8px; } /* '' */
-.icon-user-times:before { content: '\f235';font-size: 30px; margin-top: 8px; } /* '' */
+.icon-user-times:before { content: '\f235';font-size: 14px; margin-top: 4px; } /* '' */

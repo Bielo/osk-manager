@@ -8,12 +8,6 @@
 <jsp:include page="commons/header.jsp"/>
 
 <body>
-<%--
-dodaj kursanta,
-dodaj instruktora, t
-abelka ze wszystkimi jazdami z wybranego dnia,
-zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security)
---%>
 <div class="container">
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
@@ -66,7 +60,7 @@ zaloz konto kursantowi/instruktorowi (dopiero po skonfigurowaniu spring security
                 <div class="square">
                     <div class="link1">
                         <a class="tilelink" href="<c:url value='/showTeacherss'/>">
-                            <i class="icon-users-outline"></i></br>
+                            <i class="icon-users"></i></br>
                             Instruktorzy
                         </a>
                     </div>

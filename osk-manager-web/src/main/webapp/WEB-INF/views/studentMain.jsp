@@ -11,27 +11,19 @@
 <div class="container">
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
-        <div class="logo-right">
-            <jsp:include page="commons/logout.jsp"/>
-        </div>
+        <jsp:include page="commons/logout.jsp"/>
     </div>
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-            <h3>Panel Kursanta</h3>
-            <button class="btn btn-primary" onclick="location.href='/#'">
-                Zaplanuj jazdy
-            </button>
-            <button class="btn btn-primary" onclick="location.href='/#'">
-                Wyświetl terminarz jazd
-            </button>
-                <jsp:include page="commons/page-back.jsp"/>
+                <h3>Panel Kursanta</h3>
+            </div>
         </div>
+        <jsp:include page="commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="commons/bottom-right.jsp"/>
-</div>
-<jsp:include page="commons/footer.jsp"/>
+    <jsp:include page="commons/footer.jsp"/>
 </div>
 </body>
+
 </html>
