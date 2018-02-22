@@ -45,7 +45,7 @@ public class Student {
     @Temporal(TemporalType.DATE)
     private Date birthdate;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
 
     public Student() {

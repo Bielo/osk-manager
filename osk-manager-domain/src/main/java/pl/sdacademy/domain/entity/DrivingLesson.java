@@ -11,10 +11,6 @@ import java.util.Date;
 
 @Entity
 @Table(name = "DRIVING_LESSON")
-@AssociationOverrides({
-        @AssociationOverride(name = "STUDENT_ID", joinColumns = @JoinColumn(name = "STUDENT_ID")),
-        @AssociationOverride(name = "TEACHER_ID", joinColumns = @JoinColumn(name = "TEACHER_ID"))
-})
 @Audited
 
 public class DrivingLesson {
@@ -24,10 +20,12 @@ public class DrivingLesson {
     @Column(name = "LESSON_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "STUDENT_ID")
     private Student student;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "TEACHER_ID")
     private Teacher teacher;
 
     @NotNull

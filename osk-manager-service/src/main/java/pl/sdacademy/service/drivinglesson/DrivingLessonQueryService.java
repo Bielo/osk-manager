@@ -26,26 +26,27 @@ public class DrivingLessonQueryService {
         List<DrivingLesson> drivingLessons = drivingLessonRepository.findAllFutureLessons(new Date());
         List<String> drivingLessonsInString = new ArrayList<>();
 
-//        for (int i = 0; i < drivingLessons.size(); i++) {
-//            StringBuilder sb = new StringBuilder();
-//            DrivingLesson drivingLesson = drivingLessons.get(i);
-//            sb.append(drivingLesson.getPk().getStudent().getFirstName());
-//            sb.append(" ");
-//            sb.append(drivingLesson.getPk().getStudent().getLastName());
-//            sb.append(" będzie jeździł z ");
-//            sb.append(drivingLesson.getPk().getTeacher().getFirstName());
-//            sb.append(" ");
-//            sb.append(drivingLesson.getPk().getTeacher().getLastName());
-//            sb.append(" dnia ");
-//            sb.append(drivingLesson.getLessonDay());
-//            sb.append(" od ");
-//            sb.append(drivingLesson.getLessonStartTime());
-//            sb.append(" do ");
-//            sb.append(drivingLesson.getLessonStopTime());
-//
-//            drivingLessonsInString.add(sb.toString());
-//
-//        }
+        for (int i = 0; i < drivingLessons.size(); i++) {
+            StringBuilder sb = new StringBuilder();
+            DrivingLesson drivingLesson = drivingLessons.get(i);
+
+            sb.append(drivingLesson.getStudent().getFirstName());
+            sb.append(" ");
+            sb.append(drivingLesson.getStudent().getLastName());
+            sb.append(" będzie jeździł z ");
+            sb.append(drivingLesson.getTeacher().getFirstName());
+            sb.append(" ");
+            sb.append(drivingLesson.getTeacher().getLastName());
+            sb.append(" dnia ");
+            sb.append(drivingLesson.getLessonDay());
+            sb.append(" o godzinie ");
+            sb.append(drivingLesson.getLessonStartTime());
+            sb.append(" do ");
+            sb.append(drivingLesson.getLessonStopTime());
+
+            drivingLessonsInString.add(sb.toString());
+
+        }
 
         return drivingLessonsInString;
     }
