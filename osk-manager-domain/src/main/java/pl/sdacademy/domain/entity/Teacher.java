@@ -6,6 +6,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "TEACHER")
@@ -37,14 +41,27 @@ public class Teacher {
     @Column(name = "EMAIL")
     private String email;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.teacher", cascade=CascadeType.ALL)
+    private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
+
     public Teacher(){
     }
 
-    public Teacher(String firstName, String lastName, String mobileNumber, String email) {
+    public Teacher(String firstName, String lastName, String mobileNumber, String email, List<DrivingLesson> drivingLesson) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = mobileNumber;
         this.email = email;
+        this.drivingLessons = drivingLesson;
+    }
+
+
+    public List<DrivingLesson> getDrivingLessons() {
+        return drivingLessons;
+    }
+
+    public void setDrivingLessons(List<DrivingLesson> drivingLessons) {
+        this.drivingLessons = drivingLessons;
     }
 
     public Long getId() {

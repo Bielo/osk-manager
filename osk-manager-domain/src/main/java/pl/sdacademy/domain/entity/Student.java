@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "STUDENT")
@@ -44,17 +44,28 @@ public class Student {
     @Column(name = "BIRTHDATE")
     private Date birthdate;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.student", cascade=CascadeType.ALL)
+    private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
 
     public Student() {
 
     }
 
-    public Student(String firstName, String lastName, String email, String phoneNumber, Date birthdate) {
+    public Student(String firstName, String lastName, String email, String phoneNumber, Date birthdate, List<DrivingLesson> drivingLesson) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
+        this.drivingLessons = drivingLesson;
+    }
+
+    public List<DrivingLesson> getDrivingLessons() {
+        return drivingLessons;
+    }
+
+    public void setDrivingLessons(List<DrivingLesson> drivingLessons) {
+        this.drivingLessons = drivingLessons;
     }
 
     public Long getVersion() {
