@@ -20,4 +20,11 @@ public class TestController {
         LOGGER.debug("is executed");
         return "test";
     }
+
+    @RequestMapping(value = "/instruktor", method = RequestMethod.GET)
+    public String instruktor() {
+        LOGGER.debug("show main for teacher");
+
+        return "teacherMain";
+    }
 }

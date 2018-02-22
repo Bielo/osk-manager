@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+                         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
 <jsp:include page="commons/header.jsp"/>
@@ -26,7 +26,7 @@
                     </a></div>
                     <div class="link1">
                         <a class="tilelink" href="<c:url value='/addTeacher'/>">
-                            <i class="icon-user-add"></i></br>
+                            <i class="icon-user-add-outline"></i></br>
                             Dodaj instruktora
                         </a>
                     </div>
@@ -60,7 +60,7 @@
                 <div class="square">
                     <div class="link1">
                         <a class="tilelink" href="<c:url value='/showTeacherss'/>">
-                            <i class="icon-users"></i></br>
+                            <i class="icon-users-outline"></i></br>
                             Instruktorzy
                         </a>
                     </div>
