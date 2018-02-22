@@ -1,11 +1,8 @@
 package pl.sdacademy.domain.entity;
 
-
 import org.hibernate.envers.Audited;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 

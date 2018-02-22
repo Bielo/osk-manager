@@ -1,6 +1,7 @@
 package pl.sdacademy.domain.entity;
 
 import org.hibernate.envers.Audited;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -31,10 +32,6 @@ public class Student {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @NotEmpty
-    @Column(name = "EMAIL")
-    private String email;
-
     @NotNull
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
@@ -44,17 +41,21 @@ public class Student {
     @Column(name = "BIRTHDATE")
     private Date birthdate;
 
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.student", cascade=CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ACCOUNT_ID" ,nullable=false)
+    private Account account;
 
     public Student() {
 
     }
 
-    public Student(String firstName, String lastName, String email, String phoneNumber, Date birthdate, List<DrivingLesson> drivingLesson) {
+    public Student(String firstName, String lastName, String phoneNumber, Date birthdate, List<DrivingLesson> drivingLesson) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
         this.drivingLessons = drivingLesson;
@@ -100,14 +101,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -124,13 +117,20 @@ public class Student {
         this.birthdate = birthdate;
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", birthdate=" + birthdate +
                 '}';
