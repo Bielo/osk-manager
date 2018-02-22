@@ -34,11 +34,13 @@ public class StudentQueryService {
 
     public List<Student> search(SearchStudentDTO searchStudentDTO) {
         List<Student> result;
-        if (searchStudentDTO.getFirstName().isEmpty() || searchStudentDTO.getLastName().isEmpty()) {
-            result = studentRepository.findStudentByName(searchStudentDTO.getFirstName(), searchStudentDTO.getLastName());
+        if (searchStudentDTO.getFirstName().isEmpty() || searchStudentDTO.getLastName().isEmpty() || searchStudentDTO.getPhoneNumber().isEmpty()) {
+            result = studentRepository.findStudentBySingleParam(searchStudentDTO.getFirstName(),
+                        searchStudentDTO.getLastName(), searchStudentDTO.getPhoneNumber());
 
         } else {
-            result = studentRepository.findStudentByFirstNameAndLastName(searchStudentDTO.getFirstName(), searchStudentDTO.getLastName());
+            result = studentRepository.findStudentByAllParams(searchStudentDTO.getFirstName(),
+                                        searchStudentDTO.getLastName(), searchStudentDTO.getPhoneNumber());
         }
 
         return result;

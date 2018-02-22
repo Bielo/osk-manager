@@ -22,6 +22,11 @@
         Nazwisko
     </form:label>
     <form:input path="lastName"/>
+
+    <form:label path="phoneNumber">
+        Number telefonu
+    </form:label>
+    <form:input path="phoneNumber"/>
     <button class="btn btn-primary" type="submit">
         Znajdź
     </button>
@@ -56,5 +61,6 @@
         </tr>
     </c:otherwise>
 </c:choose>
+<jsp:include page="commons/page-back.jsp"/>
 </body>
 </html>
