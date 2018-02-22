@@ -31,7 +31,7 @@
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/schedule'/>">
+                        <a class="tilelink" href="<c:url value='/showSchedule'/>">
                             <i class="icon-calendar"></i></br>
                             Harmonogram
                         </a>
