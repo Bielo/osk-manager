@@ -96,7 +96,7 @@ public class StudentController {
         model.addAttribute("searchStudent", new SearchStudentDTO());
         model.addAttribute("foundStudent", foundStudent);
 
-        return "findStudent";
+        return "foundStudent";
     }
 
     @RequestMapping("/student/delete/{id}")

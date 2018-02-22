@@ -18,8 +18,8 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <div class="form">
-                <form:form class="content" method="post" modelAttribute="student" action="${saveStudent}">
+            <div class="content">
+                <form:form class="form" method="post" modelAttribute="student" action="${saveStudent}">
 
                     <h3>Formularz Kursanta</h3>
                     <form:hidden path="id"/>
@@ -36,7 +36,7 @@
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
     </div>
+    <jsp:include page="commons/footer.jsp"/>
 </div>
-<jsp:include page="commons/footer.jsp"/>
 </body>
 </html>

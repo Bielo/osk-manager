@@ -3,64 +3,34 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="pl">
 
-<html>
-<head>
-    <title>OSK Manager</title>
-</head>
+<jsp:include page="commons/header.jsp"/>
+
 <body>
-<h3>Znajdż kursanta</h3>
-
-<spring:url value="findStudent" var="findStudent"/>
-<form:form method="post" modelAttribute="searchStudent" action='${findStudent}'>
-    <form:label path="firstName">
-        Imię
-    </form:label>
-    <form:input path="firstName"/>
-
-    <form:label path="lastName">
-        Nazwisko
-    </form:label>
-    <form:input path="lastName"/>
-
-    <form:label path="phoneNumber">
-        Number telefonu
-    </form:label>
-    <form:input path="phoneNumber"/>
-    <button class="btn btn-primary" type="submit">
-        Znajdź
-    </button>
-
-</form:form>
-<c:choose>
-    <c:when test="${!empty foundStudent}">
-        <c:forEach items="${foundStudent}" var="student">
-            <tr>
-                <td>${student.firstName}</td>
-                <td>${student.lastName}</td>
-                <td>${student.email}</td>
-                <td>${student.phoneNumber}</td>
-                <td>${student.birthdate}</td>
-                <td>
-                        <%--<spring:url value="/account/edit/${student.id}" var="studentEditUrl"/>--%>
-                        <%--<spring:url value="/account/delete/${student.id}" var="studentDeleteUrl"/>--%>
-
-                        <%--<button class="btn btn-info" onclick="location.href='${accountEditUrl}'">--%>
-                        <%--<spring:message code="account.list.action.edit"/>--%>
-                        <%--</button>--%>
-                        <%--<button class="btn btn-info" onclick="location.href='${accountDeleteUrl}'">--%>
-                        <%--<spring:message code="account.list.action.delete"/>--%>
-                        <%--</button>--%>
-                </td>
-            </tr>
-        </c:forEach>
-    </c:when>
-    <c:otherwise>
-        <tr>
-            <td>Nie znaleziono</td>
-        </tr>
-    </c:otherwise>
-</c:choose>
-<jsp:include page="commons/page-back.jsp"/>
+<div class="container">
+    <div class="title">
+        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/logout.jsp"/>
+    </div>
+    <div class="middle">
+        <jsp:include page="commons/bottom-left.jsp"/>
+        <div class="center">
+            <div class="form">
+                <spring:url value="findStudent" var="findStudent"/>
+                <form:form class="content" method="post" modelAttribute="searchStudent" action='${findStudent}'>
+                    <h3>Znajdź Użytkownika</h3>
+                    <form:input placeholder="imię" path="firstName"/>
+                    <form:input placeholder="nazwisko" path="lastName"/>
+                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Znajdź</form:button>
+                </form:form>
+                    <jsp:include page="commons/page-back.jsp"/>
+            </div>
+        </div>
+        <jsp:include page="commons/bottom-right.jsp"/>
+    </div>
+    <jsp:include page="commons/footer.jsp"/>
+</div>
 </body>
 </html>
