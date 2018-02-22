@@ -1,6 +1,6 @@
-package pl.sdacademy.service.student.dto;
+package pl.sdacademy.service.teacher.dto;
 
-public class SearchStudentDTO {
+public class SearchTeacherDTO {
 
     private String firstName;
     private String lastName;

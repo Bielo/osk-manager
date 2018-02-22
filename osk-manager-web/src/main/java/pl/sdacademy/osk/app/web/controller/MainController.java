@@ -45,14 +45,4 @@ public class MainController {
 
         return "schedule";
     }
-
-    @RequestMapping(value = "/findTeacher", method = RequestMethod.GET)
-    public String findTeacher() {
-        LOGGER.debug("is executed");
-
-        return "findTeacher";
-    }
-
-
-
 }

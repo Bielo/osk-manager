@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.sdacademy.domain.entity.Teacher;
 import pl.sdacademy.service.teacher.TeacherCommandService;
+import pl.sdacademy.service.teacher.TeacherQueryService;
+import pl.sdacademy.service.teacher.dto.SearchTeacherDTO;
 
 import java.util.List;
 
@@ -22,10 +24,12 @@ public class TeacherController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
     private final TeacherCommandService teacherCommandService;
+    private final TeacherQueryService teacherQueryService;
 
     @Autowired
-    public TeacherController(TeacherCommandService teacherCommandService) {
+    public TeacherController(TeacherCommandService teacherCommandService, TeacherQueryService teacherQueryService) {
         this.teacherCommandService = teacherCommandService;
+        this.teacherQueryService = teacherQueryService;
     }
 
     @RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
@@ -41,9 +45,9 @@ public class TeacherController {
     public String saveTeacher(@ModelAttribute("teacher") Teacher teacher, Model model){
         LOGGER.debug("save teacher is executed");
         if(teacher.getId() == null){
-            int sizeBefore = teacherCommandService.teacherCount();
+            int sizeBefore = teacherQueryService.teacherCount();
             teacherCommandService.create(teacher);
-            int afterSize = teacherCommandService.teacherCount();
+            int afterSize = teacherQueryService.teacherCount();
             if(sizeBefore == afterSize){
                 model.addAttribute("info", "Nie udało się dodać instruktora");
             } else {
@@ -61,16 +65,35 @@ public class TeacherController {
     @RequestMapping(value = {"/showTeacherss"})
     public String showAllTeachers(Model model) {
         LOGGER.debug("show all teachers is executed");
-        List<Teacher> allTeachers = teacherCommandService.findAllTeachers();
+        List<Teacher> allTeachers = teacherQueryService.findAllTeachers();
         model.addAttribute("teachers", allTeachers);
 
         return "showTeachers";
     }
 
+    @RequestMapping(value = "/findTeacher", method = RequestMethod.GET)
+    public String findTeacher(Model model) {
+        LOGGER.debug("find teacher is executed!");
+        model.addAttribute("searchTeacher", new SearchTeacherDTO());
+
+        return "findTeacher";
+    }
+
+    @RequestMapping(value = "/findTeacher", method = RequestMethod.POST)
+    public String findTeacherByName(@ModelAttribute SearchTeacherDTO searchTeacher, Model model) {
+        LOGGER.debug("show found teacher is executed!");
+        List<Teacher> foundTeacher = teacherQueryService.search(searchTeacher);
+        model.addAttribute("searchTeacher", new SearchTeacherDTO());
+        model.addAttribute("foundTeacher", foundTeacher);
+
+        return "foundTeacher";
+    }
+
+
     @RequestMapping(value = {"/teacher/delete/{id}"})
     public String deleteTeacher(@PathVariable("id") Long id, RedirectAttributes redirectAttributes){
         LOGGER.debug("delete teacher is executed!");
-        Teacher teacher = teacherCommandService.findTeacherByID(id);
+        Teacher teacher = teacherQueryService.findTeacherByID(id);
         String message = String.format("Udało się usunąć instruktora %s %s", teacher.getFirstName(), teacher.getLastName());
         teacherCommandService.deleteTeacher(id);
         redirectAttributes.addFlashAttribute("info", message);
@@ -81,7 +104,7 @@ public class TeacherController {
     @RequestMapping(value = {"/teacher/edit/{id}"})
     public String editTeacher(@PathVariable("id") Long id, Model model){
         LOGGER.debug("edit teacher is executed!");
-        Teacher teacher = teacherCommandService.findTeacherByID(id);
+        Teacher teacher = teacherQueryService.findTeacherByID(id);
         model.addAttribute("teacher", teacher);
 
         return "teacherForm";

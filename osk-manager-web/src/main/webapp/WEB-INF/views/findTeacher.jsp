@@ -1,16 +1,36 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: gryzi
-  Date: 20.02.2018
-  Time: 18:17
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>OSK Manager</title>
-</head>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="pl">
+
+<jsp:include page="commons/header.jsp"/>
+
 <body>
-<h1>Znajdź instruktora</h1>
+<div class="container">
+    <div class="title">
+        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/logout.jsp"/>
+    </div>
+    <div class="middle">
+        <jsp:include page="commons/bottom-left.jsp"/>
+        <div class="center">
+            <div class="form">
+                <spring:url value="findTeacher" var="findTeacher"/>
+                <form:form class="content" method="post" modelAttribute="searchTeacher" action='${findTeacher}'>
+                    <h3>Znajdź instruktora</h3>
+                    <form:input placeholder="imię" path="firstName"/>
+                    <form:input placeholder="nazwisko" path="lastName"/>
+                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Znajdź</form:button>
+                </form:form>
+                <jsp:include page="commons/page-back.jsp"/>
+            </div>
+        </div>
+        <jsp:include page="commons/bottom-right.jsp"/>
+    </div>
+    <jsp:include page="commons/footer.jsp"/>
+</div>
 </body>
 </html>

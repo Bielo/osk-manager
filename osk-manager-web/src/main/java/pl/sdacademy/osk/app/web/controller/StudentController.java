@@ -73,7 +73,7 @@ public class StudentController {
 
     @RequestMapping(value = {"/showStudentss"})
     public String showAllStudents(Model model) {
-        LOGGER.debug("show all students is executerd");
+        LOGGER.debug("show all students is executed!");
         List<Student> allStudents = studentQueryService.findAllStudents();
 
         model.addAttribute("students", allStudents);
@@ -83,7 +83,7 @@ public class StudentController {
 
     @RequestMapping(value = "/findStudent", method = RequestMethod.GET)
     public String findStudent(Model model) {
-        LOGGER.debug("is executed");
+        LOGGER.debug("find student is executed!");
         model.addAttribute("searchStudent", new SearchStudentDTO());
 
         return "findStudent";
@@ -91,7 +91,7 @@ public class StudentController {
 
     @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
     public String findStudentByName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
-        LOGGER.debug("show found student");
+        LOGGER.debug("show found student is executed!");
         List<Student> foundStudent = studentQueryService.search(searchStudent);
         model.addAttribute("searchStudent", new SearchStudentDTO());
         model.addAttribute("foundStudent", foundStudent);
@@ -111,7 +111,7 @@ public class StudentController {
     }
 
     @RequestMapping("/student/edit/{id}")
-    public String editAccount(@PathVariable("id") Long id, Model model) {
+    public String editStudent(@PathVariable("id") Long id, Model model) {
         LOGGER.debug("Edit Student");
 
         Student student = studentQueryService.findStudentByID(id);
