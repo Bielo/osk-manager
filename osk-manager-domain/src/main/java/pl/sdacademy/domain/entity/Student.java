@@ -42,9 +42,10 @@ public class Student {
     @NotNull
     @Past
     @Column(name = "BIRTHDATE")
+    @Temporal(TemporalType.DATE)
     private Date birthdate;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.student", cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
 
     public Student() {

@@ -7,6 +7,7 @@ import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.repository.DrivingLessonRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -22,39 +23,29 @@ public class DrivingLessonQueryService {
     }
 
     public List<String> findAllDrivingLessons() {
-        List<DrivingLesson> drivingLessons = drivingLessonRepository.findAll();
+        List<DrivingLesson> drivingLessons = drivingLessonRepository.findAllFutureLessons(new Date());
         List<String> drivingLessonsInString = new ArrayList<>();
 
-
-
-        for (int i = 0; i < drivingLessons.size(); i++) {
-            StringBuilder sb = new StringBuilder();
-            DrivingLesson drivingLesson = drivingLessons.get(i);
-
-            sb.append(drivingLesson.getPk().getStudent().getFirstName());
-            sb.append(" ");
-            sb.append(drivingLesson.getPk().getStudent().getLastName());
-            sb.append(" będzie jeździł z ");
-            sb.append(drivingLesson.getPk().getTeacher().getFirstName());
-            sb.append(" ");
-            sb.append(drivingLesson.getPk().getTeacher().getLastName());
-            sb.append(" dnia: ");
-            sb.append(drivingLesson.getLessonStart().getDate());
-            sb.append(drivingLesson.getLessonStart().getMonth());
-            sb.append(drivingLesson.getLessonStart().getYear());
-            sb.append(" o godzinie ");
-            sb.append(drivingLesson.getLessonStart().getHours());
-            sb.append(":");
-            sb.append(drivingLesson.getLessonStart().getMinutes());
-            sb.append(". Jazda zakończy się o ");
-            sb.append(drivingLesson.getLessonStop().getHours());
-            sb.append(":");
-            sb.append(drivingLesson.getLessonStop().getMinutes());
-            sb.append(".");
-
-            drivingLessonsInString.add(sb.toString());
-
-        }
+//        for (int i = 0; i < drivingLessons.size(); i++) {
+//            StringBuilder sb = new StringBuilder();
+//            DrivingLesson drivingLesson = drivingLessons.get(i);
+//            sb.append(drivingLesson.getPk().getStudent().getFirstName());
+//            sb.append(" ");
+//            sb.append(drivingLesson.getPk().getStudent().getLastName());
+//            sb.append(" będzie jeździł z ");
+//            sb.append(drivingLesson.getPk().getTeacher().getFirstName());
+//            sb.append(" ");
+//            sb.append(drivingLesson.getPk().getTeacher().getLastName());
+//            sb.append(" dnia ");
+//            sb.append(drivingLesson.getLessonDay());
+//            sb.append(" od ");
+//            sb.append(drivingLesson.getLessonStartTime());
+//            sb.append(" do ");
+//            sb.append(drivingLesson.getLessonStopTime());
+//
+//            drivingLessonsInString.add(sb.toString());
+//
+//        }
 
         return drivingLessonsInString;
     }

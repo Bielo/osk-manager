@@ -40,7 +40,7 @@ public class MainController {
         LOGGER.debug("is executed");
 
         List<String> drivingLessons = drivingLessonQueryService.findAllDrivingLessons();
-
+//
         model.addAttribute("lessons", drivingLessons);
 
         return "schedule";

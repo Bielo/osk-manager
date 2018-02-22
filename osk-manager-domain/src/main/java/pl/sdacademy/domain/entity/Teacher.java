@@ -41,7 +41,7 @@ public class Teacher {
     @Column(name = "EMAIL")
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.teacher", cascade=CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
 
     public Teacher(){
