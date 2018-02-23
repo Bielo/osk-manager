@@ -16,4 +16,5 @@ public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
     @Query("SELECT t FROM Teacher t WHERE t.firstName = :firstName AND t.lastName = :lastName")
     List<Teacher> findTeacherByAllParams(@Param("firstName") String firstName, @Param("lastName") String lastName);
+
 }

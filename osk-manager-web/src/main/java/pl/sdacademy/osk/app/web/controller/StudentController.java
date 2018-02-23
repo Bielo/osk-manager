@@ -93,7 +93,6 @@ public class StudentController {
     public String findStudentByName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
         LOGGER.debug("show found student is executed!");
         List<Student> foundStudent = studentQueryService.search(searchStudent);
-        model.addAttribute("searchStudent", new SearchStudentDTO());
         model.addAttribute("foundStudent", foundStudent);
 
         return "foundStudent";

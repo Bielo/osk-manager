@@ -3,7 +3,6 @@ package pl.sdacademy.osk.app.web.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,11 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.domain.entity.Teacher;
+import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
+import pl.sdacademy.service.student.StudentQueryService;
 import pl.sdacademy.service.teacher.TeacherCommandService;
 import pl.sdacademy.service.teacher.TeacherQueryService;
 import pl.sdacademy.service.teacher.dto.SearchTeacherDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,11 +28,15 @@ public class TeacherController {
 
     private final TeacherCommandService teacherCommandService;
     private final TeacherQueryService teacherQueryService;
+    private final StudentQueryService studentQueryService;
+    private final DrivingLessonQueryService drivingLessonQueryService;
 
     @Autowired
-    public TeacherController(TeacherCommandService teacherCommandService, TeacherQueryService teacherQueryService) {
+    public TeacherController(TeacherCommandService teacherCommandService, TeacherQueryService teacherQueryService,StudentQueryService studentQueryService, DrivingLessonQueryService drivingLessonQueryService) {
         this.teacherCommandService = teacherCommandService;
         this.teacherQueryService = teacherQueryService;
+        this.studentQueryService = studentQueryService;
+        this.drivingLessonQueryService = drivingLessonQueryService;
     }
 
     @RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
@@ -108,5 +115,26 @@ public class TeacherController {
         model.addAttribute("teacher", teacher);
 
         return "teacherForm";
+    }
+
+    @RequestMapping(value = "/teacherSchedule")
+    public String teacherSchedule(Model model) {
+        LOGGER.debug("show schedule for current Teacher");
+
+        //FIXME poprawić to zapytanie na wyszukiwanie konretnego harmonogramu dla Instruktora
+        List<String> drivingLessons = new ArrayList<>(); //drivingLessonQueryService.findAllDrivingLessons();
+
+        model.addAttribute("lessons", drivingLessons);
+        return "teacherSchedule";
+    }
+
+    @RequestMapping(value = "/students")
+    public String showStudentsForTeacher(Model model) {
+        LOGGER.debug("show students for current Teacher");
+
+        List<Student> students = drivingLessonQueryService.findMyStudents();
+        model.addAttribute("students", students);
+
+        return "studentsForTeachers";
     }
 }

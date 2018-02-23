@@ -20,7 +20,7 @@
                 <h3>Panel Instruktora</h3>
 
                 <div class="square">
-                        <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacherSchedule'/>">
+                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacherSchedule'/>">
                         <i class="icon-calendar"></i></br></br>
                         Harmonogram
                     </a></div>

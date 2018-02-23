@@ -4,23 +4,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdacademy.domain.entity.DrivingLesson;
+import pl.sdacademy.domain.entity.Student;
+import pl.sdacademy.domain.entity.Teacher;
 import pl.sdacademy.repository.DrivingLessonRepository;
+import pl.sdacademy.repository.TeacherRepository;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
 public class DrivingLessonQueryService {
 
     private final DrivingLessonRepository drivingLessonRepository;
+    private final TeacherRepository teacherRepository;
 
     @Autowired
-    public DrivingLessonQueryService(DrivingLessonRepository drivingLessonRepository) {
+    public DrivingLessonQueryService(DrivingLessonRepository drivingLessonRepository, TeacherRepository teacherRepository) {
         this.drivingLessonRepository = drivingLessonRepository;
+        this.teacherRepository = teacherRepository;
     }
 
     public List<DrivingLessonDTO> findAllDrivingLessons() {
@@ -46,5 +51,14 @@ public class DrivingLessonQueryService {
 
         }
         return drivingLessonDTOList;
+    }
+
+    public List<Student> findMyStudents() {
+        Long teacherId = 1L; // FIXME should be form logged user context
+
+        Teacher teacher = teacherRepository.findOne(teacherId);
+        return drivingLessonRepository.findStudentForTeacher(teacher).stream()
+                .map(DrivingLesson::getStudent)
+                .collect(Collectors.toList());
     }
 }
