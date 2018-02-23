@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.repository.DrivingLessonRepository;
+import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,32 +23,28 @@ public class DrivingLessonQueryService {
         this.drivingLessonRepository = drivingLessonRepository;
     }
 
-    public List<String> findAllDrivingLessons() {
-        List<DrivingLesson> drivingLessons = drivingLessonRepository.findAllFutureLessons(new Date());
-        List<String> drivingLessonsInString = new ArrayList<>();
+    public List<DrivingLessonDTO> findAllDrivingLessons() {
+        List<DrivingLesson> drivingLessonList = drivingLessonRepository.findAllFutureLessons(new Date());
+        List<DrivingLessonDTO> drivingLessonDTOList = new ArrayList<>();
 
-        for (int i = 0; i < drivingLessons.size(); i++) {
-            StringBuilder sb = new StringBuilder();
-            DrivingLesson drivingLesson = drivingLessons.get(i);
+        for (int i = 0; i < drivingLessonList.size(); i++) {
+            DrivingLesson drivingLesson = drivingLessonList.get(i);
 
-            sb.append(drivingLesson.getStudent().getFirstName());
-            sb.append(" ");
-            sb.append(drivingLesson.getStudent().getLastName());
-            sb.append(" będzie jeździł z ");
-            sb.append(drivingLesson.getTeacher().getFirstName());
-            sb.append(" ");
-            sb.append(drivingLesson.getTeacher().getLastName());
-            sb.append(" dnia ");
-            sb.append(drivingLesson.getLessonDay());
-            sb.append(" o godzinie ");
-            sb.append(drivingLesson.getLessonStartTime());
-            sb.append(" do ");
-            sb.append(drivingLesson.getLessonStopTime());
+            String studentName = drivingLesson.getStudent().getFirstName() + " "
+                    + drivingLesson.getTeacher().getLastName();
+            String teacherName = drivingLesson.getTeacher().getFirstName() + " "
+                    + drivingLesson.getTeacher().getLastName();
 
-            drivingLessonsInString.add(sb.toString());
+            DrivingLessonDTO drivingLessonDTO = new DrivingLessonDTO();
+            drivingLessonDTO.setStudentFirstAndLastName(studentName);
+            drivingLessonDTO.setTeacherFirstAndLastName(teacherName);
+            drivingLessonDTO.setLessonDay(drivingLesson.getLessonDay());
+            drivingLessonDTO.setLessonStartTime(drivingLesson.getLessonStartTime());
+            drivingLessonDTO.setLessonStopTime(drivingLesson.getLessonStopTime());
+
+            drivingLessonDTOList.add(drivingLessonDTO);
 
         }
-
-        return drivingLessonsInString;
+        return drivingLessonDTOList;
     }
 }

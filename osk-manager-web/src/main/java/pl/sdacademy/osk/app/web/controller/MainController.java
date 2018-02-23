@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
+import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 import pl.sdacademy.service.student.StudentCommandService;
 
 import java.util.List;
@@ -38,10 +39,8 @@ public class MainController {
     @RequestMapping(value = "/showSchedule", method = RequestMethod.GET)
     public String schedule(Model model) {
         LOGGER.debug("is executed");
-
-        List<String> drivingLessons = drivingLessonQueryService.findAllDrivingLessons();
-//
-        model.addAttribute("lessons", drivingLessons);
+        List<DrivingLessonDTO> drivingLessonDTOList = drivingLessonQueryService.findAllDrivingLessons();
+        model.addAttribute("lessons", drivingLessonDTOList);
 
         return "schedule";
     }
