@@ -7,24 +7,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "DRIVING_LESSON")
 @Audited
 
-public class DrivingLesson {
+public class DrivingLesson implements Serializable{
 
+    private static final long serialVersionUID = 2836665682991196971L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "LESSON_ID")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "STUDENT_ID")
     private Student student;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "TEACHER_ID")
     private Teacher teacher;
 

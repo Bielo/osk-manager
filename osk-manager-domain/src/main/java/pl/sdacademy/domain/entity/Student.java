@@ -7,13 +7,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Table(name = "STUDENT")
 @Audited
-public class Student {
+public class Student implements Serializable{
 
+    private static final long serialVersionUID = -5535682768330536693L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "STUDENT_ID")
