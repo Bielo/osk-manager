@@ -38,7 +38,6 @@ body {
 .logo-left {
     width: 50%;
     height: 100px;
-    background-color: yellow;
     text-align: right;
 }
 
@@ -76,11 +75,11 @@ body {
 
 .footer {
     background-color: #1c74b2;
-    height: 54px;
-}
+    height: 53px;
+    text-align:center;
+    border-top: 1px solid #0b63a2;
+    padding: 10px;
 
-.footer p {
-    margin-bottom: 0px;
 }
 
 .form {

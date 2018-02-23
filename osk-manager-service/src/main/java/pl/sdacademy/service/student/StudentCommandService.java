@@ -24,6 +24,7 @@ public class StudentCommandService {
     }
 
     public Long create(Student student) {
+
         studentRepository.save(student);
 
         return student.getId();
@@ -41,7 +42,6 @@ public class StudentCommandService {
         dbStudent.setFirstName(student.getFirstName());
         dbStudent.setLastName(student.getLastName());
         dbStudent.setBirthdate(student.getBirthdate());
-        dbStudent.setEmail(student.getEmail());
         dbStudent.setPhoneNumber(student.getPhoneNumber());
     }
 }

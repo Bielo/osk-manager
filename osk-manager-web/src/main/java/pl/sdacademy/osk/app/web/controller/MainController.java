@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 import pl.sdacademy.service.student.StudentCommandService;

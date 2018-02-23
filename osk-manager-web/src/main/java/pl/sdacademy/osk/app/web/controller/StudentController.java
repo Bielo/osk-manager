@@ -53,12 +53,12 @@ public class StudentController {
         LOGGER.debug("save student is executed");
 
         if (student.getId() == null) {
-            int sizeBefore = studentQueryService.studentCount();
-            studentCommandService.create(student);
-            int afterSize = studentQueryService.studentCount();
-            if (sizeBefore == afterSize) {
+            try {
+                studentCommandService.create(student);
+            } catch (Exception exception) {
                 model.addAttribute("info", "Nie udało się dodać użytkownika");
-            } else {
+            }
+            if (model.containsAttribute("info")) {
                 model.addAttribute("info", "Udało się dodać użytkownika!");
             }
             return "adminMain";
