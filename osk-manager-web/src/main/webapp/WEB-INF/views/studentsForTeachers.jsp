@@ -5,9 +5,7 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-
 <jsp:include page="commons/header.jsp"/>
-
 <body>
 <div class="container">
     <div class="title">
@@ -17,15 +15,23 @@
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <div class="form">
-                <spring:url value="findTeacher" var="findTeacher"/>
-                <form:form class="content" method="post" modelAttribute="searchTeacher" action='${findTeacher}'>
-                    <h3>Znajdź instruktora</h3>
-                    <form:input placeholder="imię" path="firstName"/>
-                    <form:input placeholder="nazwisko" path="lastName"/>
-                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Znajdź</form:button>
-                </form:form>
-                <jsp:include page="commons/page-back.jsp"/>
+            <div class="content">
+                <h3>Lista kursantów</h3>
+                <c:choose>
+                <c:when test="${!empty students}">
+                <table class="tab">
+                    <c:forEach items="${students}" var="student">
+                        <tr>
+                            <td>${student}</td>
+                        </tr>
+                    </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="info">Nie posiadasz żadnych kursantów</p>
+                    </c:otherwise>
+                    </c:choose>
+                </table>
+                <jsp:include page="commons/page-back-teacher.jsp"/>
             </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>

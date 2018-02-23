@@ -8,7 +8,7 @@
 <jsp:include page="commons/header.jsp"/>
 <body>
 <div class="container">
-    <spring:url value="/kursant" var="kursant"/>
+    <spring:url value="/instruktor" var="instruktor"/>
     <div class="title">
         <jsp:include page="commons/logo-left.jsp"/>
         <jsp:include page="commons/logout.jsp"/>
@@ -17,30 +17,30 @@
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <h3>Panel Kursanta</h3>
+                <h3>Panel Instruktora</h3>
 
                 <div class="square">
-                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/scheduleStudent'/>">
+                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacherSchedule'/>">
                         <i class="icon-calendar"></i></br></br>
                         Harmonogram
                     </a></div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/setScheduleStudent'/>">
+                        <a class="tilelink" href="<c:url value='/setSchedule'/>">
                             <i class="icon-calendar-plus-o"></i></br>
-                            Umów się na jazdę
+                            Ustal harmonogram
                         </a>
                     </div>
 
                 </div>
                 <div class="square">
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/rateTeacher'/>">
+                        <a class="tilelink" href="<c:url value='/students'/>">
                             <i class="icon-users"></i></br>
-                            </br>Oceń instruktora
+                            Pokaż moich kursantów
                         </a>
                     </div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/showSettingsStudent'/>">
+                        <a class="tilelink" href="<c:url value='/settings'/>">
                             <i class="icon-wrench-outline"></i></br></br>
                             Ustawienia
                         </a>

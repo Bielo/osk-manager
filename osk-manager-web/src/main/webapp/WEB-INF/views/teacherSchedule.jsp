@@ -5,9 +5,7 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-
 <jsp:include page="commons/header.jsp"/>
-
 <body>
 <div class="container">
     <div class="title">
@@ -18,26 +16,19 @@
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <h1>Harmongoram</h1>
+                <h3>Harmonogram</h3>
                 <c:choose>
                 <c:when test="${!empty lessons}">
                 <table class="tab">
                     <thead>
                     <tr>
-                        <th> Kursant </th>
-                        <th> Prowadzący jazdy </th>
-                        <th> Data zaplanowanych jazd </th>
-                        <th> Godzina rozpoczęcia </th>
-                        <th> Godzina zakończenia </th>
+                        <th>Zaplanowane jazdy</th>
                     </tr>
                     </thead>
                     <c:forEach items="${lessons}" var="lesson">
                         <tr>
-                            <td>${lesson.studentFirstAndLastName}</td>
-                            <td>${lesson.teacherFirstAndLastName}</td>
-                            <td>${lesson.lessonDay}</td>
-                            <td>${lesson.lessonStartTime}</td>
-                            <td>${lesson.lessonStopTime}</td>
+                            <td>${lesson}</td>
+
                         </tr>
                     </c:forEach>
                     </c:when>
@@ -46,12 +37,32 @@
                     </c:otherwise>
                     </c:choose>
                 </table>
-                <jsp:include page="commons/page-back.jsp"/>
+                <jsp:include page="commons/page-back-teacher.jsp"/>
             </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
     </div>
+    <jsp:include page="commons/footer.jsp"/>
 </div>
-<jsp:include page="commons/footer.jsp"/>
+<c:choose>
+<c:when test="${!empty lessons}">
+<table class="tab">
+    <thead>
+    <tr>
+        <th>Zaplanowane jazdy</th>
+    </tr>
+    </thead>
+    <c:forEach items="${lessons}" var="lesson">
+        <tr>
+            <td>${lesson}</td>
+
+        </tr>
+    </c:forEach>
+    </c:when>
+    <c:otherwise>
+        <p class="info">Nie ma zaplanowanych jazd</p>
+    </c:otherwise>
+    </c:choose>
+</table>
 </body>
 </html>

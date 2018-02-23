@@ -53,12 +53,12 @@ public class StudentController {
         LOGGER.debug("save student is executed");
 
         if (student.getId() == null) {
-            int sizeBefore = studentQueryService.studentCount();
-            studentCommandService.create(student);
-            int afterSize = studentQueryService.studentCount();
-            if (sizeBefore == afterSize) {
+            try {
+                studentCommandService.create(student);
+            } catch (Exception exception) {
                 model.addAttribute("info", "Nie udało się dodać użytkownika");
-            } else {
+            }
+            if (model.containsAttribute("info")) {
                 model.addAttribute("info", "Udało się dodać użytkownika!");
             }
             return "adminMain";
@@ -73,7 +73,7 @@ public class StudentController {
 
     @RequestMapping(value = {"/showStudentss"})
     public String showAllStudents(Model model) {
-        LOGGER.debug("show all students is executerd");
+        LOGGER.debug("show all students is executed!");
         List<Student> allStudents = studentQueryService.findAllStudents();
 
         model.addAttribute("students", allStudents);
@@ -83,7 +83,7 @@ public class StudentController {
 
     @RequestMapping(value = "/findStudent", method = RequestMethod.GET)
     public String findStudent(Model model) {
-        LOGGER.debug("is executed");
+        LOGGER.debug("find student is executed!");
         model.addAttribute("searchStudent", new SearchStudentDTO());
 
         return "findStudent";
@@ -91,9 +91,8 @@ public class StudentController {
 
     @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
     public String findStudentByName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
-        LOGGER.debug("show found student");
+        LOGGER.debug("show found student is executed!");
         List<Student> foundStudent = studentQueryService.search(searchStudent);
-        model.addAttribute("searchStudent", new SearchStudentDTO());
         model.addAttribute("foundStudent", foundStudent);
 
         return "foundStudent";
@@ -111,12 +110,32 @@ public class StudentController {
     }
 
     @RequestMapping("/student/edit/{id}")
-    public String editAccount(@PathVariable("id") Long id, Model model) {
+    public String editStudent(@PathVariable("id") Long id, Model model) {
         LOGGER.debug("Edit Student");
 
         Student student = studentQueryService.findStudentByID(id);
         model.addAttribute("student", student);
 
         return "studentForm";
+    }
+
+    @RequestMapping("/scheduleStudent")
+    public String showStudentSchedule(Model model) {
+        return "showScheduleStudent";
+    }
+
+    @RequestMapping("/setScheduleStudent")
+    public String planLessonStudent() {
+        return "DrivingLessonForm";
+    }
+
+    @RequestMapping("/rateTeacher")
+    public String rateTeacher() {
+        return "rateTeacher";
+    }
+
+    @RequestMapping("/showSettingsStudent")
+    public String studentSettings() {
+        return "settingsStudent";
     }
 }

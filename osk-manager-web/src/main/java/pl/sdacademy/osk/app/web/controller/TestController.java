@@ -27,4 +27,11 @@ public class TestController {
 
         return "teacherMain";
     }
+
+    @RequestMapping(value = "/kursant", method = RequestMethod.GET)
+    public String kursant() {
+        LOGGER.debug("show main for student");
+
+        return "studentMain";
+    }
 }

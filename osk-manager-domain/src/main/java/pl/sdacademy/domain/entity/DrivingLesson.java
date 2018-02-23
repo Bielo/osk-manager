@@ -8,57 +8,94 @@ import java.util.Date;
 
 @Entity
 @Table(name = "DRIVING_LESSON")
-@AssociationOverrides({
-        @AssociationOverride(name = "pk.student", joinColumns = @JoinColumn(name = "STUDENT_ID")),
-        @AssociationOverride(name = "pk.teacher", joinColumns = @JoinColumn(name = "TEACHER_ID"))
-})
 @Audited
 
 public class DrivingLesson {
 
-    @EmbeddedId
-    private StudentTeacherId pk = new StudentTeacherId();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "LESSON_ID")
+    private Long id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "STUDENT_ID")
+    private Student student;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "TEACHER_ID")
+    private Teacher teacher;
 
     @NotNull
-    @Column(name = "LESSON_START")
-    private Date lessonStart;
+    @Column(name = "LESSON_START_DAY")
+    @Temporal(TemporalType.DATE)
+    private Date lessonDay;
 
     @NotNull
-    @Column(name = "LESSON_STOP")
-    private Date lessonStop;
+    @Column(name = "LESSON_START_TIME")
+    @Temporal(TemporalType.TIME)
+    private Date lessonStartTime;
+
+    @NotNull
+    @Column(name = "LESSON_STOP_TIME")
+    @Temporal(TemporalType.TIME)
+    private Date lessonStopTime;
 
     public DrivingLesson() {
     }
 
-    public DrivingLesson(StudentTeacherId pk, Date lessonStart, Date lessonStop) {
-        this.pk = pk;
-        this.lessonStart = lessonStart;
-        this.lessonStop = lessonStop;
+    public DrivingLesson(Student student, Teacher teacher, Date lessonDay, Date lessonStartTime, Date lessonStopTime) {
+        this.student = student;
+        this.teacher = teacher;
+        this.lessonDay = lessonDay;
+        this.lessonStartTime = lessonStartTime;
+        this.lessonStopTime = lessonStopTime;
     }
 
-    public StudentTeacherId getPk() {
-        return pk;
+    public Long getId() {
+        return id;
     }
 
-    public void setPk(StudentTeacherId pk) {
-        this.pk = pk;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-
-    public Date getLessonStart() {
-        return lessonStart;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setLessonStart(Date lessonStart) {
-        this.lessonStart = lessonStart;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
-
-    public Date getLessonStop() {
-        return lessonStop;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setLessonStop(Date lessonStop) {
-        this.lessonStop = lessonStop;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Date getLessonDay() {
+        return lessonDay;
+    }
+
+    public void setLessonDay(Date lessonDay) {
+        this.lessonDay = lessonDay;
+    }
+
+    public Date getLessonStartTime() {
+        return lessonStartTime;
+    }
+
+    public void setLessonStartTime(Date lessonStartTime) {
+        this.lessonStartTime = lessonStartTime;
+    }
+
+    public Date getLessonStopTime() {
+        return lessonStopTime;
+    }
+
+    public void setLessonStopTime(Date lessonStopTime) {
+        this.lessonStopTime = lessonStopTime;
     }
 }

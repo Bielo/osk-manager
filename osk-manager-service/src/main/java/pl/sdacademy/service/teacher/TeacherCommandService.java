@@ -30,14 +30,6 @@ public class TeacherCommandService {
         return teacher.getId();
     }
 
-    public int teacherCount(){
-        return teacherRepository.findAll().size();
-    }
-
-    public List<Teacher> findAllTeachers() {
-        return teacherRepository.findAll();
-    }
-
     public void update(Teacher teacher) {
         Teacher dbTeacher = teacherRepository.findOne(teacher.getId());
         if (dbTeacher == null) {
@@ -58,7 +50,4 @@ public class TeacherCommandService {
         teacherRepository.delete(teacher);
     }
 
-    public Teacher findTeacherByID(Long id){
-        return teacherRepository.findOne(id);
-    }
 }

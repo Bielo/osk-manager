@@ -5,22 +5,33 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
+
 <jsp:include page="commons/header.jsp"/>
 
 <body>
+<c:url var="addDrivingLesson" value="/addDrivingLesson"/>
 <div class="container">
     <div class="title">
-        <jsp:include page="commons/bottom-left.jsp"/>
-        <div class="logo-right">
-            <jsp:include page="commons/logout.jsp"/>
-        </div>
+        <jsp:include page="commons/logo-left.jsp"/>
+        <jsp:include page="commons/logout.jsp"/>
     </div>
     <div class="middle">
         <jsp:include page="commons/bottom-left.jsp"/>
         <div class="center">
-            <form:form class="content">
-                Tutaj powstanie formularz planowania jazd :)
-            </form:form>
+            <div class="content">
+                <form:form class="form" method="post" modelAttribute="drivingLesson" action="${addDrivingLesson}">
+
+                    <h3>Formularz Planowania Jazd</h3>
+                    <form:hidden path="id"/>
+                    <form:select path="teacher">
+                        <form:option value="teacher.name"></form:option>
+                    </form:select>
+                    <form:input path="lessonDay" placeholder="Data jazdy" class="textbox-n" type="text"
+                                onfocus="(this.type='date')" id="date" required="true"/>
+                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Zarejestruj nazwę</form:button>
+                </form:form>
+                <jsp:include page="commons/page-back.jsp"/>
+            </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
     </div>

@@ -25,7 +25,7 @@
                     <form:input placeholder="nazwisko" path="lastName"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Znajdź</form:button>
                 </form:form>
-                    <jsp:include page="commons/page-back.jsp"/>
+                <jsp:include page="commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="commons/bottom-right.jsp"/>
