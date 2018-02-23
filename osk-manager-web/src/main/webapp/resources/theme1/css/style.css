@@ -38,6 +38,7 @@ body {
 .logo-left {
     width: 50%;
     height: 100px;
+    padding:10px;
     text-align: right;
 }
 

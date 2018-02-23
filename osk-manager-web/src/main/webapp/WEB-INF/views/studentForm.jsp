@@ -26,7 +26,7 @@
                     <form:input placeholder="imię" path="firstName" required="true"/>
                     <form:input placeholder="nazwisko" path="lastName" required="true"/>
                     <form:input placeholder="e-mail" path="account.email" type="email" required="true"/>
-                    <form:input placeholder="password" path="account.password" required="true"/>
+                    <form:input placeholder="password" type="password" path="account.password" required="true"/>
                     <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
                     <form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text"
                                 onfocus="(this.type='date')" id="date" required="true"/>
