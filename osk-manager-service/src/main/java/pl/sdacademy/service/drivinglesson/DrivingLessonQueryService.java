@@ -36,7 +36,7 @@ public class DrivingLessonQueryService {
             DrivingLesson drivingLesson = drivingLessonList.get(i);
 
             String studentName = drivingLesson.getStudent().getFirstName() + " "
-                    + drivingLesson.getTeacher().getLastName();
+                    + drivingLesson.getStudent().getLastName();
             String teacherName = drivingLesson.getTeacher().getFirstName() + " "
                     + drivingLesson.getTeacher().getLastName();
 
