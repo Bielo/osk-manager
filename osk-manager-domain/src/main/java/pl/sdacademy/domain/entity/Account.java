@@ -11,21 +11,22 @@ import javax.validation.constraints.NotNull;
 @Table(name = "ACCOUNT")
 @Audited
 public class Account {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ACCOUNT_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ACCOUNT_ID")
     private Long id;
 
     @NotNull
     @Email
-    @Column(unique = true, name="EMAIL")
+    @Column(unique = true, name = "EMAIL")
     private String email;
 
     @NotNull
-    @Column(name="PASSWORD")
+    @Column(name = "PASSWORD")
     private String password;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account", cascade=CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
     private Student student;
 
     public Account() {

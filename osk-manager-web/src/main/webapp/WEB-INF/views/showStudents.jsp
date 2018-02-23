@@ -36,7 +36,7 @@
                         <tr>
                             <td>${student.firstName}</td>
                             <td>${student.lastName}</td>
-                            <td>${student.email}</td>
+                            <td>${student.account.email}</td>
                             <td>${student.phoneNumber}</td>
                             <td>${student.birthdate}</td>
                             <td class="noborder">

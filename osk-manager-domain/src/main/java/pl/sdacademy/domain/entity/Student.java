@@ -1,14 +1,14 @@
 package pl.sdacademy.domain.entity;
 
 import org.hibernate.envers.Audited;
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "STUDENT")
@@ -42,11 +42,11 @@ public class Student {
     @Temporal(TemporalType.DATE)
     private Date birthdate;
 
-    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ACCOUNT_ID" ,nullable=false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ACCOUNT_ID", nullable = false)
     private Account account;
 
     public Student() {
