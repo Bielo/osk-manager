@@ -119,4 +119,24 @@ public class StudentController {
 
         return "studentForm";
     }
+
+    @RequestMapping("/scheduleStudent")
+    public String showStudentSchedule(Model model) {
+        return "showScheduleStudent";
+    }
+
+    @RequestMapping("/setScheduleStudent")
+    public String planLessonStudent() {
+        return "DrivingLessonForm";
+    }
+
+    @RequestMapping("/rateTeacher")
+    public String rateTeacher() {
+        return "rateTeacher";
+    }
+
+    @RequestMapping("/showSettingsStudent")
+    public String studentSettings() {
+        return "settingsStudent";
+    }
 }
