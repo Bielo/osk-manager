@@ -38,25 +38,31 @@ public class Teacher implements Serializable {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @NotNull
-    @Email
-    @Column(name = "EMAIL")
-    private String email;
-
     @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ACCOUNT_ID", nullable = false)
+    private Account account;
 
     public Teacher(){
     }
 
-    public Teacher(String firstName, String lastName, String mobileNumber, String email, List<DrivingLesson> drivingLesson) {
+    public Teacher(String firstName, String lastName, String mobileNumber, List<DrivingLesson> drivingLesson) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = mobileNumber;
-        this.email = email;
         this.drivingLessons = drivingLesson;
     }
 
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public List<DrivingLesson> getDrivingLessons() {
         return drivingLessons;
@@ -106,11 +112,4 @@ public class Teacher implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

@@ -29,15 +29,26 @@ public class Account {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
     private Student student;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "account")
+    private Teacher teacher;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ROLE")
+    private Role role;
+
     public Account() {
 
     }
 
-    public Account(String email, String password, Student student) {
+    public Account(String email, String password, Student student, Teacher teacher) {
         this.email = email;
         this.password = password;
         this.student = student;
+        this.teacher = teacher;
     }
+
+
 
     public Long getId() {
         return id;
@@ -69,5 +80,21 @@ public class Account {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

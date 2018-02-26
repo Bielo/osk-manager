@@ -5,22 +5,22 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<jsp:include page="commons/header.jsp"/>
+<jsp:include page="../commons/header.jsp"/>
 <body>
 <div class="container">
     <spring:url value="/instruktor" var="instruktor"/>
     <div class="title">
-        <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logout.jsp"/>
+        <jsp:include page="../commons/logo-left.jsp"/>
+        <jsp:include page="../commons/logout.jsp"/>
     </div>
     <div class="middle">
-        <jsp:include page="commons/bottom-left.jsp"/>
+        <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
                 <h3>Panel Instruktora</h3>
 
                 <div class="square">
-                        <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacherSchedule'/>">
+                        <div class="link2" class="line"><a class="tilelink" href="<c:url value='/showTeacherSchedule'/>">
                         <i class="icon-calendar"></i></br></br>
                         Harmonogram
                     </a></div>
@@ -51,9 +51,9 @@
                 </c:if>
             </div>
         </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+        <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="commons/footer.jsp"/>
+    <jsp:include page="../commons/footer.jsp"/>
 </div>
 </body>
 

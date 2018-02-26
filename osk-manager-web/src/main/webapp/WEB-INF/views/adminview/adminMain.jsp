@@ -5,16 +5,16 @@
                          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<jsp:include page="commons/header.jsp"/>
+<jsp:include page="../commons/header.jsp"/>
 
 <body>
 <div class="container">
     <div class="title">
-        <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logout.jsp"/>
+        <jsp:include page="../commons/logo-left.jsp"/>
+        <jsp:include page="../commons/logout.jsp"/>
     </div>
     <div class="middle">
-        <jsp:include page="commons/bottom-left.jsp"/>
+        <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
                 <h3>Panel Administratora</h3>
@@ -70,9 +70,9 @@
                 </c:if>
             </div>
         </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+        <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="commons/footer.jsp"/>
+    <jsp:include page="../commons/footer.jsp"/>
 </div>
 </body>
 

@@ -6,38 +6,37 @@
 <!DOCTYPE html>
 <html lang="pl">
 
-<jsp:include page="commons/header.jsp"/>
+<jsp:include page="../commons/header.jsp"/>
 
 <body>
-<c:url var="saveStudent" value="/saveStudent"/>
-<div class="container">
+<c:url var="saveTeacher" value="/saveTeacher"/>
+<div class="containter">
     <div class="title">
-        <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logout.jsp"/>
+        <jsp:include page="../commons/logo-left.jsp"/>
+        <jsp:include page="../commons/logout.jsp"/>
     </div>
     <div class="middle">
-        <jsp:include page="commons/bottom-left.jsp"/>
+        <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
-            <div class="content">
-                <form:form class="form" method="post" modelAttribute="student" action="${saveStudent}">
+            <div class="form">
+                <form:form class="content" method="post" modelAttribute="teacher" action="${saveTeacher}">
 
-                    <h3>Formularz Kursanta</h3>
+                    <h3>Formularz Instruktora</h3>
                     <form:hidden path="id"/>
                     <form:input placeholder="imię" path="firstName" required="true"/>
                     <form:input placeholder="nazwisko" path="lastName" required="true"/>
                     <form:input placeholder="e-mail" path="account.email" type="email" required="true"/>
-                    <form:input placeholder="password" type="password" path="account.password" required="true"/>
+                    <form:input placeholder="password" path="account.password" required="true"/>
                     <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
-                    <form:input path="birthdate" placeholder="data urodzenia" class="textbox-n" type="text"
-                                onfocus="(this.type='date')" id="date" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>
-                <jsp:include page="commons/page-back.jsp"/>
+
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+        <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="commons/footer.jsp"/>
 </div>
+<jsp:include page="../commons/footer.jsp"/>
 </body>
 </html>

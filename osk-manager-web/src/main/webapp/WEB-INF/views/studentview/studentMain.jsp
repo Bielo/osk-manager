@@ -5,42 +5,42 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="pl">
-<jsp:include page="commons/header.jsp"/>
+<jsp:include page="../commons/header.jsp"/>
 <body>
 <div class="container">
-    <spring:url value="/instruktor" var="instruktor"/>
+    <spring:url value="/kursant" var="kursant"/>
     <div class="title">
-        <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logout.jsp"/>
+        <jsp:include page="../commons/logo-left.jsp"/>
+        <jsp:include page="../commons/logout.jsp"/>
     </div>
     <div class="middle">
-        <jsp:include page="commons/bottom-left.jsp"/>
+        <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <h3>Panel Instruktora</h3>
+                <h3>Panel Kursanta</h3>
 
                 <div class="square">
-                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacherSchedule'/>">
+                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/scheduleStudent'/>">
                         <i class="icon-calendar"></i></br></br>
                         Harmonogram
                     </a></div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/setSchedule'/>">
+                        <a class="tilelink" href="<c:url value='/setScheduleStudent'/>">
                             <i class="icon-calendar-plus-o"></i></br>
-                            Ustal harmonogram
+                            Umów się na jazdę
                         </a>
                     </div>
 
                 </div>
                 <div class="square">
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/students'/>">
+                        <a class="tilelink" href="<c:url value='/rateTeacher'/>">
                             <i class="icon-users"></i></br>
-                            Pokaż moich kursantów
+                            </br>Oceń instruktora
                         </a>
                     </div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/settings'/>">
+                        <a class="tilelink" href="<c:url value='/showSettingsStudent'/>">
                             <i class="icon-wrench-outline"></i></br></br>
                             Ustawienia
                         </a>
@@ -51,9 +51,9 @@
                 </c:if>
             </div>
         </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+        <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="commons/footer.jsp"/>
+    <jsp:include page="../commons/footer.jsp"/>
 </div>
 </body>
 

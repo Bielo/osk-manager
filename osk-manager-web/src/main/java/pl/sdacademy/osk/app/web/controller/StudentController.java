@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -34,110 +35,28 @@ public class StudentController {
         this.studentQueryService = studentQueryService;
     }
 
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        CustomDateEditor editor = new CustomDateEditor(dateFormat, true);
-        binder.registerCustomEditor(Date.class, editor);
-    }
-
-    @RequestMapping(value = {"/addStudent"}, method = RequestMethod.GET)
-    public String addStudent(Model model) {
-        LOGGER.debug("add student is executed");
-        Student student = new Student();
-        model.addAttribute("student", student);
-
-        return "studentForm";
-    }
-
-    @RequestMapping(value = {"/saveStudent"})
-    public String saveStudent(@ModelAttribute("student") Student student, Model model) {
-        LOGGER.debug("save student is executed");
-
-        if (student.getId() == null) {
-            try {
-                studentCommandService.create(student);
-            } catch (Exception exception) {
-                model.addAttribute("info", "Nie udało się dodać użytkownika");
-            }
-            if (model.containsAttribute("info")) {
-                model.addAttribute("info", "Udało się dodać użytkownika!");
-            }
-            return "adminMain";
-        } else {
-            studentCommandService.update(student);
-            model.addAttribute("info", "Udało się pomyślnie zaktualizować dane wybranego kursanta.");
-
-            return "adminMain";
-        }
-
-    }
-
-    @RequestMapping(value = {"/showStudentss"})
-    public String showAllStudents(Model model) {
-        LOGGER.debug("show all students is executed!");
-        List<Student> allStudents = studentQueryService.findAllStudents();
-
-        model.addAttribute("students", allStudents);
-
-        return "showStudents";
-    }
-
-    @RequestMapping(value = "/findStudent", method = RequestMethod.GET)
-    public String findStudent(Model model) {
-        LOGGER.debug("find student is executed!");
-        model.addAttribute("searchStudent", new SearchStudentDTO());
-
-        return "findStudent";
-    }
-
-    @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
-    public String findStudentByName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
-        LOGGER.debug("show found student is executed!");
-        List<Student> foundStudent = studentQueryService.search(searchStudent);
-        model.addAttribute("foundStudent", foundStudent);
-
-        return "foundStudent";
-    }
-
-    @RequestMapping("/student/delete/{id}")
-    public String deleteStudent(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
-        LOGGER.debug("is executed!");
-        Student student = studentQueryService.findStudentByID(id);
-        String message = String.format("Udało się usunąć kursanta %s %s", student.getFirstName(), student.getLastName());
-        studentCommandService.deleteStudent(id);
-        redirectAttributes.addFlashAttribute("info", message);
-
-        return "redirect:/";
-    }
-
-    @RequestMapping("/student/edit/{id}")
-    public String editStudent(@PathVariable("id") Long id, Model model) {
-        LOGGER.debug("Edit Student");
-
-        Student student = studentQueryService.findStudentByID(id);
-        model.addAttribute("student", student);
-
-        return "studentForm";
-    }
-
+    @PreAuthorize("hasRole('ROLE_STUDENT')")
     @RequestMapping("/scheduleStudent")
     public String showStudentSchedule(Model model) {
-        return "showScheduleStudent";
+        return "/adminview/showScheduleStudent";
     }
 
+    @PreAuthorize("hasRole('ROLE_STUDENT')")
     @RequestMapping("/setScheduleStudent")
     public String planLessonStudent() {
-        return "DrivingLessonForm";
+        return "/adminview/DrivingLessonForm";
     }
 
+
+    @PreAuthorize("hasRole('ROLE_STUDENT')")
     @RequestMapping("/rateTeacher")
     public String rateTeacher() {
-        return "rateTeacher";
+        return "/adminview/rateTeacher";
     }
 
+    @PreAuthorize("hasRole('ROLE_STUDENT')")
     @RequestMapping("/showSettingsStudent")
     public String studentSettings() {
-        return "settingsStudent";
+        return "/adminview/settingsStudent";
     }
 }

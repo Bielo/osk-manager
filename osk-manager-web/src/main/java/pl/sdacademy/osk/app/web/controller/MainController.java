@@ -12,6 +12,7 @@ import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 import pl.sdacademy.service.student.StudentCommandService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -29,18 +30,16 @@ public class MainController {
     }
 
     @RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
-    public String main() {
+    public String main(HttpServletRequest servletRequest) {
         LOGGER.debug("is executed");
 
-        return "adminMain";
-    }
+        if (servletRequest.isUserInRole("STUDENT")) {
+            return "/studentview/studentMain";
+        } else if (servletRequest.isUserInRole("TEACHER")) {
+            return "/teacherview/teacherMain";
+        } else {
+            return "/adminview/adminMain";
+        }
 
-    @RequestMapping(value = "/showSchedule", method = RequestMethod.GET)
-    public String schedule(Model model) {
-        LOGGER.debug("is executed");
-        List<DrivingLessonDTO> drivingLessonDTOList = drivingLessonQueryService.findAllDrivingLessons();
-        model.addAttribute("lessons", drivingLessonDTOList);
-
-        return "schedule";
     }
 }

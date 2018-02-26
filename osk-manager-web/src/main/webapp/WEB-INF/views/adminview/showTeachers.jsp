@@ -6,21 +6,21 @@
 <!DOCTYPE html>
 <html lang="pl">
 
-<jsp:include page="commons/header.jsp"/>
+<jsp:include page="../commons/header.jsp"/>
 
 <body>
 <div class="container">
     <div class="title">
-        <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logout.jsp"/>
+        <jsp:include page="../commons/logo-left.jsp"/>
+        <jsp:include page="../commons/logout.jsp"/>
     </div>
     <div class="middle">
-        <jsp:include page="commons/bottom-left.jsp"/>
+        <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <h4>Znajdz instruktora</h4>
+                <h4>Instruktorzy</h4>
                 <c:choose>
-                <c:when test="${!empty foundTeacher}">
+                <c:when test="${!empty teachers}">
                 <table class="tab">
                     <thead>
                     <tr>
@@ -28,15 +28,14 @@
                         <th>Nazwisko</th>
                         <th>E-mail</th>
                         <th>Telefon</th>
-                        <th>Data urodzenia</th>
                         <th colspan="2">Opcje</th>
                     </tr>
                     </thead>
-                    <c:forEach items="${foundTeacher}" var="teacher">
+                    <c:forEach items="${teachers}" var="teacher">
                         <tr>
                             <td>${teacher.firstName}</td>
                             <td>${teacher.lastName}</td>
-                            <td>${teacher.email}</td>
+                            <td>${teacher.account.email}</td>
                             <td>${teacher.phoneNumber}</td>
                             <td class="noborder">
                                 <div class="option-button">
@@ -58,18 +57,16 @@
                     </c:forEach>
                     </c:when>
                     <c:otherwise>
-                        <p class="info">Nie znaleziono takiego instruktora</p>
+                        <p class="info">Nie ma żadnych instruktorów</p>
                     </c:otherwise>
                     </c:choose>
                 </table>
-                <jsp:include page="commons/page-back.jsp"/>
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+        <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
 </div>
-<jsp:include page="commons/footer.jsp"/>
+<jsp:include page="../commons/footer.jsp"/>
 </body>
 </html>
-
-

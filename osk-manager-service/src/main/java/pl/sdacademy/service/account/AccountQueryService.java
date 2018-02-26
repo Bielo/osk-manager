@@ -21,4 +21,8 @@ public class AccountQueryService {
     public List<Account> findAllAccounts() {
         return accountRepository.findAll();
     }
+
+    public Account findByEmail(String email) {
+        return accountRepository.findByEmail(email);
+    }
 }

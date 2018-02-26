@@ -13,6 +13,7 @@ import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,8 +29,23 @@ public class DrivingLessonQueryService {
         this.teacherRepository = teacherRepository;
     }
 
-    public List<DrivingLessonDTO> findAllDrivingLessons() {
+    public List<DrivingLessonDTO> findAllFutureDrivingLessons() {
         List<DrivingLesson> drivingLessonList = drivingLessonRepository.findAllFutureLessons(new Date());
+        List<DrivingLessonDTO> drivingLessonDTOList = getDrivingLessonDTO(drivingLessonList);
+        return drivingLessonDTOList;
+    }
+
+
+    public List<DrivingLessonDTO> findAllFutureDrivingLessonsForTeacher(Teacher teacher) {
+        List<DrivingLesson> drivingLessonList = drivingLessonRepository.findDrivingLessonsForTeacher(teacher, new Date());
+//        List<DrivingLesson> forOneTeacher = drivingLessonList.stream()
+//                .filter(drivingLesson -> drivingLesson.getTeacher().getId() == id)
+//                .collect(Collectors.toList());
+        List<DrivingLessonDTO> drivingLessonDTOList = getDrivingLessonDTO(drivingLessonList);
+        return drivingLessonDTOList;
+    }
+
+    private List<DrivingLessonDTO> getDrivingLessonDTO(List<DrivingLesson> drivingLessonList) {
         List<DrivingLessonDTO> drivingLessonDTOList = new ArrayList<>();
 
         for (int i = 0; i < drivingLessonList.size(); i++) {
@@ -53,12 +69,12 @@ public class DrivingLessonQueryService {
         return drivingLessonDTOList;
     }
 
-    public List<Student> findMyStudents() {
-        Long teacherId = 1L; // FIXME should be form logged user context
+    public Set<Student> findMyStudents(Long teacherId) {
+        // FIXME should be form logged user context, dodatkowo obecnie jak ma kilka lekcji z jednym kursantem, to zwraca tego samego kursanta kilka razy, chyba jakaś kolekcja bez powtorek by sie przydala
 
         Teacher teacher = teacherRepository.findOne(teacherId);
         return drivingLessonRepository.findStudentForTeacher(teacher).stream()
                 .map(DrivingLesson::getStudent)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 }

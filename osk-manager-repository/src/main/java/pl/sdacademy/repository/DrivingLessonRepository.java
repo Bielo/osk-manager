@@ -7,6 +7,7 @@ import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.domain.entity.Teacher;
 
+import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface DrivingLessonRepository extends JpaRepository<DrivingLesson, Lo
 
     @Query("SELECT dl FROM DrivingLesson dl LEFT JOIN FETCH dl.student s WHERE dl.teacher = :teacher")
     List<DrivingLesson> findStudentForTeacher(@Param("teacher") Teacher teacher);
+
+    @Query("SELECT dl FROM DrivingLesson dl WHERE dl.teacher = :teacher AND dl.lessonDay >= :dateNow")
+    List<DrivingLesson> findDrivingLessonsForTeacher(@Param("teacher")Teacher teacher, @Param("dateNow") Date date);
 }

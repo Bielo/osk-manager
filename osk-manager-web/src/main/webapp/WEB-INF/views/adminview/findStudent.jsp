@@ -6,16 +6,16 @@
 <!DOCTYPE html>
 <html lang="pl">
 
-<jsp:include page="commons/header.jsp"/>
+<jsp:include page="../commons/header.jsp"/>
 
 <body>
 <div class="container">
     <div class="title">
-        <jsp:include page="commons/logo-left.jsp"/>
-        <jsp:include page="commons/logout.jsp"/>
+        <jsp:include page="../commons/logo-left.jsp"/>
+        <jsp:include page="../commons/logout.jsp"/>
     </div>
     <div class="middle">
-        <jsp:include page="commons/bottom-left.jsp"/>
+        <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="form">
                 <spring:url value="findStudent" var="findStudent"/>
@@ -25,12 +25,12 @@
                     <form:input placeholder="nazwisko" path="lastName"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Znajdź</form:button>
                 </form:form>
-                <jsp:include page="commons/page-back.jsp"/>
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
-        <jsp:include page="commons/bottom-right.jsp"/>
+        <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="commons/footer.jsp"/>
+    <jsp:include page="../commons/footer.jsp"/>
 </div>
 </body>
 </html>

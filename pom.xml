@@ -22,6 +22,7 @@
         <hibernate-version>5.2.9.Final</hibernate-version>
         <webjars-jquery-version>3.2.1</webjars-jquery-version>
         <webjars-bootstrap-version>3.3.7</webjars-bootstrap-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <groupId>pl.sdacademy</groupId>
