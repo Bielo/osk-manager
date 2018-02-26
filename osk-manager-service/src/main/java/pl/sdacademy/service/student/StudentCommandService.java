@@ -55,4 +55,12 @@ public class StudentCommandService {
         dbStudent.getAccount().setEmail(student.getAccount().getEmail());
         dbStudent.getAccount().setPassword(student.getAccount().getPassword());
     }
+
+    public void updatePhonenumber(Student student) {
+        Student dbStudent = studentRepository.findOne(student.getId());
+        if (dbStudent == null) {
+            LOGGER.debug("Student with id " + student.getId() + " not found.");
+        }
+        dbStudent.setPhoneNumber(student.getPhoneNumber());
+    }
 }
