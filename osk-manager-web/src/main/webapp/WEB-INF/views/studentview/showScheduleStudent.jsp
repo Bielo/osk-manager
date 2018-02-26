@@ -46,26 +46,6 @@
     </div>
     <jsp:include page="../commons/footer.jsp"/>
 </div>
-<%--<c:choose>--%>
-<%--<c:when test="${!empty lessons}">--%>
-<%--<table class="tab">--%>
-    <%--<thead>--%>
-    <%--<tr>--%>
-        <%--<th>Zaplanowane jazdy</th>--%>
-    <%--</tr>--%>
-    <%--</thead>--%>
-    <%--<c:forEach items="${lessons}" var="lesson">--%>
-        <%--<tr>--%>
-            <%--<td>${lesson}</td>--%>
-
-        <%--</tr>--%>
-    <%--</c:forEach>--%>
-    <%--</c:when>--%>
-    <%--<c:otherwise>--%>
-        <%--<p class="info">Nie ma zaplanowanych jazd</p>--%>
-    <%--</c:otherwise>--%>
-    <%--</c:choose>--%>
-<%--</table>--%>
 </body>
 </html>
 

@@ -127,12 +127,11 @@ public class Student implements Serializable{
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", birthdate=" + birthdate +
-                '}';
+        return "Dane kursanta" + '\'' +
+                ", imię: '" + firstName + '\'' +
+                ", nazwisko: '" + lastName + '\'' +
+                ", telefon kontaktowy: '" + phoneNumber + '\'' +
+                ", data urodzenia: " + birthdate +
+                ".";
     }
 }

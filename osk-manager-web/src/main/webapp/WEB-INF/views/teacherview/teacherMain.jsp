@@ -20,12 +20,12 @@
                 <h3>Panel Instruktora</h3>
 
                 <div class="square">
-                        <div class="link2" class="line"><a class="tilelink" href="<c:url value='/showTeacherSchedule'/>">
+                        <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacher/showSchedule'/>">
                         <i class="icon-calendar"></i></br></br>
                         Harmonogram
                     </a></div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/setSchedule'/>">
+                        <a class="tilelink" href="<c:url value='/teacher/setSchedule'/>">
                             <i class="icon-calendar-plus-o"></i></br>
                             Ustal harmonogram
                         </a>
@@ -34,13 +34,13 @@
                 </div>
                 <div class="square">
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/students'/>">
+                        <a class="tilelink" href="<c:url value='/teacher/students'/>">
                             <i class="icon-users"></i></br>
                             Pokaż moich kursantów
                         </a>
                     </div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/settings'/>">
+                        <a class="tilelink" href="<c:url value='/teacher/settings'/>">
                             <i class="icon-wrench-outline"></i></br></br>
                             Ustawienia
                         </a>

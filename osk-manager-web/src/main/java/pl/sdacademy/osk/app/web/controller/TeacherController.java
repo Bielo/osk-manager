@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
+@RequestMapping("/teacher/")
 public class TeacherController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
@@ -45,7 +46,7 @@ public class TeacherController {
 
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
-    @RequestMapping(value = "/showTeacherSchedule")
+    @RequestMapping(value = "/showSchedule")
     public String teacherSchedule(Model model) {
         LOGGER.debug("show schedule for current Teacher");
 

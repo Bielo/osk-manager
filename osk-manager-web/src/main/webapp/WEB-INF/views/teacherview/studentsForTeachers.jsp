@@ -20,9 +20,20 @@
                 <c:choose>
                 <c:when test="${!empty students}">
                 <table class="tab">
+                    <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Telefon</th>
+                    </tr>
+                    </thead>
                     <c:forEach items="${students}" var="student">
                         <tr>
-                            <td>${student}</td>
+                            <td>${student.firstName}</td>
+                            <td>${student.lastName}</td>
+                            <td>${student.account.email}</td>
+                            <td>${student.phoneNumber}</td>
                         </tr>
                     </c:forEach>
                     </c:when>
