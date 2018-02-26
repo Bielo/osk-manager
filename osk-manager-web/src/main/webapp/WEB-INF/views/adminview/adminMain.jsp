@@ -20,18 +20,18 @@
                 <h3>Panel Administratora</h3>
 
                 <div class="square">
-                    <div class="link1"><a class="tilelink" href="<c:url value='/addStudent'/>">
+                    <div class="link1"><a class="tilelink" href="<c:url value='admin/addStudent'/>">
                         <i class="icon-user-add"></i></br>
                         Dodaj kursanta
                     </a></div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/addTeacher'/>">
+                        <a class="tilelink" href="<c:url value='admin/addTeacher'/>">
                             <i class="icon-user-add-outline"></i></br>
                             Dodaj instruktora
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/showSchedule'/>">
+                        <a class="tilelink" href="<c:url value='admin/showSchedule'/>">
                             <i class="icon-calendar"></i></br>
                             Harmonogram
                         </a>
@@ -39,19 +39,19 @@
                 </div>
                 <div class="square">
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/findStudent'/>">
+                        <a class="tilelink" href="<c:url value='admin/findStudent'/>">
                             <i class="icon-search"></i></br>
                             Znajdź kursanta
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/findTeacher'/>">
+                        <a class="tilelink" href="<c:url value='admin/findTeacher'/>">
                             <i class="icon-search"></i></br>
                             Znajdź instruktora
                         </a>
                     </div>
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/showStudentss'/>">
+                        <a class="tilelink" href="<c:url value='admin/showStudentss'/>">
                             <i class="icon-users"></i></br>
                             Kursanci
                         </a>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="square">
                     <div class="link1">
-                        <a class="tilelink" href="<c:url value='/showTeacherss'/>">
+                        <a class="tilelink" href="<c:url value='admin/showTeacherss'/>">
                             <i class="icon-users-outline"></i></br>
                             Instruktorzy
                         </a>

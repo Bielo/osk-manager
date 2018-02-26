@@ -40,7 +40,7 @@
                         </a>
                     </div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/student/showSettingsStudent'/>">
+                        <a class="tilelink" href="<c:url value='/student/showSettings'/>">
                             <i class="icon-wrench-outline"></i></br></br>
                             Ustawienia
                         </a>

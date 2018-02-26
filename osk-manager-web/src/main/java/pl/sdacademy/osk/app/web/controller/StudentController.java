@@ -61,7 +61,7 @@ public class StudentController {
         return "/studentview/rateTeacher";
     }
 
-    @RequestMapping("/showSettingsStudent")
+    @RequestMapping("/showSettings")
     public String studentSettings() {
         return "/studentview/settingsStudent";
     }

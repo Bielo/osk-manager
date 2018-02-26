@@ -41,7 +41,7 @@
                             <td>${student.birthdate}</td>
                             <td class="noborder">
                                 <div class="option-button">
-                                    <spring:url value="/student/edit/${student.id}" var="studentEditUrl"/>
+                                    <spring:url value="/admin/student/edit/${student.id}" var="studentEditUrl"/>
                                     <a class="option-link" href='${studentEditUrl}'>
                                         <i class="icon-edit"></i>Edytuj
                                     </a>
@@ -49,7 +49,7 @@
                             </td>
                             <td class="noborder">
                                 <div class="option-button">
-                                    <spring:url value="/student/delete/${student.id}" var="studentDeleteUrl"/>
+                                    <spring:url value="/admin/student/delete/${student.id}" var="studentDeleteUrl"/>
                                     <a class="option-link" href='${studentDeleteUrl}'>
                                         <i class="icon-user-times"></i>Usuń
                                     </a>

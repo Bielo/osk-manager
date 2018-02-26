@@ -32,7 +32,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
                 new CharacterEncodingFilter());
         encodingFilter.setInitParameter("encoding", "UTF-8");
         encodingFilter.setInitParameter("forceEncoding", "true");
-        encodingFilter.addMappingForUrlPatterns(null, true, "/*");
+        encodingFilter.addMappingForUrlPatterns(null, false, "/*");
     }
 
     private void configureDispatcher(ServletRegistration.Dynamic dispatcher) {

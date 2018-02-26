@@ -23,22 +23,16 @@ import java.util.List;
 import java.util.Set;
 
 @Controller
-@RequestMapping("/teacher/")
+@RequestMapping("/teacher")
 public class TeacherController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
-    private final TeacherCommandService teacherCommandService;
-    private final TeacherQueryService teacherQueryService;
-    private final StudentQueryService studentQueryService;
     private final DrivingLessonQueryService drivingLessonQueryService;
     private final AccountQueryService accountQueryService;
 
     @Autowired
-    public TeacherController(TeacherCommandService teacherCommandService, TeacherQueryService teacherQueryService, StudentQueryService studentQueryService, DrivingLessonQueryService drivingLessonQueryService, AccountQueryService accountQueryService) {
-        this.teacherCommandService = teacherCommandService;
-        this.teacherQueryService = teacherQueryService;
-        this.studentQueryService = studentQueryService;
+    public TeacherController(DrivingLessonQueryService drivingLessonQueryService, AccountQueryService accountQueryService) {
         this.drivingLessonQueryService = drivingLessonQueryService;
         this.accountQueryService = accountQueryService;
     }

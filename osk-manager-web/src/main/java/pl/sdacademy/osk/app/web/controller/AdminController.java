@@ -25,7 +25,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
@@ -52,7 +54,6 @@ public class AdminController {
         binder.registerCustomEditor(Date.class, editor);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/addStudent"}, method = RequestMethod.GET)
     public String addStudent(Model model) {
         LOGGER.debug("add student is executed");
@@ -62,7 +63,6 @@ public class AdminController {
         return "/adminview/studentForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/saveStudent"})
     public String saveStudent(@ModelAttribute("student") Student student, Model model) {
         LOGGER.debug("save student is executed");
@@ -76,17 +76,16 @@ public class AdminController {
             if (model.containsAttribute("info")) {
                 model.addAttribute("info", "Udało się dodać użytkownika!");
             }
-            return "/adminview/adminMain";
+            return "redirect:/";
         } else {
             studentCommandService.update(student);
             model.addAttribute("info", "Udało się pomyślnie zaktualizować dane wybranego kursanta.");
 
-            return "/adminview/adminMain";
+            return "redirect:/";
         }
 
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/showStudentss"})
     public String showAllStudents(Model model) {
         LOGGER.debug("show all students is executed!");
@@ -97,7 +96,6 @@ public class AdminController {
         return "/adminview/showStudents";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/findStudent", method = RequestMethod.GET)
     public String findStudent(Model model) {
         LOGGER.debug("find student is executed!");
@@ -106,7 +104,6 @@ public class AdminController {
         return "/adminview/findStudent";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/findStudent", method = RequestMethod.POST)
     public String findStudentByName(@ModelAttribute SearchStudentDTO searchStudent, Model model) {
         LOGGER.debug("show found student is executed!");
@@ -116,7 +113,6 @@ public class AdminController {
         return "/adminview/foundStudent";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/student/delete/{id}")
     public String deleteStudent(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
         LOGGER.debug("is executed!");
@@ -128,7 +124,6 @@ public class AdminController {
         return "redirect:/";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping("/student/edit/{id}")
     public String editStudent(@PathVariable("id") Long id, Model model) {
         LOGGER.debug("Edit Student");
@@ -139,7 +134,6 @@ public class AdminController {
         return "/adminview/studentForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/addTeacher", method = RequestMethod.GET)
     public String addTeacher(Model model) {
         LOGGER.debug("add teacher is executed");
@@ -149,7 +143,6 @@ public class AdminController {
         return "/adminview/teacherForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/saveTeacher"}, method = RequestMethod.POST)
     public String saveTeacher(@ModelAttribute("teacher") Teacher teacher, Model model){
         LOGGER.debug("save teacher is executed");
@@ -168,10 +161,9 @@ public class AdminController {
             model.addAttribute("info", message);
         }
 
-        return "/adminview/adminMain";
+        return "redirect:/";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/showTeacherss"})
     public String showAllTeachers(Model model) {
         LOGGER.debug("show all teachers is executed");
@@ -181,7 +173,6 @@ public class AdminController {
         return "/adminview/showTeachers";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/findTeacher", method = RequestMethod.GET)
     public String findTeacher(Model model) {
         LOGGER.debug("find teacher is executed!");
@@ -190,7 +181,6 @@ public class AdminController {
         return "/adminview/findTeacher";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/findTeacher", method = RequestMethod.POST)
     public String findTeacherByName(@ModelAttribute SearchTeacherDTO searchTeacher, Model model) {
         LOGGER.debug("show found teacher is executed!");
@@ -201,8 +191,6 @@ public class AdminController {
         return "/adminview/foundTeacher";
     }
 
-
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/teacher/delete/{id}"})
     public String deleteTeacher(@PathVariable("id") Long id, RedirectAttributes redirectAttributes){
         LOGGER.debug("delete teacher is executed!");
@@ -214,7 +202,6 @@ public class AdminController {
         return "redirect:/";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = {"/teacher/edit/{id}"})
     public String editTeacher(@PathVariable("id") Long id, Model model){
         LOGGER.debug("edit teacher is executed!");
@@ -224,7 +211,6 @@ public class AdminController {
         return "/adminview/teacherForm";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/showSchedule", method = RequestMethod.GET)
     public String schedule(Model model) {
         LOGGER.debug("is executed");

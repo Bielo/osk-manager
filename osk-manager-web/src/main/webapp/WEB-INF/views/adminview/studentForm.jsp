@@ -9,7 +9,7 @@
 <jsp:include page="../commons/header.jsp"/>
 
 <body>
-<c:url var="saveStudent" value="/saveStudent"/>
+<c:url var="saveStudent" value="/admin/saveStudent"/>
 <div class="container">
     <div class="title">
         <jsp:include page="../commons/logo-left.jsp"/>

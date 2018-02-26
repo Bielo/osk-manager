@@ -4,5 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="logo-left">
-    <a href="<c:url value='/'/>"><img src="resources/theme1/fot/logo.png" alt="logo" align="left"></a>
+    <spring:url var="logo" value="/resources/theme1/fot/logo.png"/>
+    <a href="<c:url value='/'/>"><img src="${logo}" alt="logo" align="left"></a>
 </div>
