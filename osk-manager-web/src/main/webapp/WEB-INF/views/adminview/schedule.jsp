@@ -18,7 +18,7 @@
         <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <h1>Harmongoram</h1>
+                <h4>Harmongoram</h4>
                 <c:choose>
                 <c:when test="${!empty lessons}">
                 <table class="tab">

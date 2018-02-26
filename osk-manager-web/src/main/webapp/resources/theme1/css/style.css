@@ -296,8 +296,9 @@ a.option-link {
 
 .tab th {
     color: #39a5f1;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
+    padding:5px;
 
 }
 
