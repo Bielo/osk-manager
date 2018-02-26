@@ -20,15 +20,10 @@
         <div class="center">
             <div class="content">
                 <form:form class="form" method="post" modelAttribute="drivingLesson" action="${addDrivingLesson}">
-
                     <h3>Formularz Planowania Jazd</h3>
-                    <form:hidden path="id"/>
-                    <form:select path="teacher">
-                        <form:option value="teacher.name"></form:option>
-                    </form:select>
-                    <form:input path="lessonDay" placeholder="Data jazdy" class="textbox-n" type="text"
+                    <form:input path="lessonDay" placeholder="Wybierz termin jazdy" class="textbox-n" type="text"
                                 onfocus="(this.type='date')" id="date" required="true"/>
-                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Zarejestruj nazwę</form:button>
+                    <form:button type="submit" name="submit" class="btn btn-primary submitButton">Pokaż</form:button>
                 </form:form>
                 <jsp:include page="../commons/page-back.jsp"/>
             </div>

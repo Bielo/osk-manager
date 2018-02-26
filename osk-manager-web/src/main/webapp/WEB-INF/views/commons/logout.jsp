@@ -4,7 +4,7 @@
          pageEncoding="UTF-8" %>
 
 <div class="logo-right">
-    <p>Jesteś zalogowany jako:<i class="icon-user"></i> Admin</p>
+    <p>Jesteś zalogowany jako:<i class="icon-user"></i> ${account.email}</p>
 
     <spring:url var="logoutUrl" value="/perform_logout"/>
 

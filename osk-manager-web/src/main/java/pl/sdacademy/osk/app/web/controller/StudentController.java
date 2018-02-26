@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.domain.entity.Account;
+import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.domain.entity.Student;
+import pl.sdacademy.domain.entity.Teacher;
 import pl.sdacademy.service.account.AccountQueryService;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
@@ -20,25 +22,22 @@ import pl.sdacademy.service.student.StudentQueryService;
 import java.util.List;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
-    private final StudentCommandService studentCommandService;
-    private final StudentQueryService studentQueryService;
     private final AccountQueryService accountQueryService;
     private final DrivingLessonQueryService drivingLessonQueryService;
 
     @Autowired
-    public StudentController(StudentCommandService studentCommandService, StudentQueryService studentQueryService, AccountQueryService accountQueryService, DrivingLessonQueryService drivingLessonQueryService) {
-        this.studentCommandService = studentCommandService;
-        this.studentQueryService = studentQueryService;
+    public StudentController(AccountQueryService accountQueryService, DrivingLessonQueryService drivingLessonQueryService) {
+
         this.accountQueryService = accountQueryService;
         this.drivingLessonQueryService = drivingLessonQueryService;
     }
 
-    @PreAuthorize("hasRole('ROLE_STUDENT')")
-    @RequestMapping("/scheduleStudent")
+    @RequestMapping("/schedule")
     public String showStudentSchedule(Model model) {
         LOGGER.debug("show schedule for current student");
 
@@ -50,21 +49,18 @@ public class StudentController {
         model.addAttribute("lessons", drivingLessons);
         return "/studentview/showScheduleStudent";
     }
-
-    @PreAuthorize("hasRole('ROLE_STUDENT')")
-    @RequestMapping("/setScheduleStudent")
-    public String planLessonStudent() {
+    @RequestMapping("/setSchedule")
+    public String planLessonStudent(Model model) {
+        DrivingLesson drivingLesson = new DrivingLesson();
+        model.addAttribute("drivingLesson", drivingLesson);
         return "/studentview/DrivingLessonForm";
     }
 
-
-    @PreAuthorize("hasRole('ROLE_STUDENT')")
     @RequestMapping("/rateTeacher")
     public String rateTeacher() {
         return "/studentview/rateTeacher";
     }
 
-    @PreAuthorize("hasRole('ROLE_STUDENT')")
     @RequestMapping("/showSettingsStudent")
     public String studentSettings() {
         return "/studentview/settingsStudent";

@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/webjars/**").permitAll()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/login*").anonymous()
+                .antMatchers("/student/**").hasRole("STUDENT")
                 .antMatchers("/**").authenticated()
                 .and().formLogin()
                 .loginPage("/login")

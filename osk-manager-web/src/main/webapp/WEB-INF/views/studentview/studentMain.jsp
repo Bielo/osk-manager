@@ -20,12 +20,12 @@
                 <h3>Panel Kursanta</h3>
 
                 <div class="square">
-                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/scheduleStudent'/>">
+                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/student/schedule'/>">
                         <i class="icon-calendar"></i></br></br>
                         Harmonogram
                     </a></div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/setScheduleStudent'/>">
+                        <a class="tilelink" href="<c:url value='/student/setSchedule'/>">
                             <i class="icon-calendar-plus-o"></i></br>
                             Umów się na jazdę
                         </a>
@@ -34,13 +34,13 @@
                 </div>
                 <div class="square">
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/rateTeacher'/>">
+                        <a class="tilelink" href="<c:url value='/student/rateTeacher'/>">
                             <i class="icon-users"></i></br>
                             </br>Oceń instruktora
                         </a>
                     </div>
                     <div class="link2">
-                        <a class="tilelink" href="<c:url value='/showSettingsStudent'/>">
+                        <a class="tilelink" href="<c:url value='/student/showSettingsStudent'/>">
                             <i class="icon-wrench-outline"></i></br></br>
                             Ustawienia
                         </a>
