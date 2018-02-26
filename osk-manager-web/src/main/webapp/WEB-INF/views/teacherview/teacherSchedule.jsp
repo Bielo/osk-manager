@@ -27,8 +27,10 @@
                     </thead>
                     <c:forEach items="${lessons}" var="lesson">
                         <tr>
-                            <td>${lesson}</td>
-
+                            <td>${lesson.studentFirstAndLastName}</td>
+                            <td>${lesson.lessonDay}</td>
+                            <td>${lesson.lessonStartTime}</td>
+                            <td>${lesson.lessonStopTime}</td>
                         </tr>
                     </c:forEach>
                     </c:when>
@@ -37,32 +39,32 @@
                     </c:otherwise>
                     </c:choose>
                 </table>
-                <jsp:include page="../commons/page-back-teacher.jsp"/>
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
     <jsp:include page="../commons/footer.jsp"/>
 </div>
-<c:choose>
-<c:when test="${!empty lessons}">
-<table class="tab">
-    <thead>
-    <tr>
-        <th>Zaplanowane jazdy</th>
-    </tr>
-    </thead>
-    <c:forEach items="${lessons}" var="lesson">
-        <tr>
-            <td>${lesson}</td>
+<%--<c:choose>--%>
+<%--<c:when test="${!empty lessons}">--%>
+<%--<table class="tab">--%>
+    <%--<thead>--%>
+    <%--<tr>--%>
+        <%--<th>Zaplanowane jazdy</th>--%>
+    <%--</tr>--%>
+    <%--</thead>--%>
+    <%--<c:forEach items="${lessons}" var="lesson">--%>
+        <%--<tr>--%>
+            <%--<td>${lesson}</td>--%>
 
-        </tr>
-    </c:forEach>
-    </c:when>
-    <c:otherwise>
-        <p class="info">Nie ma zaplanowanych jazd</p>
-    </c:otherwise>
-    </c:choose>
-</table>
+        <%--</tr>--%>
+    <%--</c:forEach>--%>
+    <%--</c:when>--%>
+    <%--<c:otherwise>--%>
+        <%--<p class="info">Nie ma zaplanowanych jazd</p>--%>
+    <%--</c:otherwise>--%>
+    <%--</c:choose>--%>
+<%--</table>--%>
 </body>
 </html>

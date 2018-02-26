@@ -52,14 +52,10 @@ public class TeacherController {
         //FIXME poprawić to zapytanie na wyszukiwanie konretnego harmonogramu dla Instruktora
 
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-
         String userName = loggedInUser.getName();
-
         Account account = accountQueryService.findByEmail(userName);
         Teacher teacher = account.getTeacher();
-
         List<DrivingLessonDTO> drivingLessons = drivingLessonQueryService.findAllFutureDrivingLessonsForTeacher(teacher);
-
         model.addAttribute("lessons", drivingLessons);
         return "/teacherview/teacherSchedule";
     }

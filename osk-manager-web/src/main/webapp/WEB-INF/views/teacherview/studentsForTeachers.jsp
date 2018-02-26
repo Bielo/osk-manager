@@ -31,7 +31,7 @@
                     </c:otherwise>
                     </c:choose>
                 </table>
-                <jsp:include page="../commons/page-back-teacher.jsp"/>
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="../commons/bottom-right.jsp"/>

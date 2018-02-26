@@ -77,4 +77,10 @@ public class DrivingLessonQueryService {
                 .map(DrivingLesson::getStudent)
                 .collect(Collectors.toSet());
     }
+
+    public List<DrivingLessonDTO> findAllFutureDrivingLessonsForStudent(Student student) {
+        List<DrivingLesson> drivingLessonList = drivingLessonRepository.findDrivingLessonsForStudent(student, new Date());
+        List<DrivingLessonDTO> drivingLessonDTOList = getDrivingLessonDTO(drivingLessonList);
+        return  drivingLessonDTOList;
+    }
 }
