@@ -29,11 +29,4 @@ public class AccountCommandService {
         }
         dbAccount.setEmail(account.getEmail());
     }
-
-    public Account findAccountByID(Long id){
-        return accountRepository.findOne(id);
-    }
-
-
-
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.domain.entity.Teacher;
@@ -94,12 +95,12 @@ public class TeacherController {
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
     @RequestMapping(value = "/savePhone", method = RequestMethod.POST)
-    public String savePhone(@ModelAttribute("teacher") Teacher teacher, Model model) {
+    public String savePhone(@ModelAttribute("teacher") Teacher teacher, RedirectAttributes redirectAttributes) {
         teacherCommandService.updatePhoneNumber(teacher);
         String message = String.format("Numer telefonu został zaktualizowany.");
-        model.addAttribute("info", message);
+        redirectAttributes.addFlashAttribute("info", message);
 
-        return "/teacherview/teacherMain";
+        return "redirect:/";
     }
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
@@ -114,12 +115,12 @@ public class TeacherController {
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
     @RequestMapping(value = "/saveEmail", method = RequestMethod.POST)
-    public String saveEmail(@ModelAttribute("account") Account account, Model model) {
+    public String saveEmail(@ModelAttribute("account") Account account, RedirectAttributes redirectAttributes) {
         accountCommandService.updateEmail(account);
         String message = String.format("Email został zaktualizowany");
-        model.addAttribute("info", message);
-        model.addAttribute("account", account);
+        redirectAttributes.addFlashAttribute("info", message);
+        redirectAttributes.addFlashAttribute("account", account);
 
-        return "/teacherview/teacherMain";
+        return "redirect:/";
     }
 }

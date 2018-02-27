@@ -64,26 +64,23 @@ public class AdminController {
     }
 
     @RequestMapping(value = {"/saveStudent"})
-    public String saveStudent(@ModelAttribute("student") Student student, Model model) {
+    public String saveStudent(@ModelAttribute("student") Student student, RedirectAttributes redirectAttributes) {
         LOGGER.debug("save student is executed");
-
         if (student.getId() == null) {
-            try {
-                studentCommandService.create(student);
-            } catch (Exception exception) {
-                model.addAttribute("info", "Nie udało się dodać użytkownika");
+            int sizeBefore = studentQueryService.studentCount();
+            studentCommandService.create(student);
+            int afterSize = studentQueryService.studentCount();
+            if(sizeBefore == afterSize){
+                redirectAttributes.addFlashAttribute("info", "Nie udało się dodać kursanta.");
+            } else {
+                redirectAttributes.addFlashAttribute("info", "Udało się dodać kursanta!");
             }
-            if (model.containsAttribute("info")) {
-                model.addAttribute("info", "Udało się dodać użytkownika!");
-            }
-            return "redirect:/";
         } else {
             studentCommandService.update(student);
-            model.addAttribute("info", "Udało się pomyślnie zaktualizować dane wybranego kursanta.");
-
-            return "redirect:/";
+            redirectAttributes.addFlashAttribute("info", "Udało się pomyślnie zaktualizować dane wybranego kursanta.");
         }
 
+        return "redirect:/";
     }
 
     @RequestMapping(value = {"/showStudentss"})
@@ -144,21 +141,21 @@ public class AdminController {
     }
 
     @RequestMapping(value = {"/saveTeacher"}, method = RequestMethod.POST)
-    public String saveTeacher(@ModelAttribute("teacher") Teacher teacher, Model model){
+    public String saveTeacher(@ModelAttribute("teacher") Teacher teacher, RedirectAttributes redirectAttributes){
         LOGGER.debug("save teacher is executed");
         if(teacher.getId() == null){
             int sizeBefore = teacherQueryService.teacherCount();
             teacherCommandService.create(teacher);
             int afterSize = teacherQueryService.teacherCount();
             if(sizeBefore == afterSize){
-                model.addAttribute("info", "Nie udało się dodać instruktora");
+                redirectAttributes.addFlashAttribute("info", "Nie udało się dodać instruktora");
             } else {
-                model.addAttribute("info", "Udało sie dodać instruktora!");
+                redirectAttributes.addFlashAttribute("info", "Udało sie dodać instruktora!");
             }
         } else {
             teacherCommandService.update(teacher);
             String message = String.format("Udało się pomyślnie zaktualizować dane wybranego instruktora.");
-            model.addAttribute("info", message);
+            redirectAttributes.addFlashAttribute("info", message);
         }
 
         return "redirect:/";
