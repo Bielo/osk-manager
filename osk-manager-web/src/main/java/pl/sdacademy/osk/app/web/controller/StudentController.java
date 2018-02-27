@@ -3,7 +3,6 @@ package pl.sdacademy.osk.app.web.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.domain.entity.Student;
+import pl.sdacademy.service.account.AccountCommandService;
 import pl.sdacademy.service.account.AccountQueryService;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
@@ -30,14 +30,16 @@ public class StudentController {
     private final DrivingLessonQueryService drivingLessonQueryService;
     private final StudentQueryService studentQueryService;
     private final StudentCommandService studentCommandService;
+    private final AccountCommandService accountCommandService;
 
     @Autowired
-    public StudentController(AccountQueryService accountQueryService, DrivingLessonQueryService drivingLessonQueryService, StudentQueryService studentQueryService, StudentCommandService studentCommandService) {
+    public StudentController(AccountQueryService accountQueryService, DrivingLessonQueryService drivingLessonQueryService, StudentQueryService studentQueryService, StudentCommandService studentCommandService, AccountCommandService accountCommandService) {
 
         this.accountQueryService = accountQueryService;
         this.drivingLessonQueryService = drivingLessonQueryService;
         this.studentQueryService = studentQueryService;
         this.studentCommandService = studentCommandService;
+        this.accountCommandService = accountCommandService;
     }
 
     private Long getStudentIdFromContext() {
@@ -72,7 +74,7 @@ public class StudentController {
         return "/studentview/rateTeacher";
     }
 
-    @RequestMapping("/showSettingsStudent")
+    @RequestMapping("/showSettings")
     public String showStudentSettings(){
         LOGGER.debug("show student settings is executed!");
         return "/studentview/studentSettings";
@@ -91,7 +93,26 @@ public class StudentController {
     public String saveStudentPhonenumber(@ModelAttribute("student") Student student, Model model) {
         LOGGER.debug("save phonenumber for current student");
         studentCommandService.updatePhonenumber(student);
-        model.addAttribute("info", "Udało się pomyślnie zaktualizować numer telefonu.");
+        model.addAttribute("info", "Aktualizacja zakończona powodzeniem.");
+
+        return "/studentview/studentSettings";
+    }
+
+    @RequestMapping(value = "/emailSettings", method = RequestMethod.GET)
+    public String editEmail(Model model) {
+        LOGGER.debug("edit email for current student");
+        Account account = accountQueryService.findCurrentAccount();
+        model.addAttribute("account", account);
+
+        return "/studentview/emailSettings";
+    }
+
+    @RequestMapping(value = "/saveEmail", method = RequestMethod.POST)
+    public String saveStudentEmail(@ModelAttribute("account") Account account, Model model) {
+        accountCommandService.updateEmail(account);
+        String message = String.format("Email został zaktualizowany");
+        model.addAttribute("info", message);
+        model.addAttribute("account", account);
 
         return "/studentview/studentSettings";
     }

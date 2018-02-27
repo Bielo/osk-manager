@@ -64,6 +64,12 @@
                             Instruktorzy
                         </a>
                     </div>
+                    <div class="link1">
+                        <a class="tilelink" href="<c:url value='admin/editPassword'/>">
+                            <i class="icon-edit"></i></br>
+                            Ustawienia hasła
+                        </a>
+                    </div>
                 </div>
                 <c:if test="${not empty info}">
                     <p class="info">${info}</p>

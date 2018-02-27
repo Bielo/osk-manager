@@ -9,7 +9,7 @@
 <jsp:include page="../commons/header.jsp"/>
 
 <body>
-<c:url var="saveStudent" value="/student/savePhonenumber"/>
+<c:url var="saveStudent" value="/student/saveEmail"/>
 <div class="container">
     <div class="title">
         <jsp:include page="../commons/logo-left.jsp"/>
@@ -19,18 +19,23 @@
         <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <form:form class="form" method="post" modelAttribute="student" action="${saveStudent}">
-                    <h3>Ustawienia</h3>
+                <form:form class="form" method="post" modelAttribute="account" action="${saveStudent}">
+                    <h3>Zmień adres e-mail</h3>
                     <form:hidden path="id"/>
-                    <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
+                    <form:input placeholder="e-mail" path="email" type="email" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Zapisz</form:button>
                 </form:form>
+
                 <jsp:include page="../commons/page-back.jsp"/>
+
+                <c:if test="${not empty info}">
+                    <p class="info">${info}</p>
+                </c:if>
             </div>
         </div>
         <jsp:include page="../commons/bottom-right.jsp"/>
     </div>
-    <jsp:include page="../commons/footer.jsp"/>
 </div>
+<jsp:include page="../commons/footer.jsp"/>
 </body>
 </html>

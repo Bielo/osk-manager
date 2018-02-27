@@ -9,7 +9,7 @@
 <jsp:include page="../commons/header.jsp"/>
 
 <body>
-<c:url var="saveStudent" value="/student/savePhonenumber"/>
+<c:url var="saveAdmin" value="/admin/savePassword"/>
 <div class="container">
     <div class="title">
         <jsp:include page="../commons/logo-left.jsp"/>
@@ -19,10 +19,10 @@
         <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <form:form class="form" method="post" modelAttribute="student" action="${saveStudent}">
-                    <h3>Ustawienia</h3>
+                <form:form class="form" method="post" modelAttribute="account" action="${saveAdmin}">
+                    <h3>Zmień hasło</h3>
                     <form:hidden path="id"/>
-                    <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
+                    <form:input placeholder="hasło" path="password" type="password" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Zapisz</form:button>
                 </form:form>
                 <jsp:include page="../commons/page-back.jsp"/>

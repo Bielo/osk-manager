@@ -20,7 +20,7 @@
         <div class="center">
             <div class="form">
                 <form:form class="content" method="post" modelAttribute="account" action="${save}">
-                    <h3>Zmień e-mail</h3>
+                    <h3>Zmień adres e-mail</h3>
                     <form:hidden path="id"/>
                     <form:input placeholder="e-mail" path="email" type="email" required="true"/>
                     <form:button type="submit" name="submit"

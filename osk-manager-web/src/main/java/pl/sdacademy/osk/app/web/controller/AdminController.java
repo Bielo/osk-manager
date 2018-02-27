@@ -4,14 +4,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.domain.entity.Teacher;
+import pl.sdacademy.service.account.AccountCommandService;
+import pl.sdacademy.service.account.AccountQueryService;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 import pl.sdacademy.service.student.StudentCommandService;
@@ -37,14 +41,25 @@ public class AdminController {
     private final TeacherCommandService teacherCommandService;
     private final TeacherQueryService teacherQueryService;
     private final DrivingLessonQueryService drivingLessonQueryService;
+    private final AccountCommandService accountCommandService;
+    private final AccountQueryService accountQueryService;
 
     @Autowired
-    public AdminController(StudentCommandService studentCommandService, StudentQueryService studentQueryService, TeacherCommandService teacherCommandService, TeacherQueryService teacherQueryService, DrivingLessonQueryService drivingLessonQueryService) {
+    public AdminController(StudentCommandService studentCommandService, StudentQueryService studentQueryService, TeacherCommandService teacherCommandService, TeacherQueryService teacherQueryService, DrivingLessonQueryService drivingLessonQueryService, AccountCommandService accountCommandService, AccountQueryService accountQueryService) {
         this.studentCommandService = studentCommandService;
         this.studentQueryService = studentQueryService;
         this.teacherCommandService = teacherCommandService;
         this.teacherQueryService = teacherQueryService;
         this.drivingLessonQueryService = drivingLessonQueryService;
+        this.accountCommandService = accountCommandService;
+        this.accountQueryService = accountQueryService;
+    }
+
+    private Long getAccountIdFromContext() {
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+        String userName = loggedInUser.getName();
+        Account account = accountQueryService.findByEmail(userName);
+        return account.getId();
     }
 
     @InitBinder
@@ -210,10 +225,28 @@ public class AdminController {
 
     @RequestMapping(value = "/showSchedule", method = RequestMethod.GET)
     public String schedule(Model model) {
-        LOGGER.debug("is executed");
+        LOGGER.debug("is executed!");
         List<DrivingLessonDTO> drivingLessonDTOList = drivingLessonQueryService.findAllFutureDrivingLessons();
         model.addAttribute("lessons", drivingLessonDTOList);
 
         return "/adminview/schedule";
+    }
+
+    @RequestMapping(value = "/editPassword", method = RequestMethod.GET)
+    public String editAdminPassword(Model model) {
+        LOGGER.debug("edit password for admin is executed!");
+        Account account = accountQueryService.findAccountByID(getAccountIdFromContext());
+        model.addAttribute("account", account);
+
+        return "/adminview/passwordSettings";
+    }
+
+    @RequestMapping(value = "/savePassword", method = RequestMethod.POST)
+    public String saveAdminPassword(@ModelAttribute("account") Account account, Model model) {
+        LOGGER.debug("save password for admin is executed!");
+        accountCommandService.updatePassword(account);
+        model.addAttribute("info", "Hasło zostało zmienione.");
+
+        return "/adminview/adminMain";
     }
 }

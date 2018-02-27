@@ -1,4 +1,4 @@
-INSERT INTO `osk`.`account` (`ACCOUNT_ID`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES ('1', 'admin', 'admin', 'ROLE_ADMIN');
+INSERT INTO `osk`.`account` (`ACCOUNT_ID`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES ('1', 'admin@admin.pl', 'admin', 'ROLE_ADMIN');
 INSERT INTO `osk`.`account` (`ACCOUNT_ID`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES ('2', 'kursant1@kursant.pl', 'kursant1', 'ROLE_STUDENT');
 INSERT INTO `osk`.`account` (`ACCOUNT_ID`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES ('3', 'kursant2@kursant.pl', 'kursant2', 'ROLE_STUDENT');
 INSERT INTO `osk`.`account` (`ACCOUNT_ID`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES ('4', 'instr1@instr.pl', 'instruktor1', 'ROLE_TEACHER');

@@ -29,10 +29,10 @@
                         Edytuj e-mail
                     </a></div>
                 </div>
-                <jsp:include page="../commons/page-back.jsp"/>
                 <c:if test="${not empty info}">
                     <p class="info">${info}</p>
                 </c:if>
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="../commons/bottom-right.jsp"/>
