@@ -36,11 +36,11 @@
                         <tr>
                             <td>${teacher.firstName}</td>
                             <td>${teacher.lastName}</td>
-                            <td>${teacher.email}</td>
+                            <td>${teacher.account.email}</td>
                             <td>${teacher.phoneNumber}</td>
                             <td class="noborder">
                                 <div class="option-button">
-                                    <spring:url value="/teacher/edit/${teacher.id}" var="teacherEditUrl"/>
+                                    <spring:url value="/admin/teacher/edit/${teacher.id}" var="teacherEditUrl"/>
                                     <a class="option-link" href='${teacherEditUrl}'>
                                         <i class="icon-edit"></i>Edytuj
                                     </a>
@@ -48,7 +48,7 @@
                             </td>
                             <td class="noborder">
                                 <div class="option-button">
-                                    <spring:url value="/teacher/delete/${teacher.id}" var="teacherDeleteUrl"/>
+                                    <spring:url value="/admin/teacher/delete/${teacher.id}" var="teacherDeleteUrl"/>
                                     <a class="option-link" href='${teacherDeleteUrl}'>
                                         <i class="icon-user-times"></i>Usuń
                                     </a>

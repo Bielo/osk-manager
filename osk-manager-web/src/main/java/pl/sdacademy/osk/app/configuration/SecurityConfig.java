@@ -47,7 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and().logout()
                 .logoutUrl("/perform_logout")
-                .logoutSuccessUrl("/login?logout");
+                .logoutSuccessUrl("/login?logout")
+                .and().exceptionHandling().accessDeniedPage("/error?error=forbidden");
     }
 
     @Autowired

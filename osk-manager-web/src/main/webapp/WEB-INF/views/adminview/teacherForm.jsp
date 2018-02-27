@@ -26,7 +26,7 @@
                     <form:input placeholder="imię" path="firstName" required="true"/>
                     <form:input placeholder="nazwisko" path="lastName" required="true"/>
                     <form:input placeholder="e-mail" path="account.email" type="email" required="true"/>
-                    <form:input placeholder="password" path="account.password" required="true"/>
+                    <form:input placeholder="hasło" path="account.password" type="password" required="true"/>
                     <form:input placeholder="numer telefonu" path="phoneNumber" type="tel" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>

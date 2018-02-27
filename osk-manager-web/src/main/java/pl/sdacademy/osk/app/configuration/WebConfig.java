@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "pl.sdacademy.osk.app.web.controller")
+@ComponentScan(basePackages = {"pl.sdacademy.osk.app.web.controller","pl.sdacademy.osk.app.web.global"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
