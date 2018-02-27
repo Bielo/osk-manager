@@ -56,6 +56,7 @@ body {
 
 .left {
     width: 20%;
+    background-color: #0b63a2;
 }
 
 .center {
@@ -72,6 +73,7 @@ body {
 
 .right {
     width: 20%;
+    background-color: #0b63a2;
 }
 
 .footer {

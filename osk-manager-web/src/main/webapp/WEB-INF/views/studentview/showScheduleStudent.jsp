@@ -22,7 +22,7 @@
                 <table class="tab">
                     <thead>
                     <tr>
-                        <th>Zaplanowane jazdy</th>
+                        <th colspan="4">Zaplanowane jazdy</th>
                     </tr>
                     </thead>
                     <c:forEach items="${lessons}" var="lesson">
