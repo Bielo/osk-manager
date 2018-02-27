@@ -29,6 +29,7 @@
                     </tr>
                     </thead>
                     <c:forEach items="${students}" var="student">
+                        <thead>
                         <tr>
                             <td>${student.firstName}</td>
                             <td>${student.lastName}</td>

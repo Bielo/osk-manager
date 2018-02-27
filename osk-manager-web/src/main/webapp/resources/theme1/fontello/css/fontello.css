@@ -74,7 +74,7 @@
 .icon-gauge:before { content: '\e811'; font-size: 30px; margin-top: 8px;} /* '' */
 .icon-user-delete:before { content: '\e812'; font-size: 30px; margin-top: 8px;} /* '' */
 .icon-pencil-1:before { content: '\e813'; font-size: 30px; margin-top: 8px;} /* '' */
-.icon-cab:before { content: '\f1b9'; font-size: 30px; margin-top: 8px;} /* '' */
+.icon-cab:before { content: '\f1b9'; font-size: 20px; margin-top: 8px;} /* '' */
 .icon-user-plus:before { content: '\f234'; font-size: 30px; margin-top: 8px;} /* '' */
 .icon-user-times:before { content: '\f235'; font-size: 14px; margin-top: 4px;} /* '' */
 .icon-calendar-plus-o:before { content: '\f271'; font-size: 30px; margin-top: 8px;} /* '' */

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.domain.entity.Role;
 import pl.sdacademy.domain.entity.Teacher;
 import pl.sdacademy.repository.AccountRepository;
@@ -58,6 +59,14 @@ public class TeacherCommandService {
         }
 
         teacherRepository.delete(teacher);
+    }
+
+    public void updatePhoneNumber(Teacher teacher) {
+        Teacher dbTeacher = teacherRepository.findOne(teacher.getId());
+        if (dbTeacher == null) {
+            LOGGER.debug("Teacher with id " + teacher.getId() + " not found.");
+        }
+        dbTeacher.setPhoneNumber(teacher.getPhoneNumber());
     }
 
 }

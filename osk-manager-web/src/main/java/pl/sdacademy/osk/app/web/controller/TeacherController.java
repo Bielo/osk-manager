@@ -8,14 +8,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.domain.entity.Teacher;
+import pl.sdacademy.service.account.AccountCommandService;
 import pl.sdacademy.service.account.AccountQueryService;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
-import pl.sdacademy.service.student.StudentQueryService;
+import pl.sdacademy.service.security.UserDetails;
 import pl.sdacademy.service.teacher.TeacherCommandService;
 import pl.sdacademy.service.teacher.TeacherQueryService;
 
@@ -30,28 +33,31 @@ public class TeacherController {
 
     private final DrivingLessonQueryService drivingLessonQueryService;
     private final AccountQueryService accountQueryService;
+    private final TeacherQueryService teacherQueryService;
+    private final TeacherCommandService teacherCommandService;
+    private final AccountCommandService accountCommandService;
 
     @Autowired
-    public TeacherController(DrivingLessonQueryService drivingLessonQueryService, AccountQueryService accountQueryService) {
+    public TeacherController(DrivingLessonQueryService drivingLessonQueryService, AccountQueryService accountQueryService, TeacherQueryService teacherQueryService, TeacherCommandService teacherCommandService, AccountCommandService accountCommandService) {
         this.drivingLessonQueryService = drivingLessonQueryService;
         this.accountQueryService = accountQueryService;
+        this.teacherQueryService = teacherQueryService;
+        this.teacherCommandService = teacherCommandService;
+        this.accountCommandService = accountCommandService;
     }
-
-
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
     @RequestMapping(value = "/showSchedule")
     public String teacherSchedule(Model model) {
         LOGGER.debug("show schedule for current Teacher");
 
-        //FIXME poprawić to zapytanie na wyszukiwanie konretnego harmonogramu dla Instruktora
-
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        String userName = loggedInUser.getName();
-        Account account = accountQueryService.findByEmail(userName);
+        UserDetails userDetails = (UserDetails) loggedInUser.getPrincipal();
+        Account account = accountQueryService.findAccountByID(userDetails.getAccountId());
         Teacher teacher = account.getTeacher();
         List<DrivingLessonDTO> drivingLessons = drivingLessonQueryService.findAllFutureDrivingLessonsForTeacher(teacher);
         model.addAttribute("lessons", drivingLessons);
+
         return "/teacherview/teacherSchedule";
     }
 
@@ -59,8 +65,7 @@ public class TeacherController {
     @RequestMapping(value = "/students")
     public String showStudentsForTeacher(Model model) {
         LOGGER.debug("show students for current Teacher");
-
-        Long id = getTeacherIdFromContext();
+        Long id = accountQueryService.findCurrentAccount().getTeacher().getId();
 
         Set<Student> students = drivingLessonQueryService.findMyStudents(id);
         model.addAttribute("students", students);
@@ -68,14 +73,53 @@ public class TeacherController {
         return "/teacherview/studentsForTeachers";
     }
 
-    private Long getTeacherIdFromContext() {
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
+    @RequestMapping(value = "/settings")
+    public String teacherSettings() {
+        LOGGER.debug("go to teacher's settings");
 
-        String userName = loggedInUser.getName();
-
-        Account account = accountQueryService.findByEmail(userName);
-        return account.getTeacher().getId();
+        return "/teacherview/settingsTeacher";
     }
 
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
+    @RequestMapping(value = "/editPhone", method = RequestMethod.GET)
+    public String editPhoneNumber(Model model) {
+        LOGGER.debug("change teacher's phone number");
 
+        Teacher teacher = teacherQueryService.findTeacherByID(accountQueryService.findCurrentAccount().getTeacher().getId());
+        model.addAttribute("teacher", teacher);
+
+        return "/teacherview/editTeacherPhone";
+    }
+
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
+    @RequestMapping(value = "/savePhone", method = RequestMethod.POST)
+    public String savePhone(@ModelAttribute("teacher") Teacher teacher, Model model) {
+        teacherCommandService.updatePhoneNumber(teacher);
+        String message = String.format("Numer telefonu został zaktualizowany.");
+        model.addAttribute("info", message);
+
+        return "/teacherview/teacherMain";
+    }
+
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
+    @RequestMapping(value = "/editEmail", method = RequestMethod.GET)
+    public String editEmail(Model model) {
+        LOGGER.debug("change teacher's email");
+        Account account = accountQueryService.findCurrentAccount();
+        model.addAttribute("account", account);
+
+        return "/teacherview/editEmail";
+    }
+
+    @PreAuthorize("hasRole('ROLE_TEACHER')")
+    @RequestMapping(value = "/saveEmail", method = RequestMethod.POST)
+    public String saveEmail(@ModelAttribute("account") Account account, Model model) {
+        accountCommandService.updateEmail(account);
+        String message = String.format("Email został zaktualizowany");
+        model.addAttribute("info", message);
+        model.addAttribute("account", account);
+
+        return "/teacherview/teacherMain";
+    }
 }

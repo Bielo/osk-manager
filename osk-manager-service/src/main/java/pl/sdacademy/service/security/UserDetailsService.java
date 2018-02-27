@@ -3,11 +3,8 @@ package pl.sdacademy.service.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.repository.AccountRepository;
 
@@ -23,7 +20,7 @@ public class UserDetailsService implements org.springframework.security.core.use
 
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Account account = accountRepository.findByEmail(email);
         if (Objects.isNull(account)) {
             throw new UsernameNotFoundException(email);
@@ -32,6 +29,6 @@ public class UserDetailsService implements org.springframework.security.core.use
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(account.getRole().toString()));
 
-        return new User(account.getEmail(), account.getPassword(), authorities);
+        return new UserDetails(account.getEmail(), account.getPassword(), authorities, account.getId());
     }
 }

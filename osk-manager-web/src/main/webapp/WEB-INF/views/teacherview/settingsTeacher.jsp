@@ -17,38 +17,27 @@
         <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <h3>Panel Instruktora</h3>
+                <h3>Ustawienia</h3>
 
                 <div class="square">
-                    <div class="link2" class="line"><a class="tilelink" href="<c:url value='/teacherSchedule'/>">
-                        <i class="icon-calendar"></i></br></br>
-                        Harmonogram
-                    </a></div>
-                    <div class="link2">
-                        <a class="tilelink" href="<c:url value='/setSchedule'/>">
-                            <i class="icon-calendar-plus-o"></i></br>
-                            Ustal harmonogram
+                    <div class="link2" class="line">
+                        <a class="tilelink" href=" <spring:url value="editPhone"/>">
+                            <i class="icon-pencil-1"></i></br>
+                            Edytuj telefon
+                        </a>
+                    </div>
+                    <div class="link2" class="line">
+                        <a class="tilelink" href=" <spring:url value="editEmail"/>">
+                            <i class="icon-mail"></i></br>
+                            Zmień maila
                         </a>
                     </div>
 
+                    <c:if test="${not empty info}">
+                        <p class="info">${info}</p>
+                    </c:if>
                 </div>
-                <div class="square">
-                    <div class="link2">
-                        <a class="tilelink" href="<c:url value='/students'/>">
-                            <i class="icon-users"></i></br>
-                            Pokaż moich kursantów
-                        </a>
-                    </div>
-                    <div class="link2">
-                        <a class="tilelink" href="<c:url value='/settings'/>">
-                            <i class="icon-wrench-outline"></i></br></br>
-                            Ustawienia
-                        </a>
-                    </div>
-                </div>
-                <c:if test="${not empty info}">
-                    <p class="info">${info}</p>
-                </c:if>
+                <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
         <jsp:include page="../commons/bottom-right.jsp"/>
@@ -56,5 +45,4 @@
     <jsp:include page="../commons/footer.jsp"/>
 </div>
 </body>
-
 </html>
