@@ -4,8 +4,8 @@
          pageEncoding="UTF-8" %>
 
 <div class="logo-right">
-    <p>Jesteś zalogowany jako:<i class="icon-user"></i> ${account.email}</p>
 
+    <p>Jesteś zalogowany jako:<i class="icon-user"></i> <%=request.getUserPrincipal().getName()%></p>
     <spring:url var="logoutUrl" value="/perform_logout"/>
 
     <form:form method="post" action="${logoutUrl}" class="form-horizontal">

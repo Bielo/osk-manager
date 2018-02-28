@@ -9,7 +9,7 @@
 <jsp:include page="../commons/header.jsp"/>
 
 <body>
-<c:url var="addDrivingLesson" value="/addDrivingLesson"/>
+<c:url var="addDrivingLesson" value="/student/showTeachersForADay/"/>
 <div class="container">
     <div class="title">
         <jsp:include page="../commons/logo-left.jsp"/>
@@ -19,13 +19,23 @@
         <jsp:include page="../commons/bottom-left.jsp"/>
         <div class="center">
             <div class="content">
-                <form:form class="form" method="post" modelAttribute="drivingLesson" action="${addDrivingLesson}">
+                <c:choose>
+                    <c:when test="${!empty date}">
+                <form:form class="form" method="post" modelAttribute="date" action="${addDrivingLesson}">
                     <h3>Formularz Planowania Jazd</h3>
-                    <form:input path="lessonDay" placeholder="Wybierz termin jazdy" class="textbox-n" type="text"
+                    <form:input path="date" placeholder="Wybierz termin jazdy" class="textbox-n" type="text"
                                 onfocus="(this.type='date')" id="date" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Pokaż</form:button>
                 </form:form>
                 <jsp:include page="../commons/page-back.jsp"/>
+                    </c:when>
+                    <c:when test="${!empty lessons}">
+                        Tu wyświetlą się lekcje
+                    </c:when>
+                    <c:when test="${empty lessons}">
+                        Nie ma lekcji w wybranym terminie
+                    </c:when>
+                </c:choose>
             </div>
         </div>
         <jsp:include page="../commons/bottom-right.jsp"/>

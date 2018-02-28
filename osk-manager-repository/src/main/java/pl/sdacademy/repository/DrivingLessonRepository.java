@@ -1,6 +1,7 @@
 package pl.sdacademy.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import pl.sdacademy.domain.entity.DrivingLesson;
@@ -24,4 +25,7 @@ public interface DrivingLessonRepository extends JpaRepository<DrivingLesson, Lo
 
     @Query("SELECT dl FROM DrivingLesson  dl WHERE dl.student = :student AND dl.lessonDay >= :dateNow")
     List<DrivingLesson> findDrivingLessonsForStudent(@Param("student") Student student, @Param("dateNow") Date date);
+
+    List<DrivingLesson> findDrivingLessonByLessonDay(Date date);
+
 }

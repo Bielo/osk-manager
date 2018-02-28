@@ -42,15 +42,19 @@ public class DrivingLesson implements Serializable{
     @Temporal(TemporalType.TIME)
     private Date lessonStopTime;
 
+    @Column(name = "IS_CONFIRMED")
+    boolean isConfirmed;
+
     public DrivingLesson() {
     }
 
-    public DrivingLesson(Student student, Teacher teacher, Date lessonDay, Date lessonStartTime, Date lessonStopTime) {
+    public DrivingLesson(Student student, Teacher teacher, Date lessonDay, Date lessonStartTime, Date lessonStopTime, boolean isConfirmed) {
         this.student = student;
         this.teacher = teacher;
         this.lessonDay = lessonDay;
         this.lessonStartTime = lessonStartTime;
         this.lessonStopTime = lessonStopTime;
+        this.isConfirmed = false;
     }
 
     public Long getId() {
@@ -99,5 +103,13 @@ public class DrivingLesson implements Serializable{
 
     public void setLessonStopTime(Date lessonStopTime) {
         this.lessonStopTime = lessonStopTime;
+    }
+
+    public boolean isConfirmed() {
+        return isConfirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        isConfirmed = confirmed;
     }
 }

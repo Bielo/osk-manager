@@ -199,6 +199,16 @@
                 <artifactId>bootstrap</artifactId>
                 <version>${webjars-bootstrap-version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>5.0.4.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring-security-version}</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>

@@ -83,4 +83,9 @@ public class DrivingLessonQueryService {
         List<DrivingLessonDTO> drivingLessonDTOList = getDrivingLessonDTO(drivingLessonList);
         return  drivingLessonDTOList;
     }
+
+    public List<DrivingLesson> findAllDrivingLessonsByLessonStartDay(Date date) {
+        List<DrivingLesson> drivingLessons = drivingLessonRepository.findDrivingLessonByLessonDay(date);
+        return drivingLessons;
+    }
 }
