@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.*;
 import pl.sdacademy.domain.entity.Account;
 import pl.sdacademy.domain.entity.DrivingLesson;
 import pl.sdacademy.domain.entity.Student;
+import pl.sdacademy.domain.entity.Teacher;
 import pl.sdacademy.service.account.AccountCommandService;
 import pl.sdacademy.service.account.AccountQueryService;
+import pl.sdacademy.service.drivinglesson.DrivingLessonCommandService;
 import pl.sdacademy.service.drivinglesson.DrivingLessonQueryService;
 import pl.sdacademy.service.drivinglesson.dto.DrivingLessonDTO;
 import pl.sdacademy.service.student.StudentCommandService;
 import pl.sdacademy.service.student.StudentQueryService;
 import pl.sdacademy.service.student.dto.DateDTO;
+import pl.sdacademy.service.teacher.TeacherQueryService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,15 +40,19 @@ public class StudentController {
     private final StudentQueryService studentQueryService;
     private final StudentCommandService studentCommandService;
     private final AccountCommandService accountCommandService;
+    private final TeacherQueryService teacherQueryService;
+    private final DrivingLessonCommandService drivingLessonCommandService;
 
     @Autowired
-    public StudentController(AccountQueryService accountQueryService, DrivingLessonQueryService drivingLessonQueryService, StudentQueryService studentQueryService, StudentCommandService studentCommandService, AccountCommandService accountCommandService) {
+    public StudentController(AccountQueryService accountQueryService, DrivingLessonQueryService drivingLessonQueryService, StudentQueryService studentQueryService, StudentCommandService studentCommandService, AccountCommandService accountCommandService, TeacherQueryService teacherQueryService, DrivingLessonCommandService drivingLessonCommandService) {
 
         this.accountQueryService = accountQueryService;
         this.drivingLessonQueryService = drivingLessonQueryService;
         this.studentQueryService = studentQueryService;
         this.studentCommandService = studentCommandService;
         this.accountCommandService = accountCommandService;
+        this.teacherQueryService = teacherQueryService;
+        this.drivingLessonCommandService = drivingLessonCommandService;
     }
 
     private Long getStudentIdFromContext() {
@@ -81,6 +88,8 @@ public class StudentController {
     @RequestMapping("/setSchedule")
     public String planLessonStudent(Model model) {
         DateDTO date = new DateDTO();
+        List<Teacher> teachers = teacherQueryService.findAllTeachers();
+        model.addAttribute("teachers", teachers);
         model.addAttribute("date", date);
         return "/studentview/DrivingLessonForm";
     }
@@ -88,14 +97,28 @@ public class StudentController {
     @RequestMapping("/showTeachersForADay")
     public String showTeachersForADay(@ModelAttribute DateDTO dateDTO, Model model) {
 
+        LOGGER.debug("show Teachers For A day kontroler");
+
         Date date = dateDTO.getDate();
 
-        List<DrivingLesson> lessonsForADay = drivingLessonQueryService.findAllDrivingLessonsByLessonStartDay(date);
+        Teacher teacher = teacherQueryService.findTeacherByID(dateDTO.getTeacher());
+
+        List<DrivingLesson> lessonsForADay = drivingLessonQueryService.findAllDrivingLessonsByLessonStartDay(date, teacher);
 
         model.addAttribute("lessons", lessonsForADay);
 
         return "/studentview/DrivingLessonForm";
     }
+
+    @RequestMapping("/lesson/{id}")
+    public String reserveLesson(@PathVariable("id") Long id, Model model) {
+        drivingLessonCommandService.reserveLesson(id, getStudentIdFromContext());
+
+        model.addAttribute("info", "Udało się zarezerwować lekcję. Teraz instruktor musi ją zaakceptować");
+
+        return "/studentview/studentMain";
+    }
+
 
     @RequestMapping("/rateTeacher")
     public String rateTeacher() {

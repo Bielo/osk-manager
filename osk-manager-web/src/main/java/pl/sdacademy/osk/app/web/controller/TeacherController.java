@@ -76,11 +76,11 @@ public class TeacherController {
     public String teacherSchedule(Model model) {
         LOGGER.debug("show schedule for current Teacher");
 
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) loggedInUser.getPrincipal();
-        Account account = accountQueryService.findAccountByID(userDetails.getAccountId());
-        Teacher teacher = account.getTeacher();
-        List<DrivingLessonDTO> drivingLessons = drivingLessonQueryService.findAllFutureDrivingLessonsForTeacher(teacher);
+        Long id = accountQueryService.findCurrentAccount().getTeacher().getId();
+
+        Teacher teacher = teacherQueryService.findTeacherByID(id);
+
+        List<DrivingLessonDTO> drivingLessons = drivingLessonQueryService.findAllFutureDrivingLessonsForTeacher(id);
         model.addAttribute("lessons", drivingLessons);
 
         return "/teacherview/teacherSchedule";
@@ -127,7 +127,7 @@ public class TeacherController {
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
     @RequestMapping(value = {"/createSchedule"})
-    public String createSchedule(@ModelAttribute CreateScheduleDTO scheduleDTO) {
+    public String createSchedule(@ModelAttribute CreateScheduleDTO scheduleDTO, RedirectAttributes redirectAttributes) {
         LOGGER.debug("kriejt skedul jest wykonywany");
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
 
@@ -149,7 +149,10 @@ public class TeacherController {
         stopWorkHour.setMinutes(Integer.valueOf(stopWork[1]));
         stopWorkHour.setSeconds(00);
 
+
         drivingLessonCommandService.createScheduleForInstructor(scheduleDTO.getDay(), startWorkHour, stopWorkHour, teacher);
+
+        redirectAttributes.addFlashAttribute("info", "Udało się ustalić harmonogram");
 
         return "redirect:/";
     }

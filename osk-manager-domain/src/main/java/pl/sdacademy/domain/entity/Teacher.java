@@ -112,4 +112,8 @@ public class Teacher implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+    }
 }

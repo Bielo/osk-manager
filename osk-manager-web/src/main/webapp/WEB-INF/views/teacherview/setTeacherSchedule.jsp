@@ -24,8 +24,10 @@
                     <h3>Formularz wyboru godzin jazdy</h3>
                     <form:input placeholder="Dzień jazd" path="day" class="textbox-n" type="text"
                                 onfocus="(this.type='date')" id="date" required="true"/>
-                    <form:input placeholder="godzina rozpoczęcia" path="startWorkHour" type="time" required="true"/>
-                    <form:input placeholder="godzina zakończenia" path="stopWorkHour" type="time" max="22" required="true"/>
+                    Godzina rozpoczęcia
+                    <form:input path="startWorkHour" type="time" required="true"/>
+                    Godzina zakończenia
+                    <form:input path="stopWorkHour" type="time" max="22" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>
                 <jsp:include page="../commons/page-back.jsp"/>

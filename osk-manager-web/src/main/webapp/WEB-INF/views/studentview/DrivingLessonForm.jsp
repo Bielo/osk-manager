@@ -25,16 +25,46 @@
                     <h3>Formularz Planowania Jazd</h3>
                     <form:input path="date" placeholder="Wybierz termin jazdy" class="textbox-n" type="text"
                                 onfocus="(this.type='date')" id="date" required="true"/>
+                    <form:select path = "teacher">
+                        <form:option value = "NONE" label = "Select"/>
+                        <form:options items = "${teachers}" itemValue="id"/>
+                    </form:select>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Pokaż</form:button>
                 </form:form>
                 <jsp:include page="../commons/page-back.jsp"/>
                     </c:when>
-                    <c:when test="${!empty lessons}">
-                        Tu wyświetlą się lekcje
-                    </c:when>
+
                     <c:when test="${empty lessons}">
-                        Nie ma lekcji w wybranym terminie
+                        Nauczyciel w danym terminie nie ma lekcji
                     </c:when>
+                    <c:when test="${!empty lessons}">
+                        <table class="tab">
+                            <thead>
+                            <tr>
+                                <th>Instruktor</th>
+                                <th>Początek lekcji</th>
+                                <th>Koniec lekcji</th>
+                                <th>Opcje</th>
+                            </tr>
+                            </thead>
+                            <c:forEach items="${lessons}" var="lesson">
+                                <tr>
+                                    <td>${lesson.teacher}</td>
+                                <td>${lesson.lessonStartTime}</td>
+                                <td>${lesson.lessonStopTime}</td>
+                                    <td class="noborder">
+                                        <div class="option-button">
+                                            <spring:url value="/student/lesson/${lesson.id}" var="reserveLesson"/>
+                                            <a class="option-link" href='${reserveLesson}'>
+                                                <i class="icon-edit"></i>Zapisz się
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                    </c:when>
+
                 </c:choose>
             </div>
         </div>

@@ -36,7 +36,8 @@ public class DrivingLessonQueryService {
     }
 
 
-    public List<DrivingLessonDTO> findAllFutureDrivingLessonsForTeacher(Teacher teacher) {
+    public List<DrivingLessonDTO> findAllFutureDrivingLessonsForTeacher(Long id) {
+        Teacher teacher = teacherRepository.findOne(id);
         List<DrivingLesson> drivingLessonList = drivingLessonRepository.findDrivingLessonsForTeacher(teacher, new Date());
 //        List<DrivingLesson> forOneTeacher = drivingLessonList.stream()
 //                .filter(drivingLesson -> drivingLesson.getTeacher().getId() == id)
@@ -84,8 +85,8 @@ public class DrivingLessonQueryService {
         return  drivingLessonDTOList;
     }
 
-    public List<DrivingLesson> findAllDrivingLessonsByLessonStartDay(Date date) {
-        List<DrivingLesson> drivingLessons = drivingLessonRepository.findDrivingLessonByLessonDay(date);
+    public List<DrivingLesson> findAllDrivingLessonsByLessonStartDay(Date date, Teacher teacher) {
+        List<DrivingLesson> drivingLessons = drivingLessonRepository.findDrivingLessonsByDateAndTeacherInIt(date, teacher);
         return drivingLessons;
     }
 }

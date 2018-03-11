@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.sdacademy.domain.entity.DrivingLesson;
+import pl.sdacademy.domain.entity.Student;
 import pl.sdacademy.domain.entity.Teacher;
 import pl.sdacademy.repository.DrivingLessonRepository;
+import pl.sdacademy.repository.StudentRepository;
 
 import java.util.Date;
 
@@ -15,10 +17,12 @@ import java.util.Date;
 public class DrivingLessonCommandService {
 
     private final DrivingLessonRepository drivingLessonRepository;
+    private final StudentRepository studentRepository;
 
     @Autowired
-    public DrivingLessonCommandService(DrivingLessonRepository drivingLessonRepository) {
+    public DrivingLessonCommandService(DrivingLessonRepository drivingLessonRepository, StudentRepository studentRepository) {
         this.drivingLessonRepository = drivingLessonRepository;
+        this.studentRepository = studentRepository;
     }
 
     public void createScheduleForInstructor(Date date, Date startWorkTime, Date stopWorkTime, Teacher teacher) {
@@ -37,5 +41,13 @@ public class DrivingLessonCommandService {
         }
 
 
+    }
+
+    public void reserveLesson(Long lessonId, Long studentId) {
+        DrivingLesson drivingLesson = drivingLessonRepository.findOne(lessonId);
+
+        Student student = studentRepository.findOne(studentId);
+
+        drivingLesson.setStudent(student);
     }
 }

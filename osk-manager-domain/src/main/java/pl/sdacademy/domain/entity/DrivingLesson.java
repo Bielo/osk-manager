@@ -43,7 +43,7 @@ public class DrivingLesson implements Serializable{
     private Date lessonStopTime;
 
     @Column(name = "IS_CONFIRMED")
-    boolean isConfirmed;
+    private boolean isConfirmed;
 
     public DrivingLesson() {
     }

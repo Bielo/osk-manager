@@ -26,6 +26,7 @@ public interface DrivingLessonRepository extends JpaRepository<DrivingLesson, Lo
     @Query("SELECT dl FROM DrivingLesson  dl WHERE dl.student = :student AND dl.lessonDay >= :dateNow")
     List<DrivingLesson> findDrivingLessonsForStudent(@Param("student") Student student, @Param("dateNow") Date date);
 
-    List<DrivingLesson> findDrivingLessonByLessonDay(Date date);
+    @Query("SELECT dl from DrivingLesson dl where dl.lessonDay = :date AND dl.teacher = :teacher AND dl.isConfirmed = false ")
+    List<DrivingLesson> findDrivingLessonsByDateAndTeacherInIt(@Param("date") Date date, @Param("teacher") Teacher teacher);
 
 }
