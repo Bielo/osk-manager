@@ -127,16 +127,8 @@ public class TeacherController {
 
     @PreAuthorize("hasRole('ROLE_TEACHER')")
     @RequestMapping(value = {"/createSchedule"})
-    public String createSchedule(@ModelAttribute CreateScheduleDTO scheduleDTO, RedirectAttributes redirectAttributes) {
+    public String createSchedule(@ModelAttribute CreateScheduleDTO scheduleDTO, RedirectAttributes redirectAttributes, Model model) {
         LOGGER.debug("kriejt skedul jest wykonywany");
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-
-        String userName = loggedInUser.getName();
-
-        Account account = accountQueryService.findByEmail(userName);
-
-        Teacher teacher = account.getTeacher();
-
         Date startWorkHour = new Date();
         String[] startWork = scheduleDTO.getStartWorkHour().split(":");
         startWorkHour.setHours(Integer.valueOf(startWork[0]));
@@ -148,6 +140,29 @@ public class TeacherController {
         stopWorkHour.setHours(Integer.valueOf(stopWork[0]));
         stopWorkHour.setMinutes(Integer.valueOf(stopWork[1]));
         stopWorkHour.setSeconds(00);
+
+        if (startWorkHour.after(stopWorkHour)) {
+            model.addAttribute("schedule", new CreateScheduleDTO());
+            model.addAttribute("info", "Godzina rozpoczęcia pracy musi być wcześniejsza niż godzina zakończenia pracy");
+            return "/teacherview/setTeacherSchedule";
+        }
+        if (scheduleDTO.getDay().compareTo(startWorkHour) < 0) {
+            model.addAttribute("schedule", new CreateScheduleDTO());
+            model.addAttribute("info", "Proszę wybrać przyszłą datę");
+            return "/teacherview/setTeacherSchedule";
+        }
+
+        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
+
+        String userName = loggedInUser.getName();
+
+        Account account = accountQueryService.findByEmail(userName);
+
+        Teacher teacher = account.getTeacher();
+
+
+
+
 
 
         drivingLessonCommandService.createScheduleForInstructor(scheduleDTO.getDay(), startWorkHour, stopWorkHour, teacher);

@@ -39,10 +39,13 @@ public class DrivingLessonQueryService {
     public List<DrivingLessonDTO> findAllFutureDrivingLessonsForTeacher(Long id) {
         Teacher teacher = teacherRepository.findOne(id);
         List<DrivingLesson> drivingLessonList = drivingLessonRepository.findDrivingLessonsForTeacher(teacher, new Date());
+
 //        List<DrivingLesson> forOneTeacher = drivingLessonList.stream()
 //                .filter(drivingLesson -> drivingLesson.getTeacher().getId() == id)
 //                .collect(Collectors.toList());
-        List<DrivingLessonDTO> drivingLessonDTOList = getDrivingLessonDTO(drivingLessonList);
+        List<DrivingLessonDTO> drivingLessonDTOList = getDrivingLessonDTO(drivingLessonList.stream()
+        .filter(s -> s.getStudent() != null)
+        .collect(Collectors.toList()));
         return drivingLessonDTOList;
     }
 
@@ -75,6 +78,7 @@ public class DrivingLessonQueryService {
 
         Teacher teacher = teacherRepository.findOne(teacherId);
         return drivingLessonRepository.findStudentForTeacher(teacher).stream()
+                .filter(s -> s.getStudent() != null)
                 .map(DrivingLesson::getStudent)
                 .collect(Collectors.toSet());
     }

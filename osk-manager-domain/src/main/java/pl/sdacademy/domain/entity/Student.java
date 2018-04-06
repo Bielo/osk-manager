@@ -45,6 +45,9 @@ public class Student implements Serializable{
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<DrivingLesson> drivingLessons = new ArrayList<DrivingLesson>();
 
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<DrivingLessonUnconfirmed> drivingLessonUnconfirmed;
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ACCOUNT_ID", nullable = false)
     private Account account;
@@ -133,5 +136,13 @@ public class Student implements Serializable{
                 ", telefon kontaktowy: '" + phoneNumber + '\'' +
                 ", data urodzenia: " + birthdate +
                 ".";
+    }
+
+    public List<DrivingLessonUnconfirmed> getDrivingLessonUnconfirmed() {
+        return drivingLessonUnconfirmed;
+    }
+
+    public void setDrivingLessonUnconfirmed(List<DrivingLessonUnconfirmed> drivingLessonUnconfirmed) {
+        this.drivingLessonUnconfirmed = drivingLessonUnconfirmed;
     }
 }

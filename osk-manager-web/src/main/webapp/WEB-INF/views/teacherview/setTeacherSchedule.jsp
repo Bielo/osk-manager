@@ -30,6 +30,9 @@
                     <form:input path="stopWorkHour" type="time" max="22" required="true"/>
                     <form:button type="submit" name="submit" class="btn btn-primary submitButton">Dodaj</form:button>
                 </form:form>
+                <c:if test="${not empty info}">
+                    <p class="info">${info}</p>
+                </c:if>
                 <jsp:include page="../commons/page-back.jsp"/>
             </div>
         </div>
